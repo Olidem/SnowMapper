@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :countries, only: [:index]
+  resources :countries, only: [:index, :show]
 
   resources :resorts, only: [:index, :show] do
     resources :groups, only: [:new, :create]
