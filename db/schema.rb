@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_092542) do
+ActiveRecord::Schema.define(version: 2019_11_25_120851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.integer "slope_length"
+    t.string "cost"
+    t.string "continent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "resort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resort_id"], name: "index_groups_on_resort_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "resorts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "address"
+    t.bigint "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_resorts_on_country_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +70,17 @@ ActiveRecord::Schema.define(version: 2019_11_24_092542) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "resort_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["resort_id"], name: "index_users_on_resort_id"
   end
 
+  add_foreign_key "groups", "resorts"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
+  add_foreign_key "resorts", "countries"
+  add_foreign_key "users", "resorts"
 end
