@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="d-flex">
+    <div class="resort-info-container">
+      <div class="d-flex">
+        <h1><%= @resort.name %></h1>
+        <%= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "" %>
+      </div>
+      <p><%= @resort.description %></p>
+      <div class="d-flex">
+        <% if current_user.resort == @resort %>
+          <%= image_tag "checked-in.png" %>
+          <h2>You're checked in at at <%= @resort.name %></h2>
+        <% else %>
+          <%= link_to image_tag("checked-out.png"), "http://www.mysite.com/" %>
+          <h2>Check in at <%= @resort.name %>?</h2>
+        <% end %>
+      </div>
+    </div>
+    <div class="api-data-container">
+      testtest
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="group-filters">
+        <h2><%= @groups.count %> active squads in <%= @resort.name %> right now!</h2>
+        <h2><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</h2>
+        <!-- Profile image stack here -->
+       <!--  Sort by filter here -->
+        <p>No groups that match your interests?</p>
+        <!-- Create a new squad button here -->
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="group-cards">
+        <% @groups.each do |group| %>
+          <!-- render group card partial -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
