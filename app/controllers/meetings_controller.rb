@@ -1,8 +1,15 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[edit update destroy]
 
-  def index
-    @meetings = Meeting.all #to be deleted after. For Dev and testing purposes.
+  def index #to be deleted after. For Dev and testing purposes.
+    @meetings = Meeting.geocoded
+
+    @markers = @meetings.map do |meeting|
+      {
+        lat: meeting.latitude,
+        lng: meeting.longitude
+      }
+    end
   end
 
   def new
@@ -16,7 +23,7 @@ class MeetingsController < ApplicationController
     @meeting.group = @group
     @meeting.user = current_user
     if @meeting.save!
-      redirect_to meetings_path
+      redirect_to group_path(@group)
     else
       render :new
     end
