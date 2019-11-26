@@ -1,14 +1,69 @@
 <h1>Messages</h1>
 <h1><%= @group.name %></h1>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
 <%= render 'shared/messages/form', group: @group, message: @message %>
-<div id="messages">
-<% @group.messages.reverse.each do |message| %>
+<!-- <div id="messages">
+<%# @group.messages.reverse.each do |message| %>
   <div class="card">
-    <%= message.content %>
+    <%#= message.content %>
     <br>
-    <%= message.created_at %>
+    <%#= message.created_at %>
     <br>
-    <%= @user.email %>
+    <%#= @user.email %>
   </div>
-<% end %>
+<%# end %>
+</div> -->
+
+<br>
+<h2>Messages</h2>
+<div class="bottom" id="comment_section">
+  <% @group.messages.reverse.each do |message| %>
+  <p><%= message.content %></p>
+  <% end %>
 </div>
+<script>
+  // document.getElementById('new_message').addEventListener('submit', (event) => {
+  //   event.preventDefault();
+  // })
+  let channel = pusher.subscribe('comment-channel');
+  channel.bind('new-comment', (data) => {
+    let comment = data.message;
+    let div = document.getElementById('comment_section');
+    div.insertAdjacentHTML('afterbegin',`<p> ${comment} </p>`);
+    document.getElementById('message_content').value = "";
+  });
+</script>

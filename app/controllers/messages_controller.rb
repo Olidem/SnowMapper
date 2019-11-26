@@ -16,9 +16,11 @@ class MessagesController < ApplicationController
     @message.user = @user
     @message.group = @group
     if @message.save
-      redirect_to group_path(@group)
+      Pusher.trigger('comment-channel','new-comment', {
+        message: @message.content
+      })
     else
-      direct :new
+      render :new
     end
   end
 
