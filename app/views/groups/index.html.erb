@@ -3,5 +3,6 @@
       <li><%= group.name %></li>
       <li><%= group.description %></li>
       <h2><%= link_to "Edit group", edit_group_path(group) %></h2>
+      <h2><%= link_to "Delete group", group_path(group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
     </ul>
 <% end %>
