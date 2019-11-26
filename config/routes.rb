@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Custom routes
   get '/resorts/:id/add_user', to: 'resorts#add_user', as: :resorts_add_user
+  get '/resorts/:id/sort_user_count', to: 'resorts#sort_user_count', as: :resorts_sort_user_count
 
   resources :countries, only: [:index, :show]
 

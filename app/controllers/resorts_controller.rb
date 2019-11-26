@@ -1,5 +1,5 @@
 class ResortsController < ApplicationController
-  before_action :set_resort, only: %i[show add_user]
+  before_action :set_resort, only: %i[show add_user sort_user_count]
 
   def index
     @resorts = Resort.all
@@ -13,6 +13,13 @@ class ResortsController < ApplicationController
     current_user.update(resort: @resort)
     @groups = @resort.groups
     redirect_to resort_path(@resort)
+  end
+
+  # Ordering methods
+  def sort_user_count
+    @groups = @resort.groups
+    @groups = (@groups.sort_by { |group| group.users.count }).reverse
+    render :show
   end
 
   private
