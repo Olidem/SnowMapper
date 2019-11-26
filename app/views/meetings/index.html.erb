@@ -1,0 +1,8 @@
+<% @meetings.each do |meeting| %>
+    <ul>
+      <li><%= meeting.address %></li>
+      <li><%= meeting.meeting_date %></li>
+      <h2><%= link_to "Edit", edit_meeting_path(meeting) %></h2>
+      <h2><%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+    </ul>
+<% end %>
