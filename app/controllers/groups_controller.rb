@@ -3,7 +3,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @group.membership.user = current_user
+
+    @membership = Membership.new(user: current_user, group: @group, admin: true)
     @message = @flat.reviews
   end
 
