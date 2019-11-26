@@ -14,7 +14,6 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @resort = Resort.find(params[:resort_id])
-    # @membership = Membership.new(user: current_user, group: @group, admin: true)
   end
 
   def create
@@ -29,11 +28,18 @@ class GroupsController < ApplicationController
     end
   end
 
-  # def edit() end
+  def edit
+    @group = Group.find(params[:id])
+  end
 
   # def update
-  #   @flat.update(flat_params)
-  #   redirect_to flat_path
+  #   @group = Group.find(params[:id])
+  #   @resort = @group.resort
+  #   if @group.update(group_params)
+  #     redirect_to group_path(@group)
+  #   else
+  #     render :edit
+  #   end
   # end
 
   # def destroy

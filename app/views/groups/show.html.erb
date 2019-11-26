@@ -11,4 +11,6 @@
       <%=  membership.user.first_name if membership.admin %>
     <% end %>
   <h6>At<%= @group.created_at %></h6>
+
+  <h2><%= link_to "Edit group", edit_group_path(@group) %></h2>
 </div>
