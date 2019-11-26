@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:new, :create]
   end
 
-  resources :groups, only: [] do
+  resources :groups, only: [:show] do
     resources :messages, only: [:new, :create]
   end
 

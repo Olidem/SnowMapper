@@ -17,6 +17,7 @@
   <h2><%= link_to "Add meeting point", new_group_meeting_path(@group) %></h2>
 </div>
 
+<%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
 
 <div
   id="map"

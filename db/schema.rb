@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_163201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
+    t.boolean "show", default: true
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
