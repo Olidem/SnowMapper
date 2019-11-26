@@ -11,7 +11,7 @@
           <%= image_tag "checked-in.png" %>
           <h2>You're checked in at at <%= @resort.name %></h2>
         <% else %>
-          <%= link_to image_tag("checked-out.png"), "http://www.mysite.com/" %>
+          <%= link_to image_tag("checked-out.png"), 'add_user' %>
           <h2>Check in at <%= @resort.name %>?</h2>
         <% end %>
       </div>
