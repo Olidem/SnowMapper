@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[edit update destroy]
 
   def index
-    @meetings = Meeting.all #to be deleted for dev purposes
+    @meetings = Meeting.all #to be deleted after. For Dev and testing purposes.
   end
 
   def new
