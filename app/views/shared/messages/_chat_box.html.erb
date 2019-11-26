@@ -1,0 +1,41 @@
+<h1>Messages</h1>
+<h1><%= @group.name %></h1>
+<%= render 'shared/messages/form', group: @group, message: @message %>
+<h2>Messages</h2>
+<div class="bottom" id="comment_section">
+  <% @group.messages.order(created_at: :desc).each do |message| %>
+    <% if !message.show %>
+      <div class="card" id="comment-<%= message.id %>">
+        <p>Message deleted</p>
+      </div>
+    <% else %>
+      <div class="card" id="comment-<%= message.id %>">
+        <p>Message: <%= message.content %></p>
+        <p>Email: <%= message.user.email %></p>
+        <%= link_to "Delete message", message_path(message), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<script>
+  let channel = pusher.subscribe('comment-channel');
+  channel.bind('new-comment', (data) => {
+    let comment = data.message.content;
+    let email = data.message.email
+    let id = data.message.id
+    let div = document.getElementById('comment_section');
+    let deleteButton = `<div>Delete</div>`
+    let messageHTML = `<div class='card' id='comment-${id}'><p> Message: ${comment}</p><p> Email: ${email}</p><a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>`
+    div.insertAdjacentHTML('afterbegin', messageHTML);
+    document.getElementById('message_content').value = "";
+  });
+    channel.bind('delete-comment', (data) => {
+    let id = data.message.id
+    let div = document.getElementById(`comment-${id}`);
+    let messageHTML = `<div class='card' id='comment-${id}'><p>Message deleted</p></div>`
+    while (div.firstChild) {
+      div.firstChild.remove()
+    }
+    div.insertAdjacentHTML('afterbegin', messageHTML);
+  });
+</script>

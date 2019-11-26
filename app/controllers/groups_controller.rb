@@ -8,6 +8,15 @@ class GroupsController < ApplicationController
   def show
     @resort = @group.resort
     @message = Message.new
+
+    @meetings = @group.meetings.geocoded #returns flats with coordinates
+
+    @markers = @meetings.map do |meeting|
+      {
+        lat: meeting.latitude,
+        lng: meeting.longitude
+      }
+    end
   end
 
   def new
