@@ -14,20 +14,19 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @resort = Resort.find(params[:resort_id])
-    @membership = Membership.new(user: current_user, group: @group, admin: true)
+    # @membership = Membership.new(user: current_user, group: @group, admin: true)
   end
 
   def create
     @group = Group.new(group_params)
+    @resort = Resort.find(params[:resort_id])
     @group.resort = @resort
-    @group.membership.user = current_user
-    @messages = @group.messages.content
-
-    # if @group.save!
-    #   redirect_to group_path(@group)
-    # else
-    #   render 'groups/show'
-    # end
+    if @group.save!
+      Membership.create(user: current_user, group: @group, admin: true)
+      redirect_to groups_path
+    else
+      render :new
+    end
   end
 
   # def edit() end
