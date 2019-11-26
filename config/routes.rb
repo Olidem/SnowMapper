@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # Custom routes
+  get '/resorts/:id/add_user', to: 'resorts#add_user', as: :resorts_add_user
+
   resources :countries, only: [:index, :show]
 
   resources :resorts, only: [:index, :show] do
