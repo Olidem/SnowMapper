@@ -32,15 +32,15 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  # def update
-  #   @group = Group.find(params[:id])
-  #   @resort = @group.resort
-  #   if @group.update(group_params)
-  #     redirect_to group_path(@group)
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @group = Group.find(params[:id])
+    @resort = @group.resort
+    if @group.update(group_params)
+      redirect_to group_path(@group)
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   #   @flat.destroy
