@@ -1,0 +1,103 @@
+.banners {
+  display: flex;
+  flex-direction: column;
+  margin-left: 96px;
+  margin-right: 96px;
+}
+
+.country-banner {
+  border: solid 1px #000;
+  height: 300px;
+  width: 100%;
+  background-color: #E2493C;
+  position: relative;
+}
+
+.banners h1 {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+}
+
+.europe-image {
+  height:300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.europe-dropdown {
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-photo {
+  // margin: 12px;
+  height: 200px;
+  width: auto;
+}
+
+.europe-grid {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image {
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://images.unsplash.com/photo-1517660895948-131a6d6c55d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1786&q=80);
+  //   -webkit-transition: background-position 0.8s ease-out;
+  // -moz-transition: background-position 0.8s ease-out;
+  // -o-transition: background-position 0.8s ease-out;
+  // transition: background-position 0.8s ease-out;
+  // &:hover {
+  //   background-position: top;
+
+  // }
+}
+
+.banner-image1 {
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://images.unsplash.com/photo-1550627951-de9fcc886857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80);
+}
+
+.banner-image2 {
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://images.unsplash.com/photo-1552472200-78d2ad19d2ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80);
+}
+
+.title {
+  text-decoration: none;
+}
+
+.title-overlay {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding-top: 150px;
+  font-size: 64px;
+}
+
+.relative {
+  position: relative;
+}

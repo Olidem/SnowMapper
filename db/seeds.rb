@@ -14,8 +14,6 @@ Group.destroy_all
 Resort.destroy_all
 Country.destroy_all
 
-
-
 puts "Creating countries"
 france = Country.new(
   name: "France",
