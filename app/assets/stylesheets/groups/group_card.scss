@@ -1,0 +1,26 @@
+.group-card {
+  border-radius: 4px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 32px 0px;
+  }
+
+.group-image {
+  width: 30%;
+  min-height: 150px;
+  background-size: cover;
+  border-radius: 4px;
+  background-position: center;
+}
+
+.group-info-container {
+  padding: 16px;
+}
+
+.lock-image {
+  align-self: right;
+  height: 30%;
+}
+
+.group-info {
+  width: 70%;
+}

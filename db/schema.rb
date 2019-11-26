@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_11_26_101157) do
-=======
-ActiveRecord::Schema.define(version: 2019_11_26_082136) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2019_11_26_145117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_082136) do
     t.bigint "resort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked", default: false
     t.index ["resort_id"], name: "index_groups_on_resort_id"
   end
 
