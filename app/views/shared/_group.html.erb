@@ -1,0 +1,7 @@
+<%= simple_form_for [@resort, @group] do |f| %>
+  <%= f.input :name, as: :string%>
+  <%= f.input :description, as: :text %>
+  <div class="d-flex justify-content-center">
+    <%= f.submit "Submit", class: "button-book"  %>
+  </div>
+<% end %>

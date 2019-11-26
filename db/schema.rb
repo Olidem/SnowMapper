@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2019_11_26_145117) do
     t.index ["resort_id"], name: "index_groups_on_resort_id"
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.string "address"
+    t.date "meeting_date"
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_meetings_on_group_id"
+    t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
@@ -104,6 +115,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_145117) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "groups", "resorts"
+  add_foreign_key "meetings", "groups"
+  add_foreign_key "meetings", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "groups"
