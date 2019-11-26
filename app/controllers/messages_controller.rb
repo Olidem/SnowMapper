@@ -16,15 +16,9 @@ class MessagesController < ApplicationController
     @message.user = @user
     @message.group = @group
     if @message.save
-      respond_to do |format|
-        format.html { redirect_to group_path(@group) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+      redirect_to group_path(@group)
     else
-      respond_to do |format|
-        format.html { render 'groups/show' }
-        format.js  # <-- idem
-      end
+      direct :new
     end
   end
 
