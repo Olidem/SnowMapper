@@ -1,0 +1,17 @@
+<div class="Group">
+  <% if @group.photo.attached? %>
+    <h1><%= cl_image_tag @group.photo.key %></h1>
+  <% end %>
+  <h1><%= @group.name %></h1>
+  <h6><%= @resort.name %></h6>
+  <h6><%= @resort.country.name %></h6>
+  <h4><%= @group.description %></h4>
+  <h6>Created by</h6>
+    <%@group.memberships.each do |membership|%>
+      <%=  membership.user.first_name if membership.admin %>
+    <% end %>
+  <h6>At<%= @group.created_at %></h6>
+
+  <h2><%= link_to "Edit group", edit_group_path(@group) %></h2>
+  <h2><%= link_to "Delete group", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+</div>
