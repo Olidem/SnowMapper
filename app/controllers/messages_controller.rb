@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   end
 
   def show
-
+    @group = Group.find(params[:group_id])
+    redirect_to group_path(@group)
   end
 
   def new
@@ -19,7 +20,8 @@ class MessagesController < ApplicationController
       Pusher.trigger('comment-channel','new-comment', {
         message: {
           content: @message.content,
-          email: @message.user.email
+          email: @message.user.email,
+          id: @message.id
       }})
     else
       render :new
@@ -30,9 +32,27 @@ class MessagesController < ApplicationController
   end
 
   def update
+    @message = Message.find(params[:id])
+    @group = @message.group
+    if @message.update(message_params)
+      redirect_to group_path(@group)
+    else
+      render :new
+    end
   end
 
   def destroy
+    @message = Message.find(params[:id])
+    @group = @message.group
+    @message.show = false
+    if @message.save
+      Pusher.trigger('comment-channel','delete-comment', {
+        message: {
+          id: @message.id
+      }})
+    else
+      render :new
+    end
   end
 
   def message_params

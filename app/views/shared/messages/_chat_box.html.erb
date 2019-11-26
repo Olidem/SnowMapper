@@ -1,0 +1,37 @@
+<h1>Messages</h1>
+<h1><%= @group.name %></h1>
+<%= render 'shared/messages/form', group: @group, message: @message %>
+<h2>Messages</h2>
+<div class="bottom" id="comment_section">
+  <% @group.messages.each do |message| %>
+    <% if !message.show %>
+      <div class="card" id="<%= message.id %>">
+        <p>Message deleted</p>
+      </div>
+    <% else %>
+      <div class="card" id="<%= message.id %>">
+        <p>Message: <%= message.content %></p>
+        <p>Email: <%= message.user.email %></p>
+        <h2><%= link_to "Delete message", message_path(message), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<script>
+  let channel = pusher.subscribe('comment-channel');
+  channel.bind('new-comment', (data) => {
+    let comment = data.message.content;
+    let email = data.message.email
+    let id = data.message.id
+    let div = document.getElementById('comment_section');
+    let deleteButton = `<div>Delete</div>`
+    let messageHTML = `<div class='card' id='comment-${id}'><p> Message: ${comment}</p><p> Email: ${email}</p><div id='button-${id}'>Delete message</div></div>`
+    div.insertAdjacentHTML('afterbegin', messageHTML);
+    let activeDeleteButton = document.getElementById(`button-${id}`)
+    activeDeleteButton.addEventListener('click', function(e) {
+      e.preventDefault()
+      document.getElementById(`comment-${id}`).innerHTML = "deleted"
+    })
+    document.getElementById('message_content').value = "";
+  });
+</script>
