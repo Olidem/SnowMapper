@@ -3,13 +3,14 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-
-    @membership = Membership.new(user: current_user, group: @group, admin: true)
-    @message = @flat.reviews
+    @resort = @group.resort
+    @message = Message.new
   end
 
   # def new
   #   @group = Group.new
+  # @resort = Resort.find(params[:resort_id])
+  # @membership = Membership.new(user: current_user, group: @group, admin: true)
   # end
 
   # def create
