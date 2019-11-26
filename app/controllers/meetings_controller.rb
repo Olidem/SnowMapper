@@ -22,13 +22,13 @@ def create
   end
 end
 
-# def edit
+def edit
+  @meeting = Meeting.find(params[:id])
+end
 
-# end
+def update
 
-# def update
-
-# end
+end
 
 # def destroy
 
