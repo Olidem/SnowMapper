@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   # before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @groups = Group.all #to be deleted after
+  end
+
   def show
     @group = Group.find(params[:id])
     @resort = @group.resort
@@ -13,20 +17,18 @@ class GroupsController < ApplicationController
     @membership = Membership.new(user: current_user, group: @group, admin: true)
   end
 
-  # def create
-  #   @group = Group.new(group_params)
-  #   @membership = Membership.new(admin: true, group: @group, user: @user)
+  def create
+    @group = Group.new(group_params)
+    @group.resort = @resort
+    @group.membership.user = current_user
+    @messages = @group.messages.content
 
-  #   @group.resort = @resort
-
-  #   @group.user = current_user
-
-  #   if @group.save!
-  #     redirect_to group_path(@group)
-  #   else
-  #     render 'groups/show'
-  #   end
-  # end
+    # if @group.save!
+    #   redirect_to group_path(@group)
+    # else
+    #   render 'groups/show'
+    # end
+  end
 
   # def edit() end
 
