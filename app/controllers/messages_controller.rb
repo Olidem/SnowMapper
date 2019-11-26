@@ -17,8 +17,10 @@ class MessagesController < ApplicationController
     @message.group = @group
     if @message.save
       Pusher.trigger('comment-channel','new-comment', {
-        message: @message.content
-      })
+        message: {
+          content: @message.content,
+          email: @message.user.email
+      }})
     else
       render :new
     end
