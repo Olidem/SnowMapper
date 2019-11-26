@@ -1,0 +1,14 @@
+<h1>Messages</h1>
+<h1><%= @group.name %></h1>
+<%= render 'shared/messages/form', group: @group, message: @message %>
+<div id="messages">
+<% @group.messages.reverse.each do |message| %>
+  <div class="card">
+    <%= message.content %>
+    <br>
+    <%= message.created_at %>
+    <br>
+    <%= @user.email %>
+  </div>
+<% end %>
+</div>
