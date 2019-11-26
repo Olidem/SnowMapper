@@ -1,12 +1,11 @@
 class GroupsController < ApplicationController
-  # before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = Group.all #to be deleted after
+    @groups = Group.all #to be deleted after. For Dev and testing purposes.
   end
 
   def show
-    @group = Group.find(params[:id])
     @resort = @group.resort
     @message = Message.new
   end
@@ -28,12 +27,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-    @group = Group.find(params[:id])
-  end
+  def edit() end
 
   def update
-    @group = Group.find(params[:id])
     @resort = @group.resort
     if @group.update(group_params)
       redirect_to group_path(@group)
@@ -43,18 +39,17 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
     redirect_to groups_path
   end
 
-private
+  private
 
   def group_params
     params.require(:group).permit(:name, :description)
   end
 
-  # def set_group
-  #   @group = Group.find(params[:id])
-  # end
+  def set_group
+    @group = Group.find(params[:id])
+  end
 end

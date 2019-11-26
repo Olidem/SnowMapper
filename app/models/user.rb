@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :memberships
   has_many :messages
+  has_many :meetings
   has_many :groups, through: :memberships
   belongs_to :resort
   has_one_attached :photo
