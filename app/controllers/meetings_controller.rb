@@ -27,7 +27,14 @@ def edit
 end
 
 def update
-
+  @meeting = Meeting.find(params[:id])
+  @group = @meeting.group
+  @meeting.user = current_user
+  if @meeting.update(meeting_params)
+    redirect_to meetings_path
+  else
+    render :edit
+  end
 end
 
 # def destroy
