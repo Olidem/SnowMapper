@@ -17,5 +17,11 @@ Rails.application.routes.draw do
   end
 
   resources :messages, except: [:new, :create]
+
+  resources :groups, only: [] do
+    resources :meetings, only: [:new, :create]
+  end
+
+  resources :meetings, only: [:edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
