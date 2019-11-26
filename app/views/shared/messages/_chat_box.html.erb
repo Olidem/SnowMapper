@@ -3,16 +3,16 @@
 <%= render 'shared/messages/form', group: @group, message: @message %>
 <h2>Messages</h2>
 <div class="bottom" id="comment_section">
-  <% @group.messages.each do |message| %>
+  <% @group.messages.order(created_at: :desc).each do |message| %>
     <% if !message.show %>
-      <div class="card" id="<%= message.id %>">
+      <div class="card" id="comment-<%= message.id %>">
         <p>Message deleted</p>
       </div>
     <% else %>
-      <div class="card" id="<%= message.id %>">
+      <div class="card" id="comment-<%= message.id %>">
         <p>Message: <%= message.content %></p>
         <p>Email: <%= message.user.email %></p>
-        <h2><%= link_to "Delete message", message_path(message), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+        <%= link_to "Delete message", message_path(message), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
       </div>
     <% end %>
   <% end %>
@@ -25,13 +25,17 @@
     let id = data.message.id
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
-    let messageHTML = `<div class='card' id='comment-${id}'><p> Message: ${comment}</p><p> Email: ${email}</p><div id='button-${id}'>Delete message</div></div>`
+    let messageHTML = `<div class='card' id='comment-${id}'><p> Message: ${comment}</p><p> Email: ${email}</p><a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>`
     div.insertAdjacentHTML('afterbegin', messageHTML);
-    let activeDeleteButton = document.getElementById(`button-${id}`)
-    activeDeleteButton.addEventListener('click', function(e) {
-      e.preventDefault()
-      document.getElementById(`comment-${id}`).innerHTML = "deleted"
-    })
     document.getElementById('message_content').value = "";
+  });
+    channel.bind('delete-comment', (data) => {
+    let id = data.message.id
+    let div = document.getElementById(`comment-${id}`);
+    let messageHTML = `<div class='card' id='comment-${id}'><p>Message deleted</p></div>`
+    while (div.firstChild) {
+      div.firstChild.remove()
+    }
+    div.insertAdjacentHTML('afterbegin', messageHTML);
   });
 </script>
