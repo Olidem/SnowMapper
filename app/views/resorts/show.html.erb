@@ -11,7 +11,7 @@
           <div class="d-flex align-items-center">
             <% if current_user.resort == @resort %>
               <%= image_tag "checked-in.png" %>
-              <h2>You're checked in at at <%= @resort.name %></h2>
+              <h2>You're checked in at <%= @resort.name %></h2>
             <% else %>
               <%= link_to image_tag("checked-out.png"), :resorts_add_user %>
               <h2>Check in at <%= @resort.name %>?</h2>
