@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+# before_action :set_meeting, only: %i[show edit update destroy]
 
 def index
   @meetings = Meeting.all #to be deleted for dev purposes
@@ -7,16 +8,15 @@ end
 def new
   @meeting = Meeting.new
   @group = Group.find(params[:group_id])
-  @user = @meeting.user
 end
 
 def create
-  @meeting = Meeting.new(group_params)
-  @resort = Resort.find(params[:resort_id])
-  @group.resort = @resort
-  if @group.save!
-    Membership.create(user: current_user, group: @group, admin: true)
-    redirect_to groups_path
+  @group = Group.find(params[:group_id])
+  @meeting = Meeting.new(meeting_params)
+  @meeting.group = @group
+  @meeting.user = current_user
+  if @meeting.save!
+    redirect_to meetings_path
   else
     render :new
   end
@@ -33,4 +33,14 @@ end
 # def destroy
 
 # end
+
+  private
+
+  def meeting_params
+    params.require(:meeting).permit(:address, :meeting_date)
+  end
+
+  # def set_meeting
+  #   @group = Group.find(params[:id])
+  # end
 end
