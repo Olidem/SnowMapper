@@ -32,3 +32,5 @@ end
 # Custom gems
 gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
+gem 'geocoder'
+
