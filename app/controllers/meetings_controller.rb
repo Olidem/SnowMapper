@@ -4,11 +4,11 @@ def index
   @meetings = Meeting.all #to be deleted for dev purposes
 end
 
-# def new
-#   @meeting = Meeting.new
-#   @group = Group.find(params[:group_id])
-#   @user = @meeting.user
-# end
+def new
+  @meeting = Meeting.new
+  @group = Group.find(params[:group_id])
+  @user = @meeting.user
+end
 
 def create
 
