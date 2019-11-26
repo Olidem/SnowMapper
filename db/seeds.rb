@@ -78,7 +78,7 @@ resorts.each do |resort|
       group.resort = resort
       group.save!
         users.each do |user|
-          membership = Membership.new(user: user, group: group)
+          membership = Membership.new(user: user, group: group, admin: true)
           membership.save!
         end
     end
