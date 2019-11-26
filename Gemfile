@@ -30,4 +30,6 @@ group :development, :test do
 end
 
 
+# Custom gems
+gem 'cloudinary', '~> 1.12.0'
 gem 'pusher'
