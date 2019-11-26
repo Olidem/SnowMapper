@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     resources :meetings, only: [:new, :create]
   end
 
-  resources :meetings, only: [:edit, :update, :destroy]
+  resources :meetings, only: [:index, :edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
