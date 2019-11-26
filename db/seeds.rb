@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'open-uri'
 
 puts "Clearing records"
 Message.destroy_all
@@ -24,8 +23,9 @@ france = Country.new(
   cost: "€€€",
   continent: "Europe"
   )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
 france.save!
-
 
 puts "Creating resorts"
 courchavel = Resort.new(
@@ -34,6 +34,8 @@ courchavel = Resort.new(
   address: "COURCHEVEL, BP 37, 73122 COURCHEVEL, France"
   )
 courchavel.country = france
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756989/courchevel-1850-cropped_lilh4q.png')
+courchavel.photo.attach(io: img, filename: "courchavel.jpg", content_type: 'image/jpg')
 courchavel.save!
 
 vdi = Resort.new(
@@ -42,6 +44,8 @@ vdi = Resort.new(
   address: "VAL D'ISÈRE, B.P. 228, 73150 VAL D'ISERE, France"
   )
 vdi.country = france
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574757114/1500026649-0fe5988257cc2eebde3a9c9f321d8afa-787x564_okwo71.jpg')
+vdi.photo.attach(io: img, filename: "vdi.jpg", content_type: 'image/jpg')
 vdi.save!
 
 tignes = Resort.new(
@@ -50,6 +54,8 @@ tignes = Resort.new(
   address: "TIGNES, B.P. 51, 73320 TIGNES Cedex, France"
   )
 tignes.country = france
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574757054/540px-Tignes-winter_f4sk2f.jpg')
+tignes.photo.attach(io: img, filename: "tignes.jpg", content_type: 'image/jpg')
 tignes.save!
 resorts = [courchavel, vdi, tignes]
 
@@ -73,9 +79,11 @@ group_names = [["Freestylers", "Hardcore freestylers get involved!"],
   ["Big birthday drinks", "Open to everyone! Come and join"],
   ["Off-piste buddies", "Looking for some squaddies to come off-piste for a few days!"]]
 resorts.each do |resort|
-    group_names.each do |group_name|
+    group_names.each_with_index do |group_name, i|
+      photos = [URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758421/photo-1523815119304-615b6b81e704_ojsuvh.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758435/photo-1558301211-0d8c8ddee6ec_q8jhvq.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758427/photo-1563544769932-7a686e8c1f40_acgdlv.jpg')]
       group = Group.new(name: group_name[0], description: group_name[1])
       group.resort = resort
+      group.photo.attach(io: photos[i], filename: "group_picture_#{group_name[0]}.jpg", content_type: 'image/jpg')
       group.save!
         users.each do |user|
           membership = Membership.new(user: user, group: group, admin: true)
