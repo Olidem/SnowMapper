@@ -1,0 +1,41 @@
+<div class="group-card d-flex">
+  <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
+  <div class="group-info-container d-flex justify-content-between flex-grow-1">
+    <div class="group-info d-flex flex-column align-items-start justify-content-between">
+      <h2><%= group.name %></h2>
+      <div class="group-users-avatars">
+        <% group.users.each do |user| %>
+          <span class="group-users-avatar">
+            <img src=<%= cl_image_path user.photo.key %>>
+          </span>
+        <% end %>
+      </div>
+      <p><%= group.description %></p>
+    </div>
+    <% if group.locked %>
+      <div class="d-flex flex-column align-items-end">
+        <%= image_tag "locked.png", class: "lock-image mb-auto" %>
+          <% if group.messages.any? %>
+            <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+          <% else %>
+            <p class="mt-auto">No messages yet</p>
+          <% end %>
+        <button class="badge badge-primary mt_auto dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Message this group to join!
+        </button>
+        <div class="dropdown-menu">
+          <p class="p-3">To do: render new join request partial HERE</p>
+        </div>
+      </div>
+    <% else %>
+      <div class="d-flex flex-column align-items-end">
+        <% if group.messages.any? %>
+          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+        <% else %>
+          <p class="mt-auto">No messages yet</p>
+        <% end %>
+        <%= link_to "Join group", group_memberships_path(group), method: :post, class: "badge badge-primary mt_auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>

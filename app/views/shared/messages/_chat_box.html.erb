@@ -1,0 +1,94 @@
+<div class="container mt-5 mb-5" style="background-color: white;">
+  <h1 style="text-align: center"><%= @group.name %> Frost Chat!</h1>
+  <div class="bottom scroll-style" id="comment_section">
+    <% @group.messages.order(created_at: :asc).each do |message| %>
+      <% if !message.show %>
+        <div class="message-deleted" id="comment-<%= message.id %>">
+          <p><i>Message deleted</i></p>
+        </div>
+      <% elsif message.user == current_user %>
+        <div class="message-card" id="comment-<%= message.id %>">
+          <div class="message-user"/>
+            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+            <div class="message-user-details">
+              <p><%= message.user.first_name %></p>
+              <p><span class="grey-txt"><%= message.group.name %></span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p><%= message.content %></p>
+            <div class="message-other">
+              <p><span class="grey-txt date"><%= time_since(message) %></span></p>
+              <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="message-card" id="comment-<%= message.id %>">
+          <div class="message-user"/>
+            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+            <div class="message-user-details">
+              <p><%= message.user.first_name %></p>
+              <p><span class="grey-txt"><%= message.group.name %></span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p><%= message.content %></p>
+            <div class="message-other">
+              <p><span class="grey-txt date"><%= time_since(message) %></span></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= render 'shared/messages/form', group: @group, message: @message %>
+</div>
+
+<script>
+  // add message
+  let channel = pusher.subscribe('comment-channel');
+  channel.bind('new-comment', (data) => {
+    let comment = data.message.content;
+    let name = data.message.name
+    let id = data.message.id
+    let group_name =data.message.group_name
+    let photo = data.message.photo
+    let div = document.getElementById('comment_section');
+    let deleteButton = `<div>Delete</div>`
+    let messageHTML = `
+        <div class="message-card" id="comment-${id}">
+          <div class="message-user"/>
+            <img class="avatar" src="http://res.cloudinary.com/dr48k5zwm/image/upload/${photo}">
+            <div class="message-user-details">
+              <p>${name}</p>
+              <p><span class="grey-txt">${group_name}</span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p>${comment}</p>
+            <div class="message-other">
+              <p><span class="grey-txt date">0 minutes ago</span></p>
+              <a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}"><i class="far fa-trash-alt"></i></a></div>
+            </div>
+          </div>
+        </div>
+    `
+    div.insertAdjacentHTML('beforeend', messageHTML);
+    document.getElementById('message_content').value = "";
+    var objDiv = document.getElementById("comment_section");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  });
+  // delete message
+  channel.bind('delete-comment', (data) => {
+    let id = data.message.id
+    let div = document.getElementById(`comment-${id}`);
+    while (div.firstChild) {
+      div.firstChild.remove()
+    }
+    div.classList.add('message-deleted')
+    div.classList.remove("message-card");
+    div.innerHTML = '<i><p>Message deleted</p></i>'
+  });
+
+</script>
