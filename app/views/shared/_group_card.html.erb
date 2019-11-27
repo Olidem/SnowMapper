@@ -15,26 +15,22 @@
     <% if group.locked %>
       <div class="d-flex flex-column align-items-end">
         <%= image_tag "locked.png", class: "lock-image mb-auto" %>
-        <p class="mt-auto">Last posted message<br/>TODO</p>
-
+          <% if group.messages.any? %>
+            <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+          <% else %>
+            <p class="mt-auto">No messages yet</p>
+          <% end %>
         <button class="badge badge-primary mt_auto dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Message this group to join!
         </button>
         <div class="dropdown-menu">
-          <p>To do: render new join request partial</p>
+          <p class="p-3">To do: render new join request partial HERE</p>
         </div>
       </div>
     <% else %>
       <div class="d-flex flex-column align-items-end">
         <% if group.messages.any? %>
-          <% timeDiff =  Time.new - group.messages.last.created_at %>
-
-          <p class="mt-auto">Last posted message<br/><%= (Time.new - group.messages.last.created_at).fdiv(1.minute).round %> minutes ago</p>
-
-
-
-
-
+          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
         <% else %>
           <p class="mt-auto">No messages yet</p>
         <% end %>
