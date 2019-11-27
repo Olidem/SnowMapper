@@ -3,19 +3,41 @@
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
       <% if !message.show %>
-        <div class="card m-3 p-2" id="comment-<%= message.id %>">
+        <div class="message-card" id="comment-<%= message.id %>">
           <p>Message deleted</p>
         </div>
       <% elsif message.user == current_user %>
-        <div class="card m-3 p-2" id="comment-<%= message.id %>">
-          <p>Message: <%= message.content %></p>
-          <p>Email: <%= message.user.email %></p>
-          <%= link_to "Delete message", message_path(message), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+        <div class="message-card" id="comment-<%= message.id %>">
+          <div class="message-user"/>
+            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+            <div class="message-user-details">
+              <p><%= message.user.first_name %></p>
+              <p><span class="grey-txt"><%= message.group.name %></span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p><%= message.content %></p>
+            <div class="message-other">
+              <p><span class="grey-txt date"><%= message.created_at.strftime("%T %a %b %e")  %></span></p>
+              <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
         </div>
       <% else %>
-        <div class="card m-3 p-2" id="comment-<%= message.id %>">
-          <p>Message: <%= message.content %></p>
-          <p>Email: <%= message.user.email %></p>
+        <div class="message-card" id="comment-<%= message.id %>">
+          <div class="message-user"/>
+            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+            <div class="message-user-details">
+              <p><%= message.user.first_name %></p>
+              <p><span class="grey-txt"><%= message.group.name %></span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p><%= message.content %></p>
+            <div class="message-other">
+              <p><span class="grey-txt date"><%= message.created_at.strftime("%T %a %b %e")  %></span></p>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
@@ -24,26 +46,31 @@
 </div>
 
 <script>
+  // add message
   let channel = pusher.subscribe('comment-channel');
   channel.bind('new-comment', (data) => {
     let comment = data.message.content;
-    let email = data.message.email
+    let name = data.message.name
     let id = data.message.id
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
-    let messageHTML = `<div class='card m-3 p-2' id='comment-${id}'><p> Message: ${comment}</p><p> Email: ${email}</p><a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>`
+    let messageHTML = `
+    <div class='message-card' id='comment-${id}'><p> Message: ${comment}</p><p>${name}</p><a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>
+    `
     div.insertAdjacentHTML('beforeend', messageHTML);
     document.getElementById('message_content').value = "";
     var objDiv = document.getElementById("comment_section");
     objDiv.scrollTop = objDiv.scrollHeight;
   });
-    channel.bind('delete-comment', (data) => {
+  // delete message
+  channel.bind('delete-comment', (data) => {
     let id = data.message.id
     let div = document.getElementById(`comment-${id}`);
-    let messageHTML = `<div class='card m-3 p-2' id='comment-${id}'><p>Message deleted</p></div>`
+    let messageHTML = `<div class='message-card' id='comment-${id}'><p>Message deleted</p></div>`
     while (div.firstChild) {
       div.firstChild.remove()
     }
     div.insertAdjacentHTML('beforeend', messageHTML);
   });
+
 </script>

@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
       Pusher.trigger('comment-channel','new-comment', {
         message: {
           content: @message.content,
-          email: @message.user.email,
+          name: @message.user.first_name,
           id: @message.id
       }})
     else

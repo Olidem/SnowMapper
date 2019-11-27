@@ -1,5 +1,62 @@
-.scroll-style
-{
+.scroll-style {
     max-height: 400px;
     overflow-y: auto;
 }
+
+.message-card {
+  margin: 10px;
+  padding: 5px 15px;
+  overflow: hidden;
+  height: auto;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-user {
+  display: flex;
+}
+.message-user-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  p {
+    font-size: 0.7em;
+    margin: 0;
+  }
+  i {
+    font-size: 0.8em;
+  }
+}
+
+.message-text {
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+  text-align: right;
+}
+
+.message-other {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.7em;
+  a {
+    color: red;
+    font-size: 0.7em;
+    margin-left: 5px;
+  }
+
+}
+
+.grey-txt {
+  color: grey;
+}
+
+
+
+
