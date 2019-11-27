@@ -1,0 +1,9 @@
+<% @memberships.each do |membership| %>
+  <% if membership.user == current_user %>
+    <ul>
+      <li><%= membership.group.name %></li>
+      <li><%= membership.admin %></li>
+      <li><%= membership.group.description %></li>
+    </ul>
+  <% end %>
+<% end %>

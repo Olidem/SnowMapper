@@ -2,4 +2,14 @@
   <div style="width: 50%">
     <%= render partial: "shared/group", resort: @resort, group: @group%>
   </div>
+
+  <div style="width: 50%">
+    <% @group.memberships.each do |membership| %>
+      <%= membership.user.first_name %>
+      <% if membership.admin? %>
+        <%= link_to "Remove admin", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
