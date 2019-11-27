@@ -26,7 +26,18 @@
       </div>
     <% else %>
       <div class="d-flex flex-column align-items-end">
-        <p class="mt-auto">Last posted message:<br>to do</p>
+        <% if group.messages.any? %>
+          <% timeDiff =  Time.new - group.messages.last.created_at %>
+
+          <p class="mt-auto">Last posted message<br/><%= (Time.new - group.messages.last.created_at).fdiv(1.minute).round %> minutes ago</p>
+
+
+
+
+
+        <% else %>
+          <p class="mt-auto">No messages yet</p>
+        <% end %>
         <%= link_to "Join group", "#", class: "badge badge-primary mt_auto" %>
       </div>
     <% end %>
