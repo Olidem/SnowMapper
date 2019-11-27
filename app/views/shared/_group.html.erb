@@ -2,14 +2,18 @@
   <%= f.input :name, as: :string%>
   <%= f.input :description, as: :text %>
 
-  <div class="d-flex justify-content-center">
+  <div class="justify-content-left">
+    <ul>
     <% @group.memberships.each do |membership| %>
-      <%= membership.user.first_name %>
+      <li><%= membership.user.first_name %></li>
       <% if !membership.admin? %>
-        <h2><%= link_to "Remove member from the group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+          <li><h2><%= link_to "Remove member", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %></h2></li>
+          <li><h2><%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch %></h2></li>
+        <% else %>
+          <li><h2><%= link_to "Remove admin", membership_path(membership, membership: { admin: false }), method: :patch %></h2></li>
       <% end %>
-        <h2><%= link_to "Make/remove admin", membership_path(membership, membership: { admin: !membership.admin }), method: :patch %></h2>
     <% end %>
+    </ul>
   </div>
 
   <div class="d-flex justify-content-center">

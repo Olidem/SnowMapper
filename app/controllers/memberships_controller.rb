@@ -32,8 +32,9 @@ class MembershipsController < ApplicationController
 
   def destroy #remove the member from the group.
     @membership = Membership.find(params[:id])
+    @group = @membership.group
     @membership.destroy
-    redirect_to edit_group_path(@membership.group)
+    redirect_to edit_group_path(@group)
   end
 
   private
