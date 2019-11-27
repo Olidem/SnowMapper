@@ -21,6 +21,10 @@ class MessagesController < ApplicationController
         message: {
           content: @message.content,
           name: @message.user.first_name,
+          group_name: @message.group.name,
+          photo: @message.user.photo.key,
+          date: @message.created_at.strftime("%T %a %b %e"),
+          show: @message.show,
           id: @message.id
       }})
     else

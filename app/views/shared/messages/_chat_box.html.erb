@@ -3,8 +3,8 @@
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
       <% if !message.show %>
-        <div class="message-card" id="comment-<%= message.id %>">
-          <p>Message deleted</p>
+        <div class="message-deleted" id="comment-<%= message.id %>">
+          <p><i>Message deleted</i></p>
         </div>
       <% elsif message.user == current_user %>
         <div class="message-card" id="comment-<%= message.id %>">
@@ -52,10 +52,28 @@
     let comment = data.message.content;
     let name = data.message.name
     let id = data.message.id
+    let group_name =data.message.group_name
+    let photo = data.message.photo
+    let date = data.message.date
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
-    <div class='message-card' id='comment-${id}'><p> Message: ${comment}</p><p>${name}</p><a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>
+        <div class="message-card" id="comment-${id}">
+          <div class="message-user"/>
+            <img class="avatar" src="http://res.cloudinary.com/dr48k5zwm/image/upload/${photo}">
+            <div class="message-user-details">
+              <p>${name}</p>
+              <p><span class="grey-txt">${group_name}</span></p>
+            </div>
+          </div>
+          <div class="message-text">
+            <p>${comment}</p>
+            <div class="message-other">
+              <p><span class="grey-txt date">${date}</span></p>
+              <a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>
+            </div>
+          </div>
+        </div>
     `
     div.insertAdjacentHTML('beforeend', messageHTML);
     document.getElementById('message_content').value = "";
@@ -66,11 +84,12 @@
   channel.bind('delete-comment', (data) => {
     let id = data.message.id
     let div = document.getElementById(`comment-${id}`);
-    let messageHTML = `<div class='message-card' id='comment-${id}'><p>Message deleted</p></div>`
     while (div.firstChild) {
       div.firstChild.remove()
     }
-    div.insertAdjacentHTML('beforeend', messageHTML);
+    div.classList.add('message-deleted')
+    div.classList.remove("message-card");
+    div.innerHTML = '<i><p>Message deleted</p></i>'
   });
 
 </script>
