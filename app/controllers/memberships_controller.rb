@@ -1,7 +1,9 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: %i[update destroy]
 
-  def user_memberships #same as index but only for memberships you are in.
+  # same as index but only for memberships you are in, please see view for logic.
+  # create for dev/test purposes first. Logic to be added to the drop down in the navbar.
+  def user_memberships
     @memberships = Membership.all
   end
 

@@ -1,8 +1,10 @@
+<h1>My groups!</h1>
+
 <% @memberships.each do |membership| %>
   <% if membership.user == current_user %>
+    <h2><%= membership.group.name %></h2>
     <ul>
-      <li><%= membership.group.name %></li>
-      <li><%= membership.admin %></li>
+      <li>Admin: <%= membership.admin %></li>
       <li><%= membership.group.description %></li>
       <li><%= membership.user.first_name %></li>
       <% if !membership.admin? %>
