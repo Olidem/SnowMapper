@@ -27,7 +27,7 @@ class ResortsController < ApplicationController
   end
 
   def sort_latest_message
-    # To do
+    @groups = (@groups.sort_by { |group| group.messages.any? ? group.messages.last.created_at : Time.new(1) }).reverse
     render :show
   end
 
