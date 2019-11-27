@@ -31,9 +31,16 @@
     <div class="col-3">
       <div class="group-filters">
         <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
-        <%= link_to "Sort by no of members", resorts_sort_user_count_path(@resort), class: "btn btn-light mb-3" %>
-        <%= link_to "Sort by most recent", '#', class: "btn btn-light mb-3" %>
-        <%= link_to "Sort by most active", '#', class: "btn btn-light mb-3" %>
+        <div class="dropdown">
+          <button class="btn btn-light mb-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort groups by
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "Biggest", resorts_sort_user_count_path(@resort), class: "dropdown-item" %>
+            <%= link_to "Newest", resorts_sort_group_created_path(@resort), class: "dropdown-item" %>
+            <%= link_to "Most active", resorts_sort_latest_message_path(@resort), class: "dropdown-item" %>
+          </div>
+        </div>
         <p><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</p>
         <div class="group-users-avatars mt-auto">
           <% @resort.users.each do |user| %>
@@ -43,7 +50,9 @@
           <% end %>
         </div>
         <p>No groups that match your interests?</p>
-        <%= link_to "Create a new group!", '#', class: "btn btn-light" %>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#createGroupModel">
+          Create a new group
+        </button>
       </div>
     </div>
     <div class="col-9">
@@ -51,6 +60,17 @@
         <% @groups.each do |group| %>
           <%= render partial: "shared/group_card", locals: {group: group} %>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New group modal -->
+<div class="modal fade" id="createGroupModel" tabindex="-1" role="dialog" aria-labelledby="createGroupModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render partial: "shared/group", locals: { resort: @resort, group: @group } %>
       </div>
     </div>
   </div>
