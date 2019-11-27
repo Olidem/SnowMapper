@@ -18,7 +18,7 @@
           <div class="message-text">
             <p><%= message.content %></p>
             <div class="message-other">
-              <p><span class="grey-txt date"><%= message.created_at.strftime("%T %a %b %e")  %></span></p>
+              <p><span class="grey-txt date"><%= time_since(message) %></span></p>
               <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="message-text">
             <p><%= message.content %></p>
             <div class="message-other">
-              <p><span class="grey-txt date"><%= message.created_at.strftime("%T %a %b %e")  %></span></p>
+              <p><span class="grey-txt date"><%= time_since(message) %></span></p>
             </div>
           </div>
         </div>
@@ -54,7 +54,6 @@
     let id = data.message.id
     let group_name =data.message.group_name
     let photo = data.message.photo
-    let date = data.message.date
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
@@ -69,8 +68,8 @@
           <div class="message-text">
             <p>${comment}</p>
             <div class="message-other">
-              <p><span class="grey-txt date">${date}</span></p>
-              <a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}">Delete message</a></div>
+              <p><span class="grey-txt date">0 minutes ago</span></p>
+              <a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}"><i class="far fa-trash-alt"></i></a></div>
             </div>
           </div>
         </div>
