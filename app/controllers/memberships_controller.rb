@@ -4,19 +4,19 @@ class MembershipsController < ApplicationController
     @memberships = Membership.all
   end
 
-   # def new() end
+   def new() end
 
-   # def create
-   #  @group = Group.find(params[:group_id])
-   #  @membership = Membership.new
-   #  @membership.group = @group
-   #  @membership.user = current_user
-   #  if @membership.save!
-   #    redirect_to group_path(@group)
-   #  else
-   #    redirect_to resort_path(@group.resort)
-   #  end
-   # end
+   def create
+    @group = Group.find(params[:group_id])
+    @membership = Membership.new
+    @membership.group = @group
+    @membership.user = current_user
+    if @membership.save!
+      redirect_to group_path(@group)
+    else
+      redirect_to resort_path(@group.resort)
+    end
+   end
 
   # # def edit
 
