@@ -6,9 +6,10 @@
   <div style="width: 50%">
     <% @group.memberships.each do |membership| %>
       <%= membership.user.first_name %>
-      <% if membership.admin? %>
-        <%= link_to "Remove admin", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %>
+      <% if !membership.admin? %>
+        <h2><%= link_to "Remove member from the group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %></h2>
       <% end %>
+        <h2><%= link_to "Make/remove admin", membership_path(membership, membership: { admin: !membership.admin }), method: :patch %></h2>
     <% end %>
   </div>
 

@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  # before_action :set_group, only: %i[show edit update destroy]
 
   def user_memberships #same as index but only for memberships you are in.
     @memberships = Membership.all
@@ -22,13 +23,26 @@ class MembershipsController < ApplicationController
 
   # # end
 
-  # def update #make admin or not.
-
-  # end
+  def update #make admin or not.
+    @membership = Membership.find(params[:id])
+    @group = @membership.group
+    @membership.update(membership_params)
+    redirect_to edit_group_path(@group)
+  end
 
   def destroy #remove the member from the group.
     @membership = Membership.find(params[:id])
     @membership.destroy
-    redirect_to edit_group_path
+    redirect_to edit_group_path(@membership.group)
   end
+
+  private
+
+  def membership_params
+    params.require(:membership).permit(:admin)
+  end
+
+  # def set_membersip
+  #   @membership = Membership.find(params[:id])
+  # end
 end
