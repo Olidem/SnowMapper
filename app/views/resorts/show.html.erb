@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="resort-summary-container">
+    <div class="row">
+      <div class="col-8">
+        <div class="resort-info-container">
+          <div class="d-flex my-3">
+            <h1><%= @resort.name %></h1>
+            <%= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-light" %>
+          </div>
+          <p><%= (@resort.description).html_safe %></p>
+          <div class="d-flex align-items-center">
+            <% if current_user.resort == @resort %>
+              <%= image_tag "checked-in.png" %>
+              <h2>You're checked in at <%= @resort.name %></h2>
+            <% else %>
+              <%= link_to image_tag("checked-out.png"), :resorts_add_user %>
+              <h2>Check in at <%= @resort.name %>?</h2>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="api-data-container d-flex align-items-center">
+          <div class="api-data-box p-3">Live api data here, video feed, weather, opening times, snowfall etc.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="group-filters">
+        <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
+        <%= link_to "Sort by no of members", resorts_sort_user_count_path(@resort), class: "btn btn-light mb-3" %>
+        <%= link_to "Sort by most recent", '#', class: "btn btn-light mb-3" %>
+        <%= link_to "Sort by most active", '#', class: "btn btn-light mb-3" %>
+        <p><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</p>
+        <div class="group-users-avatars mt-auto">
+          <% @resort.users.each do |user| %>
+            <span class="group-users-avatar">
+              <img src=<%= cl_image_path user.photo.key %>>
+            </span>
+          <% end %>
+        </div>
+        <p>No groups that match your interests?</p>
+        <%= link_to "Create a new group!", '#', class: "btn btn-light" %>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="group-cards">
+        <% @groups.each do |group| %>
+          <%= render partial: "shared/group_card", locals: {group: group} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
