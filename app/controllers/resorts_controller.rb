@@ -1,6 +1,7 @@
 class ResortsController < ApplicationController
-  before_action :set_resort, only: %i[show add_user sort_user_count]
-  before_action :set_groups, only: %i[show add_user sort_user_count]
+  before_action :set_resort, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
+  before_action :set_groups, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
+  before_action :set_empty_group, only: %i[show sort_user_count sort_group_created sort_latest_message]
 
   def index
     @resorts = Resort.all
@@ -20,6 +21,16 @@ class ResortsController < ApplicationController
     render :show
   end
 
+  def sort_group_created
+    @groups = (@groups.sort_by { |group| group.created_at }).reverse
+    render :show
+  end
+
+  def sort_latest_message
+    @groups = (@groups.sort_by { |group| group.messages.any? ? group.messages.last.created_at : Time.new(1) }).reverse
+    render :show
+  end
+
   private
 
   def set_resort
@@ -28,5 +39,9 @@ class ResortsController < ApplicationController
 
   def set_groups
     @groups = @resort.groups
+  end
+
+  def set_empty_group
+    @group = Group.new
   end
 end
