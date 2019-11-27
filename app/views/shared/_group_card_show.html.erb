@@ -18,36 +18,11 @@
         <% end %>
       </div>
     </div>
-    <% @group.memberships.each do |membership| %>
-      <% if membership.admin? %>
-        <div class="d-flex flex-column align-items-end">
-          <h2><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
-          <h2 ><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %></h2>
-        </div>
-      <% end %>
+    <% if @group.memberships.find_by_user_id(current_user.id).admin %>
+      <div class="d-flex flex-row">
+        <h2><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+        <h2 ><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %></h2>
+      </div>
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-<% if @group.photo.attached? %>
-      <%= cl_image_tag @group.photo.key %>
-    <% end %>
-    <h1><%= @group.name %></h1>
-    <h6><%= @resort.name %></h6>
-    <h6><%= @resort.country.name %></h6>
-    <h4><%= @group.description %></h4>
-    <h6>Created by</h6>
-      <%@group.memberships.each do |membership|%>
-        <%=  membership.user.first_name if membership.admin %>
-      <% end %>
-    <h6>At<%= @group.created_at %></h6>
-
-    <h2><%= link_to "Edit group", edit_group_path(@group) %></h2>
-    <h2><%= link_to "Delete group", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
-    <h2><%= link_to "Add meeting point", new_group_meeting_path(@group) %></h2>
-  </div>
