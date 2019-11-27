@@ -21,7 +21,7 @@
     <% else %>
       <div class="d-flex flex-column align-items-end">
         <p class="mt-auto">Last posted message:<br>to do</p>
-        <%= link_to "Join group", "#", class: "badge badge-primary mt_auto" %>
+        <%= link_to "Join group", group_memberships_path(group), method: :post, class: "badge badge-primary mt_auto" %>
       </div>
     <% end %>
   </div>
