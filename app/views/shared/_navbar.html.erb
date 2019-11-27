@@ -6,8 +6,6 @@
     <div class="nav-items">
         <%= link_to "Countries", countries_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
         <%= link_to "Resorts", resorts_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
-
-
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
