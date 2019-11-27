@@ -7,7 +7,7 @@ class SkiReportScrape
 
   def scrape_data
     # base_url = @resort.on_the_snow_base_url
-    base_url = "https://www.onthesnow.co.uk/northern-alps/val-disere/"
+    base_url = "https://www.onthesnow.co.uk/northern-alps/tignes/"
     ski_report_html = Nokogiri::HTML(open(base_url + "skireport.html").read)
     # ski_resort_html = Nokogiri::HTML(open(base_url + "ski-resort.html").read)
     begin
