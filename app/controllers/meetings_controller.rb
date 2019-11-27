@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[edit update destroy]
+  before_action :set_group, only: %i[new create]
 
   def index #to be deleted after. For Dev and testing purposes.
     @meetings = Meeting.geocoded
@@ -14,11 +15,9 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
-    @group = Group.find(params[:group_id])
   end
 
   def create
-    @group = Group.find(params[:group_id])
     @meeting = Meeting.new(meeting_params)
     @meeting.group = @group
     @meeting.user = current_user
@@ -42,6 +41,7 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
+    @group = @meeting.group
     @meeting.destroy
     redirect_to group_path(@group)
   end
@@ -54,5 +54,9 @@ class MeetingsController < ApplicationController
 
   def set_meeting
     @meeting = Meeting.find(params[:id])
+  end
+
+  def set_group
+    @group = Group.find(params[:group_id])
   end
 end
