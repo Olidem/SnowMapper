@@ -16,7 +16,13 @@
       <div class="d-flex flex-column align-items-end">
         <%= image_tag "locked.png", class: "lock-image mb-auto" %>
         <p class="mt-auto">Last posted message<br/>TODO</p>
-        <%= link_to "Message this group to join", "#", class: "badge badge-primary mt_auto" %>
+
+        <button class="badge badge-primary mt_auto dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Message this group to join!
+        </button>
+        <div class="dropdown-menu">
+          <p>To do: render new join request partial</p>
+        </div>
       </div>
     <% else %>
       <div class="d-flex flex-column align-items-end">
