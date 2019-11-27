@@ -35,7 +35,7 @@ class MeetingsController < ApplicationController
     @group = @meeting.group
     @meeting.user = current_user
     if @meeting.update(meeting_params)
-      redirect_to meetings_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    redirect_to meetings_path
+    redirect_to group_path(@group)
   end
 
   private
