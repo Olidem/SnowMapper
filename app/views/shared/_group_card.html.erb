@@ -12,7 +12,16 @@
       </div>
       <p><%= group.description %></p>
     </div>
-    <% if group.locked %>
+    <% if current_user.groups.include?(group) %>
+      <div class="d-flex flex-column align-items-end">
+        <% if group.messages.any? %>
+          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+        <% else %>
+          <p class="mt-auto">No messages yet</p>
+        <% end %>
+        <%= link_to "Go to group page", group_path(group), class: "badge badge-primary mt_auto" %>
+      </div>
+    <% elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
         <%= image_tag "locked.png", class: "lock-image mb-auto" %>
           <% if group.messages.any? %>
