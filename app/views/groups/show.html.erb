@@ -8,6 +8,10 @@
     <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
   </div>
 
+  <div class="meetings-address">
+    <h2><%= link_to "Add a meeting point", new_group_meeting_path(@group) %></h2>
+  </div>
+
   <div
     id="map"
     style="width: 100%;
@@ -15,5 +19,6 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
+
 
 </div>
