@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_11_26_163201) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_163201) do
     t.bigint "resort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked", default: false
     t.index ["resort_id"], name: "index_groups_on_resort_id"
   end
 
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_163201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
+    t.boolean "show", default: true
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -94,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_163201) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "website_url"
     t.index ["country_id"], name: "index_resorts_on_country_id"
   end
 

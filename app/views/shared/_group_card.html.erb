@@ -1,0 +1,28 @@
+<div class="group-card d-flex">
+  <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
+  <div class="group-info-container d-flex justify-content-between flex-grow-1">
+    <div class="group-info d-flex flex-column align-items-start justify-content-between">
+      <h2><%= group.name %></h2>
+      <div class="group-users-avatars">
+        <% group.users.each do |user| %>
+          <span class="group-users-avatar">
+            <img src=<%= cl_image_path user.photo.key %>>
+          </span>
+        <% end %>
+      </div>
+      <p><%= group.description %></p>
+    </div>
+    <% if group.locked %>
+      <div class="d-flex flex-column align-items-end">
+        <%= image_tag "locked.png", class: "lock-image mb-auto" %>
+        <p class="mt-auto">Last posted message<br/>TODO</p>
+        <%= link_to "Message this group to join", "#", class: "badge badge-primary mt_auto" %>
+      </div>
+    <% else %>
+      <div class="d-flex flex-column align-items-end">
+        <p class="mt-auto">Last posted message:<br>to do</p>
+        <%= link_to "Join group", "#", class: "badge badge-primary mt_auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>

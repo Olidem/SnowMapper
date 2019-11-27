@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # Custom routes
+  get '/resorts/:id/add_user', to: 'resorts#add_user', as: :resorts_add_user
+  get '/resorts/:id/sort_user_count', to: 'resorts#sort_user_count', as: :resorts_sort_user_count
+
   resources :countries, only: [:index, :show]
 
   resources :resorts, only: [:index, :show] do
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:new, :create]
   end
 
-  resources :groups, only: [] do
+  resources :groups, only: [:show] do
     resources :messages, only: [:new, :create]
   end
 
