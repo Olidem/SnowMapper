@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class SkiReportScrape
   def initialize(resort)
     @resort = resort

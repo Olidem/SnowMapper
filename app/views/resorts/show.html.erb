@@ -21,7 +21,10 @@
       </div>
       <div class="col-4">
         <div class="api-data-container d-flex align-items-center">
-          <div class="api-data-box p-3">Live api data here, video feed, weather, opening times, snowfall etc.</div>
+          <div class="api-data-box p-3">
+            Live api data here, video feed, weather, opening times, snowfall etc.
+            <%= SkiReportScrape.new(@resort).scrape_data %>
+          </div>
         </div>
       </div>
     </div>
