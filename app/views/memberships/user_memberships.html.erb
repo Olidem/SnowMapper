@@ -4,6 +4,13 @@
       <li><%= membership.group.name %></li>
       <li><%= membership.admin %></li>
       <li><%= membership.group.description %></li>
+      <%= membership.user.first_name %>
+      <% if !membership.admin? %>
+        <li><%= link_to "Remove member from the group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <% end %>
+        <li><%= link_to "Make/remove admin", membership_path(membership, membership: { admin: !membership.admin }), method: :patch %></li>
     </ul>
   <% end %>
 <% end %>
+
+
