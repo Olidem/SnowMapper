@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :meetings
   has_many :groups, through: :memberships
+  has_many :membership_requests
   belongs_to :resort
   has_one_attached :photo
 end

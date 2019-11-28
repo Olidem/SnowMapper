@@ -35,4 +35,5 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'pusher'
 gem 'jquery-rails'
 gem 'geocoder'
+gem 'nokogiri'
 

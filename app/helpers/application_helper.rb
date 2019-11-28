@@ -23,4 +23,13 @@ module ApplicationHelper
       "#{time_diff_mins.fdiv(60).fdiv(24).round} days ago"
     end
   end
+
+  def user_approvals_no
+    admin_groups = (current_user.memberships.where(admin: true).map { |membership| membership.group })
+    membership_requests = []
+    admin_groups.each do |group|
+      membership_requests << group.membership_requests
+    end
+    membership_requests.flatten.count
+  end
 end
