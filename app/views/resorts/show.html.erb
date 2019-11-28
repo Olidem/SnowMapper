@@ -1,35 +1,29 @@
-<div class="container">
-  <div class="resort-summary-container">
-    <div class="row">
-      <div class="col-8">
-        <div class="resort-info-container">
-          <div class="d-flex my-3">
-            <h1><%= @resort.name %></h1>
-            <%= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-light" %>
-          </div>
-          <p><%= (@resort.description).html_safe %></p>
-          <div class="d-flex align-items-center">
-            <% if current_user.resort == @resort %>
-              <%= image_tag "checked-in.png" %>
-              <h2>You're checked in at <%= @resort.name %></h2>
-            <% else %>
-              <%= link_to image_tag("checked-out.png"), :resorts_add_user %>
-              <h2>Check in at <%= @resort.name %>?</h2>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="api-data-container d-flex align-items-center">
-          <div class="api-data-box p-3">
-            Live api data here, video feed, weather, opening times, snowfall etc.
-            <%= SkiReportScrape.new(@resort).scrape_data %>
-          </div>
-        </div>
+<div class="mountain-container mb-3 p-3">
+  <div class="inner-mountain-container container d-flex flex-column justify-content-around">
+    <div class="d-flex">
+      <h1 style="font-weight: bold;"><%= @resort.name %></h1>
+      <%= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-dark" %>
+    </div>
+    <div>
+      <p><%= (@resort.description).html_safe %></p>
+      <div class="d-flex align-items-center">
+        <% if current_user.resort == @resort %>
+          <%= image_tag "checked-in.png" %>
+          <h2">You're checked in at <%= @resort.name %></h2>
+        <% else %>
+          <%= link_to image_tag("checked-out.png"), :resorts_add_user %>
+          <h2>Check in at <%= @resort.name %>?</h2>
+        <% end %>
       </div>
     </div>
+   <!--  <div>
+      Live api data here, video feed, weather, opening times, snowfall etc.
+      <%#= SkiReportScrape.new(@resort).scrape_data %>
+    </div> -->
   </div>
+</div>
 
+<div class="container">
   <div class="row">
     <div class="col-3">
       <div class="group-filters">

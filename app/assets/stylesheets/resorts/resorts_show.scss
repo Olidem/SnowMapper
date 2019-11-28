@@ -13,21 +13,14 @@
   margin-left: 64px;
 }
 
-.resort-summary-container {
-  background-color: #546A76;
+.mountain-container {
+  background-image: url('https://images.unsplash.com/photo-1486072889922-9aea1fc0a34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=2166&q=80');
+  background-position: right 0 bottom -75px;
+  background-size: 100vw 100vh;
+  height: 75vh;
   color: white;
-  padding: 16px;
-  margin: 16px 0;
-  border-radius: 4px;
 }
 
-.api-data-container {
-  height: 100%;
-}
-
-.api-data-box {
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  height: 90%;
-  width: 100%
+.inner-mountain-container {
+  height: 100%
 }
