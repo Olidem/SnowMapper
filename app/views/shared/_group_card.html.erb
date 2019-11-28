@@ -12,7 +12,18 @@
       </div>
       <p><%= group.description %></p>
     </div>
-    <% if group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
+
+
+    <% if current_user.groups.include?(group) %>
+      <div class="d-flex flex-column align-items-end">
+        <% if group.messages.any? %>
+          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+        <% else %>
+          <p class="mt-auto">No messages yet</p>
+        <% end %>
+        <%= link_to "Go to group", group_path(group), class: "badge badge-primary mt_auto" %>
+      </div>
+    <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
         <%= image_tag "envelope.png", class: "lock-image mb-auto" %>
           <% if group.messages.any? %>
