@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path
+    redirect_to resort_path(@group.resort)
   end
 
   private
