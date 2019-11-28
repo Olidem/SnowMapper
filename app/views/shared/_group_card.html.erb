@@ -12,7 +12,19 @@
       </div>
       <p><%= group.description %></p>
     </div>
-    <% if group.locked %>
+    <% if group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
+      <div class="d-flex flex-column align-items-end">
+        <%= image_tag "envelope.png", class: "lock-image mb-auto" %>
+          <% if group.messages.any? %>
+            <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
+          <% else %>
+            <p class="mt-auto">No messages yet</p>
+          <% end %>
+        <div class="badge badge-primary mt_auto">
+            Request sent
+        </div>
+      </div>
+    <% elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
         <%= image_tag "locked.png", class: "lock-image mb-auto" %>
           <% if group.messages.any? %>
@@ -24,7 +36,7 @@
             Message this group to join!
         </button>
         <div class="dropdown-menu">
-          <p class="p-3">To do: render new join request partial HERE</p>
+          <%= render partial: "shared/membership_request_form", locals: {group: group} %>
         </div>
       </div>
     <% else %>

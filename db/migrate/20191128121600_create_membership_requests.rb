@@ -4,7 +4,7 @@ class CreateMembershipRequests < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :group, foreign_key: true
       t.text :content
-      t.boolean :approved
+      t.boolean :approved, default: false
 
       t.timestamps
     end

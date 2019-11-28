@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [] do
     resources :meetings, only: [:new, :create]
+    resources :membership_requests, only: [:create]
   end
 
   resources :meetings, only: [:index, :edit, :update, :destroy]
