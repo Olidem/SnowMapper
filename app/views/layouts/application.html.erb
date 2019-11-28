@@ -22,7 +22,9 @@
 
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless @disable_navbar %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <% unless @disable_footer %>

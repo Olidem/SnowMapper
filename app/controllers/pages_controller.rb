@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @disable_footer = true
+    @disable_navbar = true
   end
 end
