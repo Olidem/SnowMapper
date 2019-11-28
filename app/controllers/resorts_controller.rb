@@ -8,6 +8,7 @@ class ResortsController < ApplicationController
   end
 
   def show
+    @membership_request = MembershipRequest.new
   end
 
   def add_user

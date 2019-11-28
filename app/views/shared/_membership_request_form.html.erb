@@ -1,0 +1,8 @@
+<div class="m-3">
+  <%= simple_form_for [group, @membership_request] do |f| %>
+    <%= f.input :content, as: :string%>
+    <div class="d-flex justify-content-center">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

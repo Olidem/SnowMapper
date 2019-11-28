@@ -4,7 +4,6 @@ class MeetingsController < ApplicationController
 
   def index #to be deleted after. For Dev and testing purposes.
     @meetings = Meeting.geocoded
-
     @markers = @meetings.map do |meeting|
       {
         lat: meeting.latitude,

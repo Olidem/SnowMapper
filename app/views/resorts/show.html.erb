@@ -21,7 +21,10 @@
       </div>
       <div class="col-4">
         <div class="api-data-container d-flex align-items-center">
-          <div class="api-data-box p-3">Live api data here, video feed, weather, opening times, snowfall etc.</div>
+          <div class="api-data-box p-3">
+            Live api data here, video feed, weather, opening times, snowfall etc.
+            <%= SkiReportScrape.new(@resort).scrape_data %>
+          </div>
         </div>
       </div>
     </div>
@@ -32,7 +35,7 @@
       <div class="group-filters">
         <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
         <div class="dropdown">
-          <button class="btn btn-light mb-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-light my-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort groups by
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -50,7 +53,7 @@
           <% end %>
         </div>
         <p>No groups that match your interests?</p>
-        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#createGroupModel">
+        <button type="button" class="btn btn-light my-3" data-toggle="modal" data-target="#createGroupModel">
           Create a new group
         </button>
       </div>
@@ -70,7 +73,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <%= render partial: "shared/group", locals: { resort: @resort, group: @group } %>
+        <%= render partial: "shared/group_new_for_modal", locals: { resort: @resort, group: @group } %>
       </div>
     </div>
   </div>

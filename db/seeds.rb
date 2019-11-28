@@ -9,6 +9,7 @@
 puts "Clearing records"
 Message.destroy_all
 Membership.destroy_all
+MembershipRequest.destroy_all
 User.destroy_all
 Group.destroy_all
 Resort.destroy_all
@@ -95,6 +96,152 @@ resorts.each do |resort|
         end
     end
 end
+
+
+puts "Creating countries"
+france = Country.new(
+  name: "France",
+  slope_length: 4242,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+france.save!
+italy = Country.new(
+  name: "Italy",
+  slope_length: 4242,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://images.unsplash.com/photo-1519755605812-56339a91701a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')
+italy.photo.attach(io: img, filename: "italy.jpg", content_type: 'image/jpg')
+italy.save!
+austria = Country.new(
+  name: "austria",
+  slope_length: 4242,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://images.unsplash.com/photo-1486465179369-9844c95144e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80')
+austria.photo.attach(io: img, filename: "austria.jpg", content_type: 'image/jpg')
+austria.save!
+switzerland = Country.new(
+  name: "switzerland",
+  slope_length: 4242,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://www.chalets1066.com/images/content/services/i1/374/_thumb2/piste-2000-331199033.jpg')
+switzerland.photo.attach(io: img, filename: "switzerland.jpg", content_type: 'image/jpg')
+switzerland.save!
+usa = Country.new(
+  name: "usa",
+  slope_length: 4242,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://www.chalets1066.com/images/content/services/i1/374/_thumb2/piste-2000-331199033.jpg')
+usa.photo.attach(io: img, filename: "usa.jpg", content_type: 'image/jpg')
+usa.save!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+puts "Setting base urls"
+resort_urls_france = ["https://www.onthesnow.co.uk/northern-alps/val-disere/",
+  "https://www.onthesnow.co.uk/northern-alps/morzine/",
+  "https://www.onthesnow.co.uk/northern-alps/meribel/",
+  "https://www.onthesnow.co.uk/northern-alps/chamonix-mont-blanc/",
+  "https://www.onthesnow.co.uk/northern-alps/les-menuires/",
+  "https://www.onthesnow.co.uk/northern-alps/les-karellis/",
+  "https://www.onthesnow.co.uk/northern-alps/chatel/",
+  "https://www.onthesnow.co.uk/northern-alps/avoriaz/",
+  "https://www.onthesnow.co.uk/northern-alps/les-2-alpes/",
+  "https://www.onthesnow.co.uk/northern-alps/les-arcs-bourg-st-maurice/",
+  "https://www.onthesnow.co.uk/southern-alps/vars/",
+  "https://www.onthesnow.co.uk/northern-alps/courchevel/",
+  "https://www.onthesnow.co.uk/northern-alps/alpe-dhuez/",
+  "https://www.onthesnow.co.uk/northern-alps/tignes/",
+  "https://www.onthesnow.co.uk/northern-alps/megeve/"]
+resorts_url_italy = ["https://www.onthesnow.co.uk/aosta-valley/courmayeur/",
+  "https://www.onthesnow.co.uk/trentino/folgarida-marilleva/",
+  "https://www.onthesnow.co.uk/trentino/andalo-fai-della-paganella/",
+  "https://www.onthesnow.co.uk/veneto/arabba-marmolada/",
+  "https://www.onthesnow.co.uk/trentino/pontedilegno-tonale-adamello-ski/",
+  "https://www.onthesnow.co.uk/suedtirol/solda-sulden/",
+  "https://www.onthesnow.co.uk/suedtirol/val-gardena/",
+  "https://www.onthesnow.co.uk/suedtirol/plan-de-corones-kronplatz/",
+  "https://www.onthesnow.co.uk/trentino/madonna-di-campiglio/",
+  "https://www.onthesnow.co.uk/veneto/cortina-dampezzo/",
+  "https://www.onthesnow.co.uk/lombardia/livigno/",
+  "https://www.onthesnow.co.uk/aosta-valley/champoluc-monterosa-ski/",
+  "https://www.onthesnow.co.uk/suedtirol/alta-badia/",
+  "https://www.onthesnow.co.uk/aosta-valley/cervinia-breuil/",
+  "https://www.onthesnow.co.uk/trentino/canazei-belvedere/"]
+resorts_url_austria = ["https://www.onthesnow.co.uk/tyrol/soelden/",
+  "https://www.onthesnow.co.uk/vorarlberg/lech-zuers-am-arlberg/",
+  "https://www.onthesnow.co.uk/tyrol/ischgl/",
+  "https://www.onthesnow.co.uk/tyrol/kitzbuehel/",
+  "https://www.onthesnow.co.uk/tyrol/st-anton-am-arlberg/"]
+resorts_url_switzerland = ["https://www.onthesnow.co.uk/graubunden/st-moritz-corviglia/",
+  "https://www.onthesnow.co.uk/valais/zermatt/",
+  "https://www.onthesnow.co.uk/graubunden/davos-klosters/",
+  "https://www.onthesnow.co.uk/bernese-oberland/grindelwald-wengen/",
+  "https://www.onthesnow.co.uk/graubunden/arosa/"]
+resorts_url_usa = ["https://www.onthesnow.co.uk/michigan/ski-brule/",
+  "https://www.onthesnow.co.uk/colorado/aspen-snowmass/",
+  "https://www.onthesnow.co.uk/colorado/telluride/",
+  "https://www.onthesnow.co.uk/utah/deer-valley-resort/",
+  "https://www.onthesnow.co.uk/colorado/keystone/",
+  "https://www.onthesnow.co.uk/wyoming/jackson-hole/",
+  "https://www.onthesnow.co.uk/utah/snowbird/",
+  "https://www.onthesnow.co.uk/colorado/steamboat/",
+  "https://www.onthesnow.co.uk/new-mexico/taos-ski-valley/",
+  "https://www.onthesnow.co.uk/colorado/beaver-creek/"]
+resorts_url_new_zealand = ["https://www.onthesnow.co.uk/new-zealand/cardrona-alpine-resort/",
+  "https://www.onthesnow.co.uk/new-zealand/turoa/",
+  "https://www.onthesnow.co.uk/new-zealand/rainbow-ski-area/",
+  "https://www.onthesnow.co.uk/new-zealand/the-remarkables/",
+  "https://www.onthesnow.co.uk/new-zealand/broken-river-ski-area/"]
+
+countries = []
+countries_info = [resort_urls_france, resorts_url_italy, resorts_url_austria, resorts_url_switzerland, resorts_url_usa, resorts_url_new_zealand]
+
+puts "Creating resorts"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
