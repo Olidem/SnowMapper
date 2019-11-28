@@ -13,68 +13,16 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
         <div class= "europe-dropdown">
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>France</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Austria</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Switzerland</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Italy</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Finland</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Denmark</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Poland</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo"%>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Spain</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Iceland</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
+          <% @countries.where(continent: "Europe").each do |country| %>
+          <%= link_to country_path(country) do %>
+              <div class= "europe-grid">
+                <div class="overlay">
+                  <h2><%= country.name %></h2>
+                </div>
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+              </div>
+              <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -83,34 +31,21 @@
     <div class="card-header banner-image1 mb-5" id="headingTwo">
       <h2 class="mb-0 relative">
         <%= link_to "North America", "#", class: "btn btn-link title title-overlay na", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseTwo" },  aria: {expanded: "true", controls: "collapseTwo"} %>
-<!--         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          North America
-        </button> -->
       </h2>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
         <div class= "europe-dropdown">
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>United States</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Canada</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Greenland</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
+          <% @countries.where(continent: "North America").each do |country| %>
+          <%= link_to country_path(country) do %>
+              <div class= "europe-grid">
+                <div class="overlay">
+                  <h2><%= country.name %></h2>
+                </div>
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+              </div>
+              <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -127,26 +62,17 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
         <div class= "europe-dropdown">
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>New Zealand</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Japan</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
-
-          <div class= "europe-grid">
-            <div class="overlay">
-              <h2>Australia</h2>
-            </div>
-            <%= image_tag "europe-skiing", class: "grid-photo" %>
-          </div>
+          <div class= "europe-dropdown">
+          <% @countries.where(continent: "Rest of the World").each do |country| %>
+            <%= link_to country_path(country) do %>
+              <div class= "europe-grid">
+                <div class="overlay">
+                  <h2><%= country.name %></h2>
+                </div>
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+              </div>
+              <% end %>
+          <% end %>
         </div>
       </div>
     </div>

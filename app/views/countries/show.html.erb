@@ -1,0 +1,48 @@
+<div class="container mt-3">
+  <h1 style="margin-left: 10px;"><%= @country.name %></h1>
+  <div class="row">
+    <div class="col-7 scroll-style">
+      <% @resorts.each do |resort| %>
+      <div class="resort-card">
+        <%= cl_image_tag resort.photo.key %>
+        <div class="resort-info">
+          <div class="resort-title">
+            <h6><%= resort.name %></h6>
+            <div class="resort-users">
+              <p><%= resort.groups.size %> active groups</p>
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+          <p><%= resort.description.split(".").slice(0,2).join(".") %></p>
+          <div class="resort-bottom">
+            <div class="resort-icons">
+              <div class="icon-info">
+                <i class="fas fa-mountain"></i>
+                <p><%= (rand()*5000).round(0) %>  m</p>
+              </div>
+              <div class="icon-info">
+                <i class="fas fa-snowflake"></i>
+                <p><%= (rand()*50).round(0) %> cm</p>
+              </div>
+              <div class="icon-info">
+                <i class="fas fa-skiing"></i>
+                <p><%= (rand()*300).round(0) %>  m</p>
+              </div>
+              <div class="icon-info">
+                <i class="fas fa-temperature-low"></i>
+                <p><%= ["moderate", "overcast", "snowing", "dry", "mild"].sample %></p>
+              </div>
+            </div>
+            <div class="resort-cost">
+              <p><%= resort.country.cost %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-5" style="height: 100vmin; width: 100%; background-color: red;">
+      MAP
+    </div>
+  </div>
+</div>

@@ -25,6 +25,97 @@ img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/li
 france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
 france.save!
 
+austria = Country.new(
+  name: "Austria",
+  slope_length: 6000,
+  cost: "€€",
+  continent: "Europe"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+austria.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+austria.save!
+
+switzerland = Country.new(
+  name: "Switzerland",
+  slope_length: 6487,
+  cost: "€€",
+  continent: "Europe"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+switzerland.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+switzerland.save!
+
+italy = Country.new(
+  name: "Italy",
+  slope_length: 3232,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+italy.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+italy.save!
+
+united_states = Country.new(
+  name: "United States",
+  slope_length: 3231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+united_states.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+united_states.save!
+
+canada = Country.new(
+  name: "Canada",
+  slope_length: 7231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+canada.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+canada.save!
+
+greenland = Country.new(
+  name: "Canada",
+  slope_length: 1231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+greenland.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+greenland.save!
+
+new_zealand = Country.new(
+  name: "New Zealand",
+  slope_length: 1231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+new_zealand.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+new_zealand.save!
+
+japan = Country.new(
+  name: "Japan",
+  slope_length: 12231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+japan.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+japan.save!
+
+australia = Country.new(
+  name: "Australia",
+  slope_length: 7231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+australia.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+australia.save!
+
+
 puts "Creating resorts"
 courchavel = Resort.new(
   name: "Courchavel",

@@ -1,0 +1,74 @@
+.resort-card {
+  margin: 10px;
+  overflow: hidden;
+  height: auto;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.scroll-style {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.resort-info {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  p {
+    font-size: 0.6em;
+  }
+}
+
+.resort-title {
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 0.6em;
+  }
+  width: 100%;
+  top: 5px;
+}
+
+.resort-users {
+  display: flex;
+  p {
+    padding-right: 5px;
+  }
+}
+
+.resort-icons {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+}
+
+.icon-info {
+  display: flex;
+  padding: 5px;
+  p {
+    padding-left: 10px;
+  }
+  i {
+    font-size: 1em;
+  }
+  justify-content: space-between;
+}
+
+.resort-cost {
+  display: flex;
+  height: 100%;
+  font-size: 2em;
+}
+
+.resort-bottom {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
