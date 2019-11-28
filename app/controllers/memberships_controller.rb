@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: %i[update destroy]
-
+  before_action :set_group, only: %i[update destroy]
   # same as index but only for memberships you are in, please see view for logic.
   # create for dev/test purposes first. Logic to be added to the drop down in the navbar.
   def user_memberships
@@ -21,14 +21,12 @@ class MembershipsController < ApplicationController
 
   # make admin or not.
   def update
-    @group = @membership.group
     @membership.update(membership_params)
     redirect_to edit_group_path(@group)
   end
 
   # remove the member from the group.
   def destroy
-    @group = @membership.group
     @membership.destroy
     redirect_to edit_group_path(@group)
   end
@@ -41,5 +39,9 @@ class MembershipsController < ApplicationController
 
   def set_membership
     @membership = Membership.find(params[:id])
+  end
+
+  def set_group
+    @group = @membership.group
   end
 end
