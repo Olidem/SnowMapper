@@ -20,14 +20,14 @@ class MembershipRequestsController < ApplicationController
     @membership.group = @membership_request.group
     @membership.save!
     @membership_request.delete
-    render :my_approvals
+    redirect_to membership_requests_my_approvals_path
   end
 
   def reject
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.delete
-    render :my_approvals
+    redirect_to membership_requests_my_approvals_path
   end
 
   private

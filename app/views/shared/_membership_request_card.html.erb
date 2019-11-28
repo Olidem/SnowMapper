@@ -8,8 +8,8 @@
       <%= membership_request.content %>
     </div>
     <div>
-      <%= link_to "Accept", membership_requests_approve_path(membership_request), class: 'btn btn-primary mx-3', confirm: "Are you sure?" %>
-      <%= link_to "Reject", membership_requests_reject_path(membership_request), class: 'btn btn-primary mx-3', confirm: "Are you sure?" %>
+      <%= link_to "Accept", membership_requests_approve_path(membership_request), class: 'btn btn-primary mx-3', data: { confirm: "Are you sure?" } %>
+      <%= link_to "Reject", membership_requests_reject_path(membership_request), class: 'btn btn-primary mx-3', data: { confirm: "Are you sure?" } %>
     </div>
   </div>
 </div>
