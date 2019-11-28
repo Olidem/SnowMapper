@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/resorts/:id/sort_latest_message', to: 'resorts#sort_latest_message', as: :resorts_sort_latest_message
   get '/memberships/user_memberships', to: 'memberships#user_memberships'
   get 'membership_requests/my_approvals', to: 'membership_requests#my_approvals', as: :membership_requests_my_approvals
+  get 'membership_requests/:id/approve', to: 'membership_requests#approve', as: :membership_requests_approve
+  get 'membership_requests/:id/reject', to: 'membership_requests#reject', as: :membership_requests_reject
 
   resources :countries, only: [:index, :show]
 

@@ -1,7 +1,15 @@
-<% short = membership_request %>
-
-<div class="membership_request_card">
-  <%= cl_image_tag short.user.photo.key, class: "avatar" %>
-
-  <%= membership_request.content %>
+<div class="membership_request_card m-3">
+  <div class="membership_request_card_header p-2">
+    <p><%= membership_request.user.first_name %> wants to join: <%= link_to membership_request.group.name, group_path(membership_request.group) %></p>
+  </div>
+  <div class="d-flex justify-content-between p-3">
+    <div>
+      <%= cl_image_tag membership_request.user.photo.key, class: "avatar mx-3" %>
+      <%= membership_request.content %>
+    </div>
+    <div>
+      <%= link_to "Accept", membership_requests_approve_path(membership_request), class: 'btn btn-primary mx-3', confirm: "Are you sure?" %>
+      <%= link_to "Reject", membership_requests_reject_path(membership_request), class: 'btn btn-primary mx-3', confirm: "Are you sure?" %>
+    </div>
+  </div>
 </div>

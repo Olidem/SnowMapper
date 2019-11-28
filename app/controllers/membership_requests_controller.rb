@@ -9,17 +9,39 @@ class MembershipRequestsController < ApplicationController
   end
 
   def my_approvals
-    admin_groups = (current_user.memberships.where(admin: true).map { |membership| membership.group })
-    @membership_requests = []
-    admin_groups.each do |group|
-      @membership_requests << group.membership_requests
-    end
-    @membership_requests.flatten!
+    memberships_approvals_set
+  end
+
+  def approve
+    memberships_approvals_set
+    @membership_request = MembershipRequest.find(params[:id])
+    @membership = Membership.new
+    @membership.user = @membership_request.user
+    @membership.group = @membership_request.group
+    @membership.save!
+    @membership_request.delete
+    render :my_approvals
+  end
+
+  def reject
+    memberships_approvals_set
+    @membership_request = MembershipRequest.find(params[:id])
+    @membership_request.delete
+    render :my_approvals
   end
 
   private
 
   def set_params
     params.require(:membership_request).permit(:content)
+  end
+
+  def memberships_approvals_set
+    admin_groups = (current_user.memberships.where(admin: true).map { |membership| membership.group })
+    @membership_requests = []
+    admin_groups.each do |group|
+      @membership_requests << group.membership_requests
+    end
+    @membership_requests.flatten!
   end
 end
