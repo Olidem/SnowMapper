@@ -4,18 +4,40 @@
 
 <div class="grid-container">
   <div class="grid-item action-pannel">
-    <div>
-      <p>Are you looking for mates to go skiing this year?</p>
-      <p>Make it happen → </p>
-    </div>
+    <p class="question">Are you looking for mates to go skiing this year?</p>
+    <p class="action">Make it happen <i class="fas fa-arrow-right"></i></p>
+
   </div>
   <div class="grid-item main-image">
 
   </div>
   <div class="grid-item resort-card">
-    <p>Featured resort this week</p>
+   <!--  <div class="resort-text"> -->
+      <p class="featured">Featured resort this week</p>
+      <p class="resort-title">Ischgl</p>
+      <div>
+        <p class="resort-info">
+          <i class="fas fa-snowflake snow-icon"></i> <strong>1.4m</strong> of fresh snow
+        </p>
+        <p class="resort-info">
+          <i class="fas fa-mountain mountain-icon"></i><strong>239m</strong> of skiable piste
+        </p>
+        <p class="resort-info">
+          <i class="fas fa-tram tram-icon"></i> <strong>43</strong> open lifts
+        </p>
+      </div>
+    <!-- </div> -->
   </div>
-  <div class="grid-item group-card">
-    <p>Groups looking for someone</p>
+  <div class="grid-item groups-card">
+    <p class="group-title">Groups looking for someone</p>
+    <i class="fas fa-snowflake snow-group"></i>
+    <p>Lads out in Courchavel</p>
+    <div class=“group-users-avatars”>
+      <% User.all.each do |user| %>
+        <span class=“group-users-avatar”>
+          <img src=<%= cl_image_path user.photo.key %>>
+        </span>
+      <% end %>
+    </div>
   </div>
 </div>
