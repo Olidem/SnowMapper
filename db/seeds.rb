@@ -219,7 +219,7 @@ resorts_url_new_zealand = ["https://www.onthesnow.co.uk/new-zealand/cardrona-alp
   "https://www.onthesnow.co.uk/new-zealand/broken-river-ski-area/"]
 
 countries = []
-countries_info = [resort_urls_france, resorts_url_italy, resorts_url_austria, resorts_url_switzerland resorts_url_usa, resorts_url_new_zealand]
+countries_info = [resort_urls_france, resorts_url_italy, resorts_url_austria, resorts_url_switzerland, resorts_url_usa, resorts_url_new_zealand]
 
 puts "Creating resorts"
 

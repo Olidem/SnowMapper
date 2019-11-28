@@ -5,10 +5,16 @@ class MembershipRequestsController < ApplicationController
     @membership_request.group = @group
     @membership_request.user = current_user
     @membership_request.save!
-
-    # add approval functionality? default should be false
-
     redirect_to resort_path(@group.resort)
+  end
+
+  def my_approvals
+    admin_groups = (current_user.memberships.where(admin: true).map { |membership| membership.group })
+    @membership_requests = []
+    admin_groups.each do |group|
+      @membership_requests << group.membership_requests
+    end
+    @membership_requests.flatten!
   end
 
   private

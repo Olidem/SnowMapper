@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/resorts/:id/sort_group_created', to: 'resorts#sort_group_created', as: :resorts_sort_group_created
   get '/resorts/:id/sort_latest_message', to: 'resorts#sort_latest_message', as: :resorts_sort_latest_message
   get '/memberships/user_memberships', to: 'memberships#user_memberships'
-
+  get 'membership_requests/my_approvals', to: 'membership_requests#my_approvals', as: :membership_requests_my_approvals
 
   resources :countries, only: [:index, :show]
 
