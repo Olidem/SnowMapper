@@ -8,9 +8,8 @@
     <li><%= membership.group.resort.name %></li>
     <li><%= membership.user.first_name %></li>
     <% if membership.admin? %>
-      <h2><%= link_to "Exit group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
-      <h2><%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch, class: "btn btn-primary" %></h2>
-      <h2><%= link_to "Remove admin", membership_path(membership, membership: { admin: false }), method: :patch, class: "btn btn-primary" %></h2>
+      <h2><%= link_to "Exit group", membership_path(membership, page_link: @page_link), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
+      <h2><%= link_to "Edit", edit_group_path(membership.group), class: "btn btn-primary" %></h2>
     <% end %>
   </ul>
 <% end %>

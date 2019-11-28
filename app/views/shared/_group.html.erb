@@ -8,7 +8,7 @@
     <ul>
     <% @group.memberships.each do |membership| %>
       <li><%= membership.user.first_name %></li>
-        <% if @group.memberships.find_by_user_id(current_user.id).admin? %>
+        <% if @group.memberships.find_by_user_id(current_user.id).admin %>
           <% if !membership.admin? %>
               <h2><%= link_to "Remove member", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
               <h2><%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch, class: "btn btn-primary"  %></h2>
