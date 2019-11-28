@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col-7 scroll-style">
       <% @resorts.each do |resort| %>
-      <div class="resort-card">
+      <div class="resort-card-show">
         <%= cl_image_tag resort.photo.key %>
-        <div class="resort-info">
-          <div class="resort-title">
+        <div class="resort-info-show">
+          <div class="resort-title-show">
             <h6><%= resort.name %></h6>
             <div class="resort-users">
               <p><%= resort.groups.size %> active groups</p>

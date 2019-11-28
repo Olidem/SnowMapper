@@ -1,4 +1,4 @@
-.resort-card {
+.resort-card-show {
   margin: 10px;
   overflow: hidden;
   height: auto;
@@ -17,7 +17,7 @@
     overflow-y: auto;
 }
 
-.resort-info {
+.resort-info-show {
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -26,7 +26,7 @@
   }
 }
 
-.resort-title {
+.resort-title-show {
   display: flex;
   justify-content: space-between;
   p {
