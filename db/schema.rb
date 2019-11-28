@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_28_162816) do
+=======
+ActiveRecord::Schema.define(version: 2019_11_28_121600) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +72,17 @@ ActiveRecord::Schema.define(version: 2019_11_28_162816) do
     t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
+  create_table "membership_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.text "content"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_membership_requests_on_group_id"
+    t.index ["user_id"], name: "index_membership_requests_on_user_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
@@ -122,6 +137,8 @@ ActiveRecord::Schema.define(version: 2019_11_28_162816) do
   add_foreign_key "groups", "resorts"
   add_foreign_key "meetings", "groups"
   add_foreign_key "meetings", "users"
+  add_foreign_key "membership_requests", "groups"
+  add_foreign_key "membership_requests", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "groups"
