@@ -19,6 +19,7 @@
         <% else %>
           <p class="mt-auto">No messages yet</p>
         <% end %>
+        <%= link_to "Go to group", group_path(group), class: "badge badge-primary mt_auto" %>
       </div>
     <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
