@@ -28,11 +28,7 @@ class MembershipsController < ApplicationController
   # remove the member from the group.
   def destroy
     @membership.destroy
-    if params[:page_link] == @page_link
-      redirect_to memberships_user_memberships_path
-    else
-      redirect_to edit_group_path(@group)
-    end
+    redirect_back(fallback_location: edit_group_path(@group))
   end
 
   private
