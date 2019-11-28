@@ -118,9 +118,9 @@ australia.save!
 
 puts "Creating resorts"
 courchavel = Resort.new(
-  name: "Courchavel",
+  name: "Courchevel",
   description: "Courchevel is a winter playground for the rich and famous – attracting a steady influx of stars from Beyonce to Beckham. Ironically, the resort was originally planned to create jobs and skiing for the masses, but somewhere along the lines it morphed into the luxury resort of The Alps.<br/><br/>There are 50 five-star hotels in the whole of France and nine of them are in Courchevel. As well as top hotels, the resort now boasts three Michelin-star restaurants. The multi-level resort, complete with heated pavements, is dotted with more than 100 boutiques - you’ll find as many diamond dealers here as ski-hire shops. The tourist board does stress they offer a range of amenities for a wider clientele; it’s not all Hermès, Louis Vuitton and Valentino.<br/><br/>Courchevel is a good all-round resort. Its ski area offers a good selection of runs for all levels and it is also popular with families, off-pisters and non-skiers. The resort’s 150 kilometres is enough for most, but the avid skier can buy a pass to the vast Three Valleys ski area, opening up 600 kilometres of lift-linked runs. Ski Pass for access to the vast lift-linked ski area in the world (600km).",
-  address: "COURCHEVEL, BP 37, 73122 COURCHEVEL, France",
+  address: "73120 Saint-Bon-Tarentaise, France",
   website_url: "https://www.courchevel.com"
   )
 courchavel.country = france
@@ -131,7 +131,7 @@ courchavel.save!
 vdi = Resort.new(
   name: "Val d'Isère",
   description: "This world-class resort has earned its reputation as one of France’s top ski destinations. Val d’Isère has something for skiers and boarders of all levels: Olympic and World Cup runs, a wealth of fantastic off-piste opportunities and a varied selection of pistes including greens high up on the mountain.<br/><br/>The base of Val d'Isère sits at 1850 metres and from there, the pistes climb up to 3488 metres, at the Pointe du Montet and the Pissaillas glacier, just below at 3450 metres. Skiers have a choice of 150 kilometres of pistes for all levels, serviced by 90 lifts.<br/><br/>Val d'Isere is part of the Espace Killy ski area, shared with Tignes. Some of the world's best skiers leave their tracks here and the resort has hosted Olympic and World Cup downhill competitions, as well as the Alpine Ski World Championships.",
-  address: "VAL D'ISÈRE, B.P. 228, 73150 VAL D'ISERE, France",
+  address: "Place du Rond Point des Pistes, 73150 Val-d'Isère, France",
   website_url: "https://www.valdisere.com/en"
   )
 vdi.country = france
@@ -142,7 +142,7 @@ vdi.save!
 tignes = Resort.new(
   name: "Tignes",
   description: "At Tignes, you can ski before and after everyone else. That’s the motto of this large resort, which offers summer glacier skiing and a winter season stretching from September to May. With 150 kilometres of runs and such a long season, Tignes really does have something for everyone, but intermediate and advanced skiers are especially served. Freestylers and riders will also feel at home, since Tignes was one of France’s first resorts to promote alternative ski culture and continues to welcome it with open arms.",
-  address: "TIGNES, B.P. 51, 73320 TIGNES Cedex, France",
+  address: "73320 Tignes, France",
   website_url: "https://en.tignes.net"
   )
 tignes.country = france
