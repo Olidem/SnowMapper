@@ -9,6 +9,7 @@
 puts "Clearing records"
 Message.destroy_all
 Membership.destroy_all
+MembershipRequest.destroy_all
 User.destroy_all
 Group.destroy_all
 Resort.destroy_all
