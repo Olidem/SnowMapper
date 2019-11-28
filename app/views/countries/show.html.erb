@@ -41,8 +41,24 @@
       </div>
       <% end %>
     </div>
-    <div class="col-5" style="height: 100vmin; width: 100%; background-color: red;">
-      MAP
+    <div class="col-5" style="height: 100vmin; width: 100%">
+      <div
+        id="map"
+      ></div>
     </div>
   </div>
 </div>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; };
+</style>
+<script>
+  mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
+  var map = new mapboxgl.Map({
+  container: 'map', // container id
+  style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+  center: [45.397395 , 6.634884], // starting position [lng, lat]
+  zoom: 4 // starting zoom
+  });
+</script>
+
