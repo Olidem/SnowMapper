@@ -1,5 +1,5 @@
 .resort-card-show {
-  margin: 10px;
+  margin: 5px;
   overflow: hidden;
   height: auto;
   background: white;
@@ -22,7 +22,7 @@
   flex-direction: column;
   padding: 15px;
   p {
-    font-size: 0.6em;
+    font-size: 0.7em;
   }
 }
 
@@ -71,4 +71,20 @@
   display:flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 5px;
+}
+
+.resort-btn {
+  width: 100%;
+  background-color: #73A8B4;
+  text-align: center;
+  border-radius: 5px;
+  a {
+    color: white;
+    margin: 5px;
+  }
+  a:hover {
+    text-decoration: none;
+    background-color: #73A8B4;
+  }
 }
