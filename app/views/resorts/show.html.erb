@@ -18,7 +18,7 @@
         <div class="d-flex">
           <h1 class="pb-3" style="font-weight: bold;"><%= @resort.name %></h1>
           <% if data[:status].downcase == "closed" %>
-            <%= image_tag 'closed-icon', class: "resort-icon ml-3" %>
+            <%= image_tag 'closed-icon.png', class: "resort-icon ml-3" %>
           <% end %>
         </div>
         <p class="resort-description"><%= (@resort.description).html_safe %></p>
@@ -27,27 +27,27 @@
       <% if data[:status].downcase == "open" %>
         <div class='d-flex justify-content-between resort-icon-container'>
            <div class="text-center">
-            <%= image_tag 'open-icon', class: "resort-icon" %>
+            <%= image_tag 'open-icon.png', class: "resort-icon" %>
           </div>
           <div class="text-center">
-            <%= image_tag 'snow-icon', class: "resort-icon" %>
+            <%= image_tag 'snow-icon.png', class: "resort-icon" %>
             <p class="resort-data-text">Fall today: <%= data[:snowfall_today] %></p>
             <p class="resort-data-text">Condition: <%= data[:snow_condition] %></p>
           </div>
           <div class="text-center">
-            <%= image_tag 'snow-icon', class: "resort-icon" %>
+            <%= image_tag 'snow-icon.png', class: "resort-icon" %>
             <p class="resort-data-text">Fall tomorrow: <%= data[:snowfall_tomorrow] %></p>
           </div>
           <div class="text-center">
-            <%= image_tag 'runs-icon', class: "resort-icon" %>
+            <%= image_tag 'runs-icon.png', class: "resort-icon" %>
             <p class="resort-data-text"><%= data[:open_runs] %> runs open</p>
           </div>
            <div class="text-center">
-            <%= image_tag 'piste-icon', class: "resort-icon" %>
+            <%= image_tag 'piste-icon.png', class: "resort-icon" %>
             <p class="resort-data-text"><%= data[:open_piste] %> of piste open</p>
           </div>
            <div class="text-center">
-            <%= image_tag 'lift-icon', class: "resort-icon" %>
+            <%= image_tag 'lift-icon.png', class: "resort-icon" %>
             <p class="resort-data-text"><%= data[:open_runs] %> lifts open</p>
           </div>
         </div>
