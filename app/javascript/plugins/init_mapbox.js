@@ -9,21 +9,27 @@ const initMapbox = () => {
     map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
   };
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
+  if (mapElement) {
+    // only build a map if there's a div#map to inject into
+    mapbox_gl__WEBPACK_IMPORTED_MODULE_0___default.a.accessToken = mapElement.dataset.mapboxApiKey;
+    var map = new mapbox_gl__WEBPACK_IMPORTED_MODULE_0___default.a.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/outdoors-v10'
+      style: 'mapbox://styles/mapbox/light-v10'
     });
-
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
+    var markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach(function (marker) {
+      console.log(marker);
+      marker.className = '';
+      var popup = new mapbox_gl__WEBPACK_IMPORTED_MODULE_0___default.a.Popup().setHTML(marker.infoWindow);
+      var element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = "url('".concat(marker.image_url, "')");
+      element.style.backgroundSize = 'contain';
+      element.style.width = '30px';
+      element.style.height = '30px';
+      new mapbox_gl__WEBPACK_IMPORTED_MODULE_0___default.a.Marker(element).setLngLat([marker.lng, marker.lat]).setPopup(popup).addTo(map);
     });
-
-    fitMapToMarkers(map, markers);
+    fitMapToMarkers(map, markers); // addMarkersToMap(map, markers)
   }
 };
 

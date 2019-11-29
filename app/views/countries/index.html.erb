@@ -19,7 +19,11 @@
                 <div class="overlay">
                   <h2><%= country.name %></h2>
                 </div>
-                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+                <div class="image-container">
+                  <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+                  <div class="image-opacity">
+                  </div>
+                </div>
               </div>
               <% end %>
           <% end %>

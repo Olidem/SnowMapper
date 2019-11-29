@@ -1,0 +1,15 @@
+<div>
+  <%= link_to resort.name, resort_path(resort) %>
+  <div>
+    <%= cl_image_tag resort.photo.key, class: "img-window" %>
+  </div>
+</div>
+
+
+<style>
+.img-window {
+  width:100%;
+  height: 100px;
+  object-fit: cover;
+}
+</style>
