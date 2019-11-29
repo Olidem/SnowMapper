@@ -60,30 +60,36 @@
           <p>Check in at <%= @resort.name %>?</h2>
         <% end %>
       </div>
-      <div class="group-filters">
-        <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
-        <div class="dropdown">
-          <button class="btn btn-light my-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort groups by
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to "Biggest", resorts_sort_user_count_path(@resort), class: "dropdown-item" %>
-            <%= link_to "Newest", resorts_sort_group_created_path(@resort), class: "dropdown-item" %>
-            <%= link_to "Most active", resorts_sort_latest_message_path(@resort), class: "dropdown-item" %>
+      <div class="group-filters-container">
+        <div class="my-3 group-filters-box">
+          <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort groups by
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "Biggest", resorts_sort_user_count_path(@resort), class: "dropdown-item" %>
+              <%= link_to "Newest", resorts_sort_group_created_path(@resort), class: "dropdown-item" %>
+              <%= link_to "Most active", resorts_sort_latest_message_path(@resort), class: "dropdown-item" %>
+            </div>
           </div>
         </div>
-        <p><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</p>
-        <div class="group-users-avatars mt-auto">
-          <% @resort.users.each do |user| %>
-            <span class="group-users-avatar">
-              <img src=<%= cl_image_path user.photo.key %>>
-            </span>
-          <% end %>
+        <div class="my-3 group-filters-box">
+          <p><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</p>
+          <div class="group-users-avatars mt-3">
+            <% @resort.users.each do |user| %>
+              <span class="group-users-avatar">
+                <img src=<%= cl_image_path user.photo.key %>>
+              </span>
+            <% end %>
+          </div>
         </div>
-        <p>No groups that match your interests?</p>
-        <button type="button" class="btn btn-light my-3" data-toggle="modal" data-target="#createGroupModel">
-          Create a new group
-        </button>
+        <div class="my-3 group-filters-box">
+          <p>No groups that match your interests?</p>
+          <button type="button" class="btn btn-light mt-3" data-toggle="modal" data-target="#createGroupModel">
+            Create a new group
+          </button>
+        </div>
       </div>
     </div>
     <div class="col-9">

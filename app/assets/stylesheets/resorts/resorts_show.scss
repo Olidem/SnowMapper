@@ -1,11 +1,22 @@
-.group-filters {
+.group-filters-container {
   border-radius: 4px;
-  background-color: #C0DAFF;
+  // background-color: #C0DAFF;
   color: white;
-  padding: 32px 16px;
+  padding: 0px 8px;
   text-align: center;
   position: sticky;
-  top: 32px;
+  top: 16px;
+  p {
+    font-weight: lighter;
+    color: #484848;
+  }
+}
+
+.group-filters-box {
+  background-color: #EEA629;
+  border-radius: 3px;
+  padding: 16px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .resort-url-link {
