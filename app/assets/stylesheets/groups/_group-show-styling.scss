@@ -1,0 +1,66 @@
+.grid-container-groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100vh;
+  margin-right: 96px;
+  margin-left: 96px;
+}
+
+.grid-container-groups1 {
+  grid-area: 1 / 1 / 1 / 1;
+}
+
+.grid-container-groups2 {
+  grid-area: 2 / 1 / 3 / 2;
+
+}
+
+.grid-container-groups3 {
+  grid-area: 1 / 2 / 3 / 4;
+  // background-color: #C0DAFF;
+
+}
+
+.show-chat-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+#comment_section {
+  flex: 1;
+}
+
+.group-show-container {
+  // margin-top: 80px;
+  // background-color: #EDA629;
+  padding-left: 96px;
+  padding-top: 32px;
+}
+
+.group-name-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  z-index: 4;
+}
+
+.meeting-title {
+  color: #ebebeb;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.meeting-add {
+
+}
+
+.meetup-details {
+  color: #ebebeb;
+  text-decoration: none;
+  list-style-type: none;
+}

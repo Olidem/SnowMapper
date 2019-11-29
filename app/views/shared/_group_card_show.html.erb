@@ -1,31 +1,28 @@
-<div class="container">
-  <div class="group-card d-flex">
-    <div class="group-image" style="background-image: url(<%= cl_image_path @group.photo.key %>)"></div>
-    <div class="group-info-container d-flex justify-content-between flex-grow-1">
-      <div class="group-info d-flex flex-column align-items-start justify-content-between">
-        <h2><%= @group.name %></h2>
-        <h5><%= @group.resort.name %>, <%= @group.resort.country.name %></h5>
-        <h5><%= @group.description %></h5>
-        <p>Created by
-          <% @group.memberships.each do |membership| %>
-            <%= membership.user.first_name if membership.admin %>
-          <% end %>
-          at
-          <%= @group.created_at %>
-        </p>
-        <div class="justify-content-left">
-          <% @group.users.each do |user| %>
-           <%= user.first_name%>
-          <% end %>
-        </div>
+<div class="group-card" style="background-image: url(<%= cl_image_path @group.photo.key %>)">
+  <div class="group-info-container d-flex justify-content-between flex-grow-1">
+    <div class="group-info d-flex flex-column align-items-start justify-content-between">
+      <h2><%= @group.name %></h2>
+      <h5><%= @group.resort.name %>, <%= @group.resort.country.name %></h5>
+      <h5><%= @group.description %></h5>
+      <p>Created by
+        <% @group.memberships.each do |membership| %>
+          <%= membership.user.first_name if membership.admin %>
+        <% end %>
+        at
+        <%= @group.created_at %>
+      </p>
+      <div class="justify-content-left">
+        <% @group.users.each do |user| %>
+         <%= user.first_name%>
+        <% end %>
       </div>
-      <% if @group.memberships.find_by_user_id(current_user.id).admin %>
-        <div class="d-flex flex-row">
-          <h2><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
-          <h2 ><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %></h2>
-        </div>
-      <% end %>
     </div>
+    <% if @group.memberships.find_by_user_id(current_user.id).admin %>
+      <div class="d-flex flex-row">
+        <h2><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+        <h2 ><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %></h2>
+      </div>
+    <% end %>
   </div>
 </div>
 

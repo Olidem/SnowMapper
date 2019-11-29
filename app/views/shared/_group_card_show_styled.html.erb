@@ -1,0 +1,51 @@
+<div class="grid-container-groups">
+  <div class="grid-item-groups">
+    <%= render partial: "shared/map_show"%>
+  </div>
+  <div class="grid-container-groups2">
+    <%= render partial: "shared/meetings_show"%>
+  </div>
+  <div class="grid-container-groups3">
+     <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+  <div>
+    <div style="background-image: url(<%= cl_image_path @group.photo.key %>)"></div>
+    <div>
+      <div>
+        <h2><%= @group.name %></h2>
+        <h5><%= @group.resort.name %>, <%= @group.resort.country.name %></h5>
+        <h5><%= @group.description %></h5>
+        <p>Created by
+          <% @group.memberships.each do |membership| %>
+            <%= membership.user.first_name if membership.admin %>
+          <% end %>
+          at
+          <%= @group.created_at %>
+        </p>
+        <div>
+          <% @group.users.each do |user| %>
+           <%= user.first_name%>
+          <% end %>
+        </div>
+      </div>
+      <% if @group.memberships.find_by_user_id(current_user.id).admin %>
+        <div>
+          <h2><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+          <h2 ><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %></h2>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> -->
