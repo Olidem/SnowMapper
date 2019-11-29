@@ -13,8 +13,8 @@
   margin-left: 64px;
 }
 
-.mountain-container {
-  background-image: url('https://images.unsplash.com/photo-1486072889922-9aea1fc0a34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=2166&q=80');
+.mountain-banner-image {
+  background-image: url('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575028109/photo-1486072889922-9aea1fc0a34d_c9kjv4.jpg');
   background-position: right 0 bottom -75px;
   background-size: 100vw 100vh;
   height: 75vh;
@@ -23,4 +23,35 @@
 
 .inner-mountain-container {
   height: 100%
+}
+
+.resort-title-container {
+  padding-top: 32px;
+  width: 60%;
+}
+
+.check-in-text {
+}
+
+.check-in-image {
+  height: 50px;
+  width: 50px;
+}
+
+.resort-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.resort-icon-container {
+  margin-top: 64px;
+}
+
+.resort-description {
+  font-weight: lighter;
+}
+
+.resort-data-text {
+  font-weight: lighter;
+  font-size: 12px;
 }

@@ -1,25 +1,62 @@
-<div class="mountain-container mb-3 p-3">
-  <div class="inner-mountain-container container d-flex flex-column justify-content-around">
-    <div class="d-flex">
-      <h1 style="font-weight: bold;"><%= @resort.name %></h1>
-      <%= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-dark" %>
-    </div>
+<!-- Setting live resort data -->
+<% data = SkiReportScrape.new(@resort).scrape_data %>
+
+<div class="mountain-banner-image mb-3 p-3">
+  <div class="inner-mountain-container container d-flex flex-column justify-content-between">
+
     <div>
-      <p><%= (@resort.description).html_safe %></p>
-      <div class="d-flex align-items-center">
-        <% if current_user.resort == @resort %>
-          <%= image_tag "checked-in.png" %>
-          <h2">You're checked in at <%= @resort.name %></h2>
-        <% else %>
-          <%= link_to image_tag("checked-out.png"), :resorts_add_user %>
-          <h2>Check in at <%= @resort.name %>?</h2>
-        <% end %>
+      <div class="resort-title-container">
+        <div class="d-flex">
+          <h1 class="pb-3" style="font-weight: bold;"><%= @resort.name %></h1>
+          <% if data[:status].downcase == "closed" %>
+            <%= image_tag 'closed-icon', class: "resort-icon ml-3" %>
+          <% end %>
+        </div>
+        <p class="resort-description"><%= (@resort.description).html_safe %></p>
       </div>
+
+      <% if data[:status].downcase == "open" %>
+        <div class='d-flex justify-content-between resort-icon-container'>
+           <div class="text-center">
+            <%= image_tag 'open-icon', class: "resort-icon" %>
+          </div>
+          <div class="text-center">
+            <%= image_tag 'snow-icon', class: "resort-icon" %>
+            <p class="resort-data-text">Fall today: <%= data[:snowfall_today] %></p>
+            <p class="resort-data-text">Condition: <%= data[:snow_condition] %></p>
+          </div>
+          <div class="text-center">
+            <%= image_tag 'snow-icon', class: "resort-icon" %>
+            <p class="resort-data-text">Fall tomorrow: <%= data[:snowfall_tomorrow] %></p>
+          </div>
+          <div class="text-center">
+            <%= image_tag 'runs-icon', class: "resort-icon" %>
+            <p class="resort-data-text"><%= data[:open_runs] %> runs open</p>
+          </div>
+           <div class="text-center">
+            <%= image_tag 'piste-icon', class: "resort-icon" %>
+            <p class="resort-data-text"><%= data[:open_piste] %> of piste open</p>
+          </div>
+           <div class="text-center">
+            <%= image_tag 'lift-icon', class: "resort-icon" %>
+            <p class="resort-data-text"><%= data[:open_runs] %> lifts open</p>
+          </div>
+        </div>
+      <% end %>
     </div>
-   <!--  <div>
-      Live api data here, video feed, weather, opening times, snowfall etc.
-      <%#= SkiReportScrape.new(@resort).scrape_data %>
-    </div> -->
+
+    <div class="d-flex align-items-center">
+      <% if current_user.resort == @resort %>
+        <%= image_tag "checked-in.png", class: "check-in-image" %>
+        <p class="check-in-text">You're checked in at <%= @resort.name %></h2>
+      <% else %>
+        <%= link_to image_tag("checked-out.png"), :resorts_add_user, class: "check-in-image" %>
+        <p class="check-in-text">Check in at <%= @resort.name %>?</h2>
+      <% end %>
+    </div>
+
+
+    <%#= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-dark" %>
   </div>
 </div>
 
