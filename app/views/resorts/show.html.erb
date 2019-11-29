@@ -2,7 +2,7 @@
 <% data = SkiReportScrape.new(@resort).scrape_data %>
 
 <div class="mountain-banner-image mb-3 p-3">
-  <div class="inner-mountain-container container d-flex flex-column justify-content-between">
+  <div class="inner-mountain-container container">
 
     <div>
       <div class="resort-title-container">
@@ -44,18 +44,6 @@
         </div>
       <% end %>
     </div>
-
-    <div class="d-flex align-items-center">
-      <% if current_user.resort == @resort %>
-        <%= image_tag "checked-in.png", class: "check-in-image" %>
-        <p class="check-in-text">You're checked in at <%= @resort.name %></h2>
-      <% else %>
-        <%= link_to image_tag("checked-out.png"), :resorts_add_user, class: "check-in-image" %>
-        <p class="check-in-text">Check in at <%= @resort.name %>?</h2>
-      <% end %>
-    </div>
-
-
     <%#= link_to "Visit #{@resort.name}.com", @resort.website_url, target: :_blank, class: "resort-url-link btn btn-dark" %>
   </div>
 </div>
@@ -63,6 +51,15 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
+      <div class="d-flex align-items-center mb-3">
+        <% if current_user.resort == @resort %>
+          <%= image_tag "checked-in.png", class: "check-in-image" %>
+          <p class="check-in-text">You're checked in at <%= @resort.name %></h2>
+        <% else %>
+          <%= link_to image_tag("checked-out.png"), :resorts_add_user, class: "check-in-image" %>
+          <p class="check-in-text">Check in at <%= @resort.name %>?</h2>
+        <% end %>
+      </div>
       <div class="group-filters">
         <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
         <div class="dropdown">
