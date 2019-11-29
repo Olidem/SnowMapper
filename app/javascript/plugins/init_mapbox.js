@@ -23,7 +23,7 @@ const initMapbox = () => {
       var popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
       var element = document.createElement('div');
       element.className = 'marker';
-      element.style.backgroundImage = "url('".concat(marker.image_url, "')");
+      element.style.backgroundImage = "url('https://www.snowsquad.io/assets/Skiing-PNG-Image-27695d1c21f35bb800bb6d788bf9928f5bdace1ac1299378778d47b2ba2dbd42.png')";
       element.style.backgroundSize = 'contain';
       element.style.width = '30px';
       element.style.height = '30px';
