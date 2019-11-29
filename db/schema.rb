@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_162816) do
     t.bigint "user_id"
     t.bigint "group_id"
     t.text "content"
-    t.boolean "approved", default: false
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
