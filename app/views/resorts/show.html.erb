@@ -54,10 +54,10 @@
       <div class="d-flex align-items-center mb-3">
         <% if current_user.resort == @resort %>
           <%= image_tag "checked-in.png", class: "check-in-image" %>
-          <p class="check-in-text">You're checked in at <%= @resort.name %></h2>
+          <p>You're checked in at <%= @resort.name %></h2>
         <% else %>
-          <%= link_to image_tag("checked-out.png"), :resorts_add_user, class: "check-in-image" %>
-          <p class="check-in-text">Check in at <%= @resort.name %>?</h2>
+          <%= link_to image_tag("checked-out.png", class: "check-in-image"), :resorts_add_user %>
+          <p>Check in at <%= @resort.name %>?</h2>
         <% end %>
       </div>
       <div class="group-filters">
