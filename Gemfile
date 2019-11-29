@@ -36,4 +36,3 @@ gem 'pusher'
 gem 'jquery-rails'
 gem 'geocoder'
 gem 'nokogiri'
-

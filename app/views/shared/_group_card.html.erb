@@ -19,30 +19,32 @@
         <% else %>
           <p class="mt-auto">No messages yet</p>
         <% end %>
-        <%= link_to "Go to group", group_path(group), class: "badge badge-primary mt_auto" %>
+        <%= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
       </div>
     <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
-        <%= image_tag "envelope.png", class: "lock-image mb-auto" %>
+        <%#= image_tag "envelope.png", class: "lock-image mb-auto" %>
+        <i class="fas fa-envelope" style="color: #545A72;"></i>
           <% if group.messages.any? %>
             <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
           <% else %>
             <p class="mt-auto">No messages yet</p>
           <% end %>
-        <div class="badge badge-primary mt_auto">
+        <div class="mt_auto group-action-button">
             Request sent
         </div>
       </div>
     <% elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
-        <%= image_tag "locked.png", class: "lock-image mb-auto" %>
+        <%#= image_tag "locked.png", class: "lock-image mb-auto" %>
+        <i class="fas fa-lock" style="color: #545A72;"></i>
           <% if group.messages.any? %>
             <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
           <% else %>
             <p class="mt-auto">No messages yet</p>
           <% end %>
-        <button class="badge badge-primary mt_auto dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Message this group to join!
+        <button class="mt_auto dropdown-toggle group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Request to join!
         </button>
         <div class="dropdown-menu">
           <%= render partial: "shared/membership_request_form", locals: {group: group} %>
@@ -55,7 +57,7 @@
         <% else %>
           <p class="mt-auto">No messages yet</p>
         <% end %>
-        <%= link_to "Join group", group_memberships_path(group), method: :post, class: "badge badge-primary mt_auto" %>
+        <%= link_to "Join group", group_memberships_path(group), method: :post, class: "mt_auto group-action-button" %>
       </div>
     <% end %>
   </div>

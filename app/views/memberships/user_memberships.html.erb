@@ -1,17 +1,7 @@
-<h1>My groups!</h1>
-
-<% @memberships.each do |membership| %>
-  <h2><%= membership.group.name %></h2>
-  <ul>
-    <li>Admin: <%= membership.admin %></li>
-    <li><%= membership.group.description %></li>
-    <li><%= membership.group.resort.name %></li>
-    <li><%= membership.user.first_name %></li>
-    <% if membership.admin? %>
-      <h2><%= link_to "Exit group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
-      <h2><%= link_to "Edit", edit_group_path(membership.group), class: "btn btn-primary" %></h2>
-    <% else %>
-      <h2><%= link_to "Exit group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container mt-4">
+  <div class="d-flex">
+    <i class="fas fa-users m-2" style="font-size: 3em"></i>
+    <h1 class="m-2">My groups</h1>
+  </div>
+  <%= render partial: "shared/user_memberships_card", membership: @membership %>
+</div>

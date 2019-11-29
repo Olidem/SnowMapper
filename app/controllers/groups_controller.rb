@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
     @group.resort = @resort
     if @group.save!
       Membership.create(user: current_user, group: @group, admin: true)
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       render :new
     end

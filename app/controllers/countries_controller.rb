@@ -10,7 +10,9 @@ class CountriesController < ApplicationController
     @markers = @resorts.geocoded.map do |resort|
       {
         lat: resort.latitude,
-        lng: resort.longitude
+        lng: resort.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { resort: resort }),
+        image_url: helpers.asset_url('Skiing-PNG-Image.png')
       }
     end
   end
