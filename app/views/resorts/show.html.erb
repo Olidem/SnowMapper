@@ -1,5 +1,14 @@
 <!-- Setting live resort data -->
-<% data = SkiReportScrape.new(@resort).scrape_data %>
+<%# data = SkiReportScrape.new(@resort).scrape_data %>
+<% data = {
+      status: "open",
+      snowfall_today: "15 cm",
+      snowfall_tomorrow: "1cm",
+      snow_condition: "excellent",
+      open_runs: "8 of 74",
+      open_piste: "16 of 150km",
+      open_lifts: "5 of 39"
+    }%>
 
 <div class="mountain-banner-image mb-3 p-3">
   <div class="inner-mountain-container container">
