@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>Meetings</h1>
-  <h2><%= link_to "Add a meeting point", new_group_meeting_path(@group) %></h2>
+  <h1 class="meeting-title">Squad meet-ups</h1>
+  <h2 class="meeting-add"><%= link_to "Add a meet-up", new_group_meeting_path(@group) %></h2>
   <% @meetings.each do |meeting| %>
     <ul>
-      <li>Address: <%= meeting.address %></li>
-      <li>Date: <%= meeting.meeting_date %></li>
-      <%= link_to "Edit", edit_meeting_path(meeting) %>
-      <%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" } %>
+      <li class="meetup-details">Address: <%= meeting.address %></li>
+      <li class="meetup-details">Date: <%= meeting.meeting_date %></li>
+      <%= link_to "Edit", edit_meeting_path(meeting), class: "meetup-details"%>
+      <%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details"  %>
     </ul>
   <% end %>
 </div>

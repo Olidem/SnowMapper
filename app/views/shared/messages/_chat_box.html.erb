@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5" style="background-color: white;">
+<div class="container show-chat-box" style="background-color: white;">
   <h1 style="text-align: center"><%= @group.name %> Frost Chat!</h1>
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
