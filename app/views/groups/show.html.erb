@@ -1,33 +1,19 @@
 
-<div class="container">
+<!-- <div class="container"> -->
 
   <div class="group-show-page">
     <%= render partial: "shared/group_card_show", group: @group %>
+  </div>
 
   <div class="chat-box">
     <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
   </div>
 
   <div class="meetings-address">
-    <h1>Meetings</h1>
-    <h2><%= link_to "Add a meeting point", new_group_meeting_path(@group) %></h2>
-    <% @meetings.each do |meeting| %>
-    <ul>
-      <li>Address: <%= meeting.address %></li>
-      <li>Date: <%= meeting.meeting_date %></li>
-      <%= link_to "Edit", edit_meeting_path(meeting) %>
-      <%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" } %>
-    </ul>
-    <% end %>
+    <%= render partial: "shared/meetings_show"%>
   </div>
 
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-
-
-</div>
+  <div class="map-show-group">
+    <%= render partial: "shared/map_show"%>
+  </div>
+<!-- </div> -->

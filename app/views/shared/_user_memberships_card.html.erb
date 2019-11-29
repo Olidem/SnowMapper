@@ -1,0 +1,20 @@
+ <% @memberships.each do |membership| %>
+    <div class="group-card d-flex">
+      <div class="group-image w-25" style="background-image: url(<%= cl_image_path membership.group.photo.key %>)"></div>
+      <div class="group-info-container d-flex justify-content-between flex-grow-1">
+        <div class="group-info d-flex flex-column align-items-start justify-content-between">
+          <b><h2><%= membership.group.name %></h2></b>
+          <h5><%= membership.group.resort.name %>, <%= membership.group.resort.country.name %></h5>
+          <h5><%= membership.group.description %></h5>
+        </div>
+          <% if membership.admin? %>
+          <div class="d-flex flex-row">
+              <h2 ><%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, membership_path(membership), method: :delete, data: { confirm: "Are you sure?" } %></h2>
+              <h2><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(membership.group) %></h2>
+            <% else %>
+              <h2><%= link_to "Exit group", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
+            <% end %>
+         </div>
+      </div>
+    </div>
+<% end %>

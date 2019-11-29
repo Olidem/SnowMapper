@@ -1,1 +1,161 @@
 // Specific CSS for your home-page
+body {
+  overflow-x: hidden;
+}
+
+.home-title {
+  // margin-top: 10px;
+  margin-bottom: 32px;
+  margin-left: 96px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 76vh;
+  // margin-right: 96px;
+  // margin-left: 96px;
+}
+
+.action-pannel {
+  grid-area: 1 / 1 / 4 / 1;
+  background-color: #E2493C;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transition: transform 0.5s ease-in-out;
+}
+
+.action-pannel:hover,
+.resort-card:hover,
+.groups-card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.main-image {
+  grid-area: 1 / 2 / 3 / 4;
+  background-size: cover;
+  background-image: url(https://images.unsplash.com/photo-1513862448120-a41616062133?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80);
+}
+
+.resort-card {
+  grid-area: 1 / 4 / 2 / 5;
+  margin: 0;
+  background-color: #EDA629;
+  color: #ebebeb;
+  font-family: "Raleway", sans-serif;
+  flex-direction: column;
+  transition: transform 0.5s ease-in-out;
+}
+
+.groups-card {
+  grid-area: 2 / 4 / 3 / 5;
+  background-color: #C0DAFF;
+  font-family: "Raleway", sans-serif;
+  color: #ebebeb;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+
+.question,
+.action  {
+  margin-left: 96px;
+  max-width: 150px;
+  color: #ebebeb;
+}
+
+.grid-item {
+  a:hover {
+  text-decoration: none;
+  }
+  a {
+    color:#ebebeb;
+  }
+}
+
+.question {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+}
+
+.resort-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.featured,
+.resort-info,
+.resort-title {
+  margin-left: 32px;
+}
+
+.mountain-icon {
+  margin-right: 5px;
+}
+
+.tram-icon {
+  margin-right: 9px;
+}
+
+.snow-icon {
+  margin-right: 7px;
+}
+
+// .featured {
+//   margin-top: 12px;
+// }
+
+// .resort-info {
+//   margin-bottom: 12px;
+// }
+
+.snow-group {
+  opacity: 40%;
+  font-size: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.group-title {
+  font-size: 14px;
+}
+
+.groups-message {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.groups-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  p {
+    margin-left: 32px;
+    color: #484848;
+  }
+}
+
+.override {
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.groups-slogan {
+  font-style: italic;
+}
+
+.contact {
+  font-weight: 700;
+}
+
+

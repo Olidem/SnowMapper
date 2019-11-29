@@ -26,11 +26,102 @@ img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/li
 france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
 france.save!
 
+austria = Country.new(
+  name: "Austria",
+  slope_length: 6000,
+  cost: "€€",
+  continent: "Europe"
+  )
+img = URI.open('https://images.unsplash.com/photo-1489664502447-9dac37a6ad5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
+austria.photo.attach(io: img, filename: "austria.jpg", content_type: 'image/jpg')
+austria.save!
+
+switzerland = Country.new(
+  name: "Switzerland",
+  slope_length: 6487,
+  cost: "€€",
+  continent: "Europe"
+  )
+img = URI.open('https://images.unsplash.com/photo-1552355170-c8337700279c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
+switzerland.photo.attach(io: img, filename: "switzerland.jpg", content_type: 'image/jpg')
+switzerland.save!
+
+italy = Country.new(
+  name: "Italy",
+  slope_length: 3232,
+  cost: "€€€",
+  continent: "Europe"
+  )
+img = URI.open('https://images.unsplash.com/photo-1491403865995-cda9c458c314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1818&q=80')
+italy.photo.attach(io: img, filename: "italy.jpg", content_type: 'image/jpg')
+italy.save!
+
+united_states = Country.new(
+  name: "United States",
+  slope_length: 3231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80')
+united_states.photo.attach(io: img, filename: "usa.jpg", content_type: 'image/jpg')
+united_states.save!
+
+canada = Country.new(
+  name: "Canada",
+  slope_length: 7231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://images.unsplash.com/photo-1453694595360-51e193e121fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1332&q=80')
+canada.photo.attach(io: img, filename: "canada.jpg", content_type: 'image/jpg')
+canada.save!
+
+greenland = Country.new(
+  name: "Canada",
+  slope_length: 1231,
+  cost: "€€",
+  continent: "North America"
+  )
+img = URI.open('https://images.unsplash.com/photo-1470520518831-10005602ab67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2500&q=80')
+greenland.photo.attach(io: img, filename: "greenland.jpg", content_type: 'image/jpg')
+greenland.save!
+
+new_zealand = Country.new(
+  name: "New Zealand",
+  slope_length: 1231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://images.unsplash.com/photo-1452460108763-293ffa5e4ede?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2612&q=80')
+new_zealand.photo.attach(io: img, filename: "nz.jpg", content_type: 'image/jpg')
+new_zealand.save!
+
+japan = Country.new(
+  name: "Japan",
+  slope_length: 12231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://images.unsplash.com/photo-1512926121941-82b4da1b0abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80')
+japan.photo.attach(io: img, filename: "japan.jpg", content_type: 'image/jpg')
+japan.save!
+
+australia = Country.new(
+  name: "Australia",
+  slope_length: 7231,
+  cost: "€€",
+  continent: "Rest of the World"
+  )
+img = URI.open('https://images.unsplash.com/photo-1507726420169-08dc80118357?ixlib=rb-1.2.1&auto=format&fit=crop&w=1787&q=80')
+australia.photo.attach(io: img, filename: "austrlia.jpg", content_type: 'image/jpg')
+australia.save!
+
+
 puts "Creating resorts"
 courchavel = Resort.new(
-  name: "Courchavel",
+  name: "Courchevel",
   description: "Courchevel is a winter playground for the rich and famous – attracting a steady influx of stars from Beyonce to Beckham. Ironically, the resort was originally planned to create jobs and skiing for the masses, but somewhere along the lines it morphed into the luxury resort of The Alps.<br/><br/>There are 50 five-star hotels in the whole of France and nine of them are in Courchevel. As well as top hotels, the resort now boasts three Michelin-star restaurants. The multi-level resort, complete with heated pavements, is dotted with more than 100 boutiques - you’ll find as many diamond dealers here as ski-hire shops. The tourist board does stress they offer a range of amenities for a wider clientele; it’s not all Hermès, Louis Vuitton and Valentino.<br/><br/>Courchevel is a good all-round resort. Its ski area offers a good selection of runs for all levels and it is also popular with families, off-pisters and non-skiers. The resort’s 150 kilometres is enough for most, but the avid skier can buy a pass to the vast Three Valleys ski area, opening up 600 kilometres of lift-linked runs. Ski Pass for access to the vast lift-linked ski area in the world (600km).",
-  address: "COURCHEVEL, BP 37, 73122 COURCHEVEL, France",
+  address: "73120 Saint-Bon-Tarentaise, France",
   website_url: "https://www.courchevel.com"
   )
 courchavel.country = france
@@ -41,7 +132,7 @@ courchavel.save!
 vdi = Resort.new(
   name: "Val d'Isère",
   description: "This world-class resort has earned its reputation as one of France’s top ski destinations. Val d’Isère has something for skiers and boarders of all levels: Olympic and World Cup runs, a wealth of fantastic off-piste opportunities and a varied selection of pistes including greens high up on the mountain.<br/><br/>The base of Val d'Isère sits at 1850 metres and from there, the pistes climb up to 3488 metres, at the Pointe du Montet and the Pissaillas glacier, just below at 3450 metres. Skiers have a choice of 150 kilometres of pistes for all levels, serviced by 90 lifts.<br/><br/>Val d'Isere is part of the Espace Killy ski area, shared with Tignes. Some of the world's best skiers leave their tracks here and the resort has hosted Olympic and World Cup downhill competitions, as well as the Alpine Ski World Championships.",
-  address: "VAL D'ISÈRE, B.P. 228, 73150 VAL D'ISERE, France",
+  address: "Place du Rond Point des Pistes, 73150 Val-d'Isère, France",
   website_url: "https://www.valdisere.com/en"
   )
 vdi.country = france
@@ -52,14 +143,63 @@ vdi.save!
 tignes = Resort.new(
   name: "Tignes",
   description: "At Tignes, you can ski before and after everyone else. That’s the motto of this large resort, which offers summer glacier skiing and a winter season stretching from September to May. With 150 kilometres of runs and such a long season, Tignes really does have something for everyone, but intermediate and advanced skiers are especially served. Freestylers and riders will also feel at home, since Tignes was one of France’s first resorts to promote alternative ski culture and continues to welcome it with open arms.",
-  address: "TIGNES, B.P. 51, 73320 TIGNES Cedex, France",
+  address: "73320 Tignes, France",
   website_url: "https://en.tignes.net"
   )
 tignes.country = france
 img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574757054/540px-Tignes-winter_f4sk2f.jpg')
 tignes.photo.attach(io: img, filename: "tignes.jpg", content_type: 'image/jpg')
 tignes.save!
-resorts = [courchavel, vdi, tignes]
+
+# new
+
+chamonix = Resort.new(
+  name: "Chamonix",
+  description: "Chamonix-Mont-Blanc (usually shortened to Chamonix) is a resort area near the junction of France, Switzerland and Italy. At the base of Mont Blanc, the highest summit in the Alps, it's renowned for its skiing. Year-round, cable cars take visitors up to several nearby peaks with panoramic views, including Aiguille du Midi above town, and Pointe Helbronner, across vast glacier fields on the Italian border.
+The slopes surrounding Chamonix have many kilometres of ski and snowboard trails, including the legendary 17km off-piste (backcountry) descent of La Vallée Blanche. The funicular Montenvers train connects Chamonix to the 7km-long Mer de Glace glacier and a cave with ice sculptures carved out beneath it. Chamonix’s bars and restaurants host a lively après-ski party scene. In summer, paragliders take flight from Plan de l’Aiguille and mountaineers tackle the 4208m-high Grandes Jorasses. Chamonix is also a base for trekking the alpine trails that connect Chamonix to Switzerland and Italy.",
+  address: "74400 Chamonix, France",
+  website_url: "www.chamonix.com"
+  )
+chamonix.country = france
+img = URI.open('https://images.unsplash.com/photo-1469395269491-9fb763725eb0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80')
+chamonix.photo.attach(io: img, filename: "chamonix.jpg", content_type: 'image/jpg')
+chamonix.save!
+
+megeve = Resort.new(
+  name: "Megève",
+  description: "Megève is a ski resort village in the Alps of southeastern France, in the Mont Blanc massif. It offers downhill runs, snow parks and cross-country trails, with links to La Giettaz. The area features rustic-chic chalets, upmarket hotels and designer boutiques. Its pedestrian center has cobbled medieval streets. In summer, trails lead through green forests and meadows, and up to Mont d’Arbois for panoramic views.",
+  address: "74120 Megève, France",
+  website_url: "https://megeve.com"
+  )
+megeve.country = france
+img = URI.open('https://images.unsplash.com/photo-1543937879-18a2963bdb69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80')
+megeve.photo.attach(io: img, filename: "megeve.jpg", content_type: 'image/jpg')
+megeve.save!
+
+huez = Resort.new(
+  name: "Huez",
+  description: "Huez is a commune in the Isère department in southeastern France. The mountain resort Alpe d'Huez is located in the commune. L'Alpe d'Huez is often an ascent on the Tour de France.",
+  address: "38750 Huez, France",
+  website_url: "https://www.alpedhuez.com/"
+  )
+huez.country = france
+img = URI.open('https://images.unsplash.com/photo-1459196305771-53130577277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')
+huez.photo.attach(io: img, filename: "huez.jpg", content_type: 'image/jpg')
+huez.save!
+
+avoriaz = Resort.new(
+  name: "Avoriaz",
+  description: "Avoriaz is a French mountain resort in the heart of the Portes du Soleil. It is located in the territory of the commune of Morzine. It is easily accessible from either Thonon at Lake Geneva or Cluses-junction on the A40 motorway between Geneva and Chamonix.",
+  address: "74110 Morzine, France",
+  website_url: "avoriaz.com/"
+  )
+avoriaz.country = france
+img = URI.open('https://images.unsplash.com/photo-1553715339-04018049600f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80')
+avoriaz.photo.attach(io: img, filename: "avoriaz.jpg", content_type: 'image/jpg')
+avoriaz.save!
+
+
+resorts = [courchavel, vdi, tignes, chamonix, megeve, huez, avoriaz]
 
 puts "Creating users"
 users = []
@@ -96,68 +236,6 @@ resorts.each do |resort|
         end
     end
 end
-
-
-puts "Creating countries"
-france = Country.new(
-  name: "France",
-  slope_length: 4242,
-  cost: "€€€",
-  continent: "Europe"
-  )
-img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
-france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
-france.save!
-italy = Country.new(
-  name: "Italy",
-  slope_length: 4242,
-  cost: "€€€",
-  continent: "Europe"
-  )
-img = URI.open('https://images.unsplash.com/photo-1519755605812-56339a91701a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')
-italy.photo.attach(io: img, filename: "italy.jpg", content_type: 'image/jpg')
-italy.save!
-austria = Country.new(
-  name: "austria",
-  slope_length: 4242,
-  cost: "€€€",
-  continent: "Europe"
-  )
-img = URI.open('https://images.unsplash.com/photo-1486465179369-9844c95144e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80')
-austria.photo.attach(io: img, filename: "austria.jpg", content_type: 'image/jpg')
-austria.save!
-switzerland = Country.new(
-  name: "switzerland",
-  slope_length: 4242,
-  cost: "€€€",
-  continent: "Europe"
-  )
-img = URI.open('https://www.chalets1066.com/images/content/services/i1/374/_thumb2/piste-2000-331199033.jpg')
-switzerland.photo.attach(io: img, filename: "switzerland.jpg", content_type: 'image/jpg')
-switzerland.save!
-usa = Country.new(
-  name: "usa",
-  slope_length: 4242,
-  cost: "€€€",
-  continent: "Europe"
-  )
-img = URI.open('https://www.chalets1066.com/images/content/services/i1/374/_thumb2/piste-2000-331199033.jpg')
-usa.photo.attach(io: img, filename: "usa.jpg", content_type: 'image/jpg')
-usa.save!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

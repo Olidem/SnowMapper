@@ -1,2 +1,75 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header id="home-override">
+  <div class="nav">
+    <p>
+      SNOWSQUAD
+    </p>
+    <div class="nav-items">
+        <%= link_to "Countries", countries_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
+        <%= link_to "Resorts", resorts_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Groups", memberships_user_memberships_path, class: "dropdown-item" %>
+            <%= link_to "Edit", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+      <%= link_to "Login", new_user_session_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
+       <%= link_to "Sign-up", new_user_registration_path, class: "underline sign-up", style: "text-decoration:none; color:#E2493C"  %>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<h1 class="home-title">
+  Find a squad now!
+</h1>
+
+<div class="grid-container">
+  <div class="grid-item action-pannel">
+    <p class="question">Are you looking for mates to go skiing this year?</p>
+    <a href="/countries">
+      <p class="action">Make it happen <i class="fas fa-arrow-right"></i></p>
+    </a>
+  </div>
+  <div class="grid-item main-image">
+
+  </div>
+  <div class="grid-item resort-card">
+   <!--  <div class="resort-text"> -->
+      <p class="featured">Featured resort this week</p>
+      <a href="resorts/1">
+        <p class="resort-title">Courchavel</p>
+      </a>
+      <div>
+        <p class="resort-info">
+          <i class="fas fa-snowflake snow-icon"></i> <strong>1.4m</strong> of fresh snow
+        </p>
+        <p class="resort-info">
+          <i class="fas fa-mountain mountain-icon"></i><strong>239m</strong> of skiable piste
+        </p>
+        <p class="resort-info">
+          <i class="fas fa-tram tram-icon"></i> <strong>43</strong> open lifts
+        </p>
+      </div>
+    <!-- </div> -->
+  </div>
+  <div class="grid-item groups-card">
+    <p class="group-title">Groups looking for someone</p>
+    <i class="fas fa-snowflake snow-group"></i>
+    <p class="groups-message">Freestylers</p>
+    <div class="group-users-avatars override">
+      <% User.all.each do |user| %>
+        <span  class="group-users-avatar">
+          <img src="<%= cl_image_path user.photo.key %>">
+        </span>
+      <% end %>
+    </div>
+    <p class="groups-slogan">Here for a good time not a long time</p>
+    <a href="groups/1">
+      <p class="contact">Contact them <i class="fas fa-arrow-right"></i></p></p>
+    </a>
+  </div>
+</div>
