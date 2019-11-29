@@ -3,9 +3,22 @@
       <div class="group-image w-25" style="background-image: url(<%= cl_image_path membership.group.photo.key %>)"></div>
       <div class="group-info-container d-flex justify-content-between flex-grow-1">
         <div class="group-info d-flex flex-column align-items-start justify-content-between">
-          <b><h2><%= membership.group.name %></h2></b>
-          <h5><%= membership.group.resort.name %>, <%= membership.group.resort.country.name %></h5>
-          <h5><%= membership.group.description %></h5>
+          <h2><%= membership.group.name %></h2>
+          <div class="d-flex">
+            <i class="fas fa-map-marker-alt m-2"></i>
+            <p class="m-2"><%= membership.group.resort.name %>, <%= membership.group.resort.country.name %></p>
+          </div>
+          <div class="d-flex">
+            <i class="fas fa-users m-2"></i>
+            <p class="m-2"><%= membership.group.description %></p>
+          </div>
+        </div>
+        <div class="group-users-avatars mt-auto">
+          <% membership.group.users.each do |user| %>
+            <span class="group-users-avatar">
+              <img src=<%= cl_image_path user.photo.key %>>
+            </span>
+          <% end %>
         </div>
           <% if membership.admin? %>
           <div class="d-flex flex-row">

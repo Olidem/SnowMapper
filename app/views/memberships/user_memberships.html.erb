@@ -1,4 +1,7 @@
 <div class="container mt-4">
-  <h1>My groups</h1>
+  <div class="d-flex">
+    <i class="fas fa-users m-2" style="font-size: 3em"></i>
+    <h1 class="m-2">My groups</h1>
+  </div>
   <%= render partial: "shared/user_memberships_card", membership: @membership %>
 </div>

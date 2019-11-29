@@ -3,23 +3,25 @@
   <%= f.input :description, as: :text %>
   <%= f.input :locked %>
   <%= f.input :photo, as: :file %>
-  <div class="justify-content-left">
-    <h2>List of members</h2>
-    <ul>
+  <div>
     <% @group.memberships.each do |membership| %>
-      <li><%= membership.user.first_name %></li>
+     <div class="message-card">
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag membership.user.photo.key, class: "avatar"%>
+      <p style="margin-left: 20px;"><%= membership.user.first_name %></p>
+    </div>
         <% if @group.memberships.find_by_user_id(current_user.id).admin %>
           <% if !membership.admin? %>
-              <h2><%= link_to "Remove member", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %></h2>
-              <h2><%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch, class: "btn btn-primary"  %></h2>
+              <h2><%= link_to "Remove member", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark" %></h2>
+              <h2><%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch, class: "btn btn-dark"  %></h2>
             <% else %>
-              <h2><%= link_to "Remove admin", membership_path(membership, membership: { admin: false }), method: :patch, class: "btn btn-primary"  %></h2>
+              <h2><%= link_to "Remove admin", membership_path(membership, membership: { admin: false }), method: :patch, class: "btn btn-dark"  %></h2>
           <% end %>
         <% end %>
+      </div>
     <% end %>
-    </ul>
   </div>
   <div class="d-flex justify-content-center">
-    <%= f.submit "Submit", class: "button-book" %>
+    <%= f.submit "Submit", class: "btn btn-primary", style: "width: 100%;" %>
   </div>
 <% end %>
