@@ -28,7 +28,7 @@
     <%= render partial: "shared/map_show"%>
   </div>
   <div class="group-show-page grid-container-groups2">
-    <div class="group-card" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url(<%= cl_image_path @group.photo.key %>); background-size: cover; background-position: center; background-color: rgba(0, 0, 0, 0.6);">
+    <div class="group-show-page-card" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url(<%= cl_image_path @group.photo.key %>); background-size: cover; background-position: center; background-color: rgba(0, 0, 0, 0.6);">
       <div class="group-info-container d-flex justify-content-between flex-grow-1">
         <%= render partial: "shared/meetings_show"%>
       </div>
