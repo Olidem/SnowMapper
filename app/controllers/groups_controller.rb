@@ -42,15 +42,17 @@ class GroupsController < ApplicationController
   def update
     @resort = @group.resort
     if @group.update(group_params)
-      redirect_to group_path(@group)
+      admins = @group.memberships.where(admin: true)
+      admins.count.zero? ? destroy : (redirect_to group_path(@group))
     else
       render :edit
     end
   end
 
   def destroy
+    @resort = @group.resort
     @group.destroy
-    redirect_to resort_path(@group.resort)
+    redirect_to resort_path(@resort)
   end
 
   private
