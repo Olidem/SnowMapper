@@ -17,7 +17,13 @@
   </div>
   <div class="tab-pane fade" id="nav-new-messages" role="tabpanel" aria-labelledby="nav-new-messages-tab">
     <div class="container mt-3">
-
+      <% if @groups_with_new_messages.any? %>
+        <% @groups_with_new_messages.each do |group_with_new_messages| %>
+          <%= render partial: "shared/group_card", locals: {group: group_with_new_messages} %>
+        <% end %>
+      <% else %>
+      <h2>No new messages</h2>
+      <% end %>
     </div>
   </div>
   <div class="tab-pane fade" id="nav-membership-requests" role="tabpanel" aria-labelledby="nav-membership-requests-tab">
