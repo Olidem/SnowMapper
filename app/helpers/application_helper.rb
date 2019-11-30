@@ -38,4 +38,20 @@ module ApplicationHelper
       group.messages.count - current_user.read_messages.where(group: group).first.no_of_read_messages
     end
   end
+
+  def total_no_of_groups_with_unread_messages
+    counter = 0
+    current_user.groups.each do |group|
+      if current_user.read_messages.where(group: group).any?
+        if (group.messages.count - current_user.read_messages.where(group: group).first.no_of_read_messages).positive?
+          counter += 1
+        end
+      end
+    end
+    counter
+  end
+
+  def notifications_no
+    user_approvals_no + total_no_of_groups_with_unread_messages
+  end
 end

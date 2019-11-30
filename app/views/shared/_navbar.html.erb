@@ -7,11 +7,9 @@
         <%= link_to "Countries", countries_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
         <%= link_to "Resorts", resorts_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
         <div class="d-flex">
-          <%= link_to "Groups", membership_requests_notifications_center_path, class: "underline", style: "text-decoration:none; color:#0e0000" %>
+          <%= link_to "Groups", membership_requests_notifications_center_path, class: "underline", style: "text-decoration: none; color:#0e0000" %>
           <% if current_user %> <!-- Protect from breaking when not logged in -->
-            <% if user_approvals_no > 0 %>
-              <span class="badge badge-danger ml-2" style="align-self: center; font-weight: 700"><%= user_approvals_no %></span>
-            <% end %>
+            <span class="badge badge-danger mr-3" style="align-self: start; font-weight: 700"><%= notifications_no if notifications_no > 0 %></span>
           <% end %>
         </div>
       <% if user_signed_in? %>
