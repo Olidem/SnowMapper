@@ -8,10 +8,6 @@ class MembershipRequestsController < ApplicationController
     redirect_to resort_path(@group.resort)
   end
 
-  def my_approvals
-    memberships_approvals_set
-  end
-
   def approve
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
@@ -28,6 +24,12 @@ class MembershipRequestsController < ApplicationController
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.delete
     redirect_to membership_requests_my_approvals_path
+  end
+
+  # Notification center methods
+  def my_approvals
+    memberships_approvals_set
+    @memberships = current_user.memberships
   end
 
   private

@@ -1,11 +1,42 @@
-<div class="container">
-  <div class="">
-    <% if @membership_requests.any? %>
-      <% @membership_requests.each do |membership_request| %>
-        <%= render partial: "shared/membership_request_card", locals: {membership_request: membership_request} %>
+<!-- Notification center -->
+<nav>
+  <div class="nav nav-tabs mx-0 py-0 d-flex justify-content-start" id="nav-tab" role="tablist">
+    <a class="notification-first-tab mx-3 nav-item nav-link active" id="nav-your-groups-tab" data-toggle="tab" href="#nav-your-groups" role="tab" aria-controls="nav-your-groups" aria-selected="true">Your groups</a>
+    <a class="mx-3 nav-item nav-link" id="nav-new-messages-tab" data-toggle="tab" href="#nav-new-messages" role="tab" aria-controls="nav-new-messages" aria-selected="false">New messages</a>
+    <a class="mx-3 nav-item nav-link" id="nav-membership-requests-tab" data-toggle="tab" href="#nav-membership-requests" role="tab" aria-controls="nav-membership-requests" aria-selected="false">membership requests</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-your-groups" role="tabpanel" aria-labelledby="nav-your-groups-tab">
+    <div class="container">
+      <div class="d-flex">
+        <i class="fas fa-users m-2" style="font-size: 3em"></i>
+        <h1 class="m-2">My groups</h1>
+      </div>
+      <%= render partial: "shared/user_memberships_card", membership: @membership %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="nav-new-messages" role="tabpanel" aria-labelledby="nav-new-messages-tab">
+    new messages
+  </div>
+  <div class="tab-pane fade" id="nav-membership-requests" role="tabpanel" aria-labelledby="nav-membership-requests-tab">
+    <div class="container">
+      <% if @membership_requests.any? %>
+        <% @membership_requests.each do |membership_request| %>
+          <%= render partial: "shared/membership_request_card", locals: {membership_request: membership_request} %>
+        <% end %>
+      <% else %>
+      <h2>No new membership requests</h2>
       <% end %>
-    <% else %>
-    <h2>No new membership requests</h2>
-    <% end %>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
