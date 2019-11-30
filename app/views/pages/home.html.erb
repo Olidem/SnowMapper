@@ -1,16 +1,23 @@
 <header id="home-override">
   <div class="nav">
-    <p>
-      SNOWSQUAD
-    </p>
+      <p>
+        SNOWSQUAD
+      </p>
     <div class="nav-items">
         <%= link_to "Countries", countries_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
         <%= link_to "Resorts", resorts_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
+        <div class="d-flex">
+          <%= link_to "Groups", membership_requests_notifications_center_path, class: "underline", style: "text-decoration:none; color:#0e0000" %>
+          <% if current_user %> <!-- Protect from breaking when not logged in -->
+            <% if user_approvals_no > 0 %>
+              <span class="badge badge-danger ml-2" style="align-self: center; font-weight: 700"><%= user_approvals_no %></span>
+            <% end %>
+          <% end %>
+        </div>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-profile-picture", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Groups", memberships_user_memberships_path, class: "dropdown-item" %>
             <%= link_to "Edit", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

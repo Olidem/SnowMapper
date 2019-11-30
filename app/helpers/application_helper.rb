@@ -32,4 +32,10 @@ module ApplicationHelper
     end
     membership_requests.flatten.count
   end
+
+  def no_of_unread_messages(group)
+    if current_user.read_messages.where(group: group).any?
+      group.messages.count - current_user.read_messages.where(group: group).first.no_of_read_messages
+    end
+  end
 end

@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-
-
   def index
   end
 
@@ -58,6 +56,8 @@ class MessagesController < ApplicationController
       render :new
     end
   end
+
+  private
 
   def message_params
     params.require(:message).permit(:content)
