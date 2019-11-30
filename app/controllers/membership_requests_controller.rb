@@ -27,7 +27,7 @@ class MembershipRequestsController < ApplicationController
   end
 
   # Notification center methods
-  def my_approvals
+  def notifications_center
     memberships_approvals_set
     @memberships = current_user.memberships
   end
