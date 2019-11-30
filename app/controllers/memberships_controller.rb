@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
   # same as index but only for memberships you are in, please see view for logic.
   # create for dev/test purposes first. Logic to be added to the drop down in the navbar.
   def user_memberships
-    @memberships = current_user.memberships # Membership.where(user: current_user)
+    @memberships = current_user.memberships.reverse # Membership.where(user: current_user)
   end
 
   def create

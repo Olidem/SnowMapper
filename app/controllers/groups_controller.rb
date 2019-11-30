@@ -1,9 +1,10 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
-  def index
-    @groups = Group.all #to be deleted after. For Dev and testing purposes.
-  end
+  # For Dev and testing purposes
+  # def index
+  #   @groups = Group.all
+  # end
 
   def show
     @resort = @group.resort
