@@ -1,6 +1,5 @@
 import $ from 'jquery'
 
-import PopperJs from "popper.js";
 import "bootstrap";
 
 import 'slick-carousel'
@@ -26,10 +25,5 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
-
-// Activating all popovers
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
 
 console.log("Ross is drunk")
