@@ -3,6 +3,7 @@
   <div class="group-info-container d-flex justify-content-between flex-grow-1">
     <div class="group-info d-flex flex-column align-items-start justify-content-between">
       <h2><%= group.name %></h2>
+<<<<<<< HEAD
       <div class="d-flex">
         <div class="group-users-avatars">
           <% group.users.take(2).each do |user| %>
@@ -16,6 +17,13 @@
           data-content="text">
             + <%= group.users.count - 2 %>
           </a>
+=======
+      <div class="group-users-avatars">
+        <% group.users.each do |user| %>
+          <span class="group-users-avatar">
+            <img src=<%= cl_image_path user.photo.key %>>
+          </span>
+>>>>>>> parent of 7d628f2... Feature implemented
         <% end %>
       </div>
       <p><%= group.description %></p>
