@@ -31,29 +31,8 @@
   width: 70%;
 }
 
-.group-users-avatars {
-  display: inline-flex;
-  flex-direction: row-reverse;
-  padding-left: 50px;
-  margin-bottom: 16px;
-}
-
 .test {
   background-color: black !important;
-}
-
-.group-users-avatar {
-  margin-left: -15px;
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  width: 50px;
-  height: 50px;
-
-  img {
-    width: 50px;
-    height: 50px;
-  }
 }
 
 .group-action-button {
@@ -72,6 +51,50 @@
   color: #545A72;
   text-decoration: none;
 }
+
+.group-users-avatars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  padding-left: 50px;
+  margin-bottom: 16px;
+}
+
+.group-users-avatar {
+  margin-left: -15px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.group-users-avatar-overflow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #BCC1D6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

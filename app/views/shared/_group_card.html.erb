@@ -3,11 +3,18 @@
   <div class="group-info-container d-flex justify-content-between flex-grow-1">
     <div class="group-info d-flex flex-column align-items-start justify-content-between">
       <h2><%= group.name %></h2>
-      <div class="group-users-avatars">
-        <% group.users.each do |user| %>
-          <span class="group-users-avatar">
-            <img src=<%= cl_image_path user.photo.key %>>
-          </span>
+      <div class="d-flex">
+        <div class="group-users-avatars">
+          <% group.users.take(2).each do |user| %>
+            <span class="group-users-avatar">
+              <img src=<%= cl_image_path user.photo.key %>>
+            </span>
+          <% end %>
+        </div>
+        <% if group.users.count > 2 %>
+          <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center">
+            <p>+ <%= group.users.count - 2 %> </p>
+          </div>
         <% end %>
       </div>
       <p><%= group.description %></p>
