@@ -1,9 +1,8 @@
+import $ from 'jquery'
+
+import PopperJs from "popper.js";
 import "bootstrap";
 
-
-
-
-import $ from 'jquery'
 import 'slick-carousel'
 // import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
@@ -28,3 +27,9 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
+// Activating all popovers
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+console.log("Ross is drunk")

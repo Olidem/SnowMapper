@@ -12,9 +12,10 @@
           <% end %>
         </div>
         <% if group.users.count > 2 %>
-          <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center">
-            <p>+ <%= group.users.count - 2 %> </p>
-          </div>
+          <a class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center" data-container="body" data-toggle="popover" data-placement="top"
+          data-content="text">
+            + <%= group.users.count - 2 %>
+          </a>
         <% end %>
       </div>
       <p><%= group.description %></p>

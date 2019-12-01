@@ -78,6 +78,11 @@
   height: 50px;
   border-radius: 50%;
   background-color: #BCC1D6;
+  outline:none;
+  text-decoration:none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 
