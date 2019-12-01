@@ -34,7 +34,7 @@
 .group-users-avatars {
   display: inline-flex;
   flex-direction: row-reverse;
-  padding-left: 50px;
+  // padding-left: 50px;
   margin-bottom: 16px;
 }
 
@@ -60,12 +60,13 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #BCC1D6;
+  background-color: #DFE6E9;
   outline:none;
   text-decoration:none;
   &:hover {
     cursor: pointer;
   }
+}
 
 .group-action-button {
   margin-top: 8px;
