@@ -19,23 +19,22 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
-
-
-
-
-
 import { initSweetalert } from '../plugins/init_sweetalert';
-
 initSweetalert('#membership-request-accept', {
   title: 'Membership accepted',
   icon: "success",
   timer: 2000,
   button: false
 });
-
 initSweetalert('#membership-request-reject', {
   title: "Membership rejected",
   icon: "error",
+  timer: 2000,
+  button: false
+});
+initSweetalert('#membership-request-sent', {
+  title: "Membership request sent!",
+  icon: "success",
   timer: 2000,
   button: false
 });
