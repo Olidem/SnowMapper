@@ -9,7 +9,6 @@ class ResortsController < ApplicationController
   end
 
   def show
-    @membership_request = MembershipRequest.new
   end
 
   def add_user
@@ -20,17 +19,26 @@ class ResortsController < ApplicationController
   # Ordering methods
   def sort_user_count
     @groups = (@groups.sort_by { |group| group.users.count }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   def sort_group_created
     @groups = (@groups.sort_by { |group| group.created_at }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   def sort_latest_message
     @groups = (@groups.sort_by { |group| group.messages.any? ? group.messages.last.created_at : Time.new(1) }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   private
@@ -45,5 +53,9 @@ class ResortsController < ApplicationController
 
   def set_empty_group
     @group = Group.new
+  end
+
+  def set_empty_membership_request
+    @membership_request = MembershipRequest.new
   end
 end

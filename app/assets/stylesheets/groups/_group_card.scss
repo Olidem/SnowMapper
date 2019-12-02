@@ -77,13 +77,19 @@
   border-radius: 3px;
   text-decoration: none;
   transition: 0.3s ease;
+  &:hover {
+    background-color: white;
+    color: #545A72;
+    text-decoration: none;
   }
-
-.group-action-button:hover {
-  background-color: white;
-  color: #545A72;
-  text-decoration: none;
+  &:focus {
+    outline:0;
+  }
 }
+
+
+
+
 
 
 
