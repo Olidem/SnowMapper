@@ -1,0 +1,6 @@
+function refreshGroups(innerHTML) {
+  const groupCardsContainer = document.getElementById('group-cards-container');
+  groupCardsContainer.innerHTML = innerHTML;
+}
+
+refreshGroups('<%= j render partial: "shared/group_cards_container", locals: {groups: @groups} %>');
