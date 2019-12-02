@@ -9,10 +9,9 @@
       <% elsif message.user == current_user %>
         <div class="talk-bubble tri-right round right-top" id="comment-<%= message.id %>">
           <div class="message-user"/>
-                <%#= cl_image_tag message.user.photo.key, class: "avatar" %> -->
+           <%= cl_image_tag message.user.photo.key, class: "avatar" %>
             <div class="message-user-details">
               <p><%= message.user.first_name %></p>
-<!--               <p><span class="grey-txt"><%#= message.group.name %></span></p> -->
             </div>
           </div>
           <div class="message-text">
@@ -26,10 +25,9 @@
       <% else %>
         <div class="talk-bubble tri-right round left-top" id="comment-<%= message.id %>">
           <div class="message-user"/>
-<!--             <%#= cl_image_tag message.user.photo.key, class: "avatar" %> -->
+            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
             <div class="message-user-details">
               <p><%= message.user.first_name %></p>
-<!--               <p><span class="grey-txt"><%#= message.group.name %></span></p> -->
             </div>
           </div>
           <div class="message-text">
@@ -62,7 +60,6 @@
             <img class="avatar" src="http://res.cloudinary.com/dr48k5zwm/image/upload/${photo}">
             <div class="message-user-details">
               <p>${name}</p>
-              <p><span class="grey-txt">${group_name}</span></p>
             </div>
           </div>
           <div class="message-text">
