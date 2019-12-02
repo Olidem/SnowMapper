@@ -37,3 +37,27 @@ initSweetalert('#membership-request-reject', {
   timer: 2000,
   button: false
 });
+
+
+
+
+const toggleTag = document.querySelector(".message-button")
+const mainTag = document.querySelector(".my-chat")
+
+//when toggle tag is clicked, toggle a class of open on the main tag
+// if its open make the toggle tag say close
+// if if not make the toggle tag say menu
+toggleTag.addEventListener("click", function () {
+  mainTag.classList.toggle("open")
+
+  // if (mainTag.classList.contains("open")) {
+  //   toggleTag.innerHTML = `<img src="close.svg">Close`
+  // } else {
+  //   toggleTag.innerHTML = `<img src="menu.svg">Menu`
+  // }
+})
+
+
+
+
+

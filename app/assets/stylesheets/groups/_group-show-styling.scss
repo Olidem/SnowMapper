@@ -1,3 +1,7 @@
+ a {
+  text-decoration: none;
+}
+
 .grid-container-groups {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -50,17 +54,164 @@
 }
 
 .meeting-title {
-  color: #ebebeb;
+  color: #484848;
   font-weight: 700;
   font-size: 32px;
 }
 
 .meeting-add {
-
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .meetup-details {
-  color: #ebebeb;
+  color: #484848;
   text-decoration: none;
   list-style-type: none;
 }
+
+.group-show-page-image {
+  width: 170px;
+  height: 100%;
+}
+
+.group-heading-section {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 96px;
+  margin-right: 96px;
+  margin-top: 32px;
+}
+
+.group-image-info {
+  display: flex;
+}
+
+.message-button {
+  background-color: #E2493C;
+  // padding-top: 8px;
+  // padding-bottom: 8px;
+  // padding-right: 12px;
+  // padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 32px;
+}
+
+.group-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left:32px;
+}
+
+.message-btn-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.group-map {
+  margin-top: 64px;
+  max-width: 100%;
+  height: 300px;
+  margin-right: 96px;
+  margin-left: 96px;
+}
+
+.group-show-avatars {
+   padding: 12px;
+  img {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+  }
+}
+
+.member-title {
+  padding: 12px;
+  color: #484848;
+  font-size: 24px;
+}
+
+.group-members {
+  background-color: #C0DAFF;
+  min-width: 300px;
+  margin-left: 96px;
+  min-height: 200px;
+  margin-top: 64px;
+  height: 100%;
+}
+
+.meetup-card {
+  background-color: #F8F8F8;
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  margin-bottom: 12px;
+
+}
+
+.add-new-meetup {
+  display: flex;
+  justify-content: center;
+  transition: 0.2s
+}
+
+.add-new-meetup:hover {
+  transform: scale(1.02);
+  transition:0.2s;
+  opacity: 50%;
+}
+
+.members-meetup {
+  display: flex;
+}
+
+.meetup-cards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.member-info-meetup {
+  margin-top: 64px;
+  margin-left: 32px;
+  margin-right: 96px;
+  width: 100%;
+}
+
+#plus-icon {
+  font-size: 100px;
+  color: #484848;
+
+}
+
+#plus-icon:hover {
+  text-decoration: none;
+}
+
+.new-meet-link:hover {
+  text-decoration: none;
+}
+
+.my-chat {
+  width: 40vw;
+  position: absolute;
+  border: 1px solid black;
+  top: 104px;
+  right: -40vw;
+  z-index: 999;
+  height: 84.5vh;
+}
+
+.open {
+  right: 0;
+  position: fixed;
+  transition: 0.5s;
+}
+
