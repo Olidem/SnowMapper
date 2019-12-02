@@ -32,6 +32,9 @@
     </div>
     <% if current_user.groups.include?(group) %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+        <p><%= no_of_unread_messages(group) %> unread messages</p>
+      <% end %>
         <% if group.messages.any? %>
           <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
         <% else %>
@@ -41,6 +44,9 @@
       </div>
     <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <%#= image_tag "envelope.png", class: "lock-image mb-auto" %>
         <i class="fas fa-envelope" style="color: #545A72;"></i>
           <% if group.messages.any? %>
@@ -54,6 +60,9 @@
       </div>
     <% elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <%#= image_tag "locked.png", class: "lock-image mb-auto" %>
         <i class="fas fa-lock" style="color: #545A72;"></i>
           <% if group.messages.any? %>
@@ -70,6 +79,9 @@
       </div>
     <% else %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <% if group.messages.any? %>
           <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
         <% else %>
