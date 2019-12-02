@@ -11,19 +11,21 @@
 }
 
 .talk-bubble{
-  margin: 40px;
+  margin: 15px 20px;
   position: relative;
-  width: 200px;
+  width: 250px;
   height: auto;
-  background-color: #F4F4F4;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 }
 
 .talk-bubble-right{
+  // margin-top: 5px;
+  // margin-bottom: 5px;
   margin-left: auto;
-  background-color: #F4F4F4;
+
+  background-color: #BDD4E7;
 }
 
 .talk-bubble-left{
@@ -40,7 +42,7 @@
   top: 0px;
   bottom: auto;
   border: 20px solid;
-  border-color: #F4F4F4 transparent transparent transparent;
+  border-color: #BDD4E7 transparent transparent transparent;
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -98,7 +100,6 @@
   a {
     color: red;
     font-size: 0.7em;
-    margin-left: 5px;
   }
 
 }
@@ -110,7 +111,7 @@
 .message-other-users-details {
   display: flex;
   flex-direction: column;
-  margin-right: 8px;
+  margin-left: 8px;
   padding-top: 4px;
   p {
     font-size: 0.7em;
@@ -124,6 +125,7 @@
 .message-other-users-text {
   display: flex;
   flex-direction: column;
+  margin-left: 8px;
   margin-right: 8px;
   p {
     font-size: 0.8em;
@@ -132,12 +134,13 @@
 }
 
 .message-other-users-time {
+  display: flex;
+  justify-content: flex-end;
   font-size: 0.7em;
   a {
     color: red;
     font-size: 0.7em;
   }
-  text-align: right;
 }
 
 
@@ -146,14 +149,16 @@
 }
 
 .message-deleted {
-  padding: 5px 15px;
+  // margin-top: 5px;
+  // margin-bottom: 5px;
+  margin-left: auto;
+  padding: 8px;
   overflow: hidden;
   height: auto;
+  background-color: #BDD4E7;
   p {
-    text-align: right;
     font-size: 0.7em;
   }
-  align-items: center;
 }
 
 

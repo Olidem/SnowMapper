@@ -1,5 +1,4 @@
 <div class="container show-chat-box" style="background-color: white;">
-  <h1 style="text-align: center"><%= @group.name %> Frost Chat!</h1>
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
       <% if !message.show %>
@@ -55,10 +54,10 @@
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
-        <div class="talk-bubble tri-right round right-top" id="comment-${id}">
+        <div class="talk-bubble talk-bubble-right tri-right round right-top" id="comment-${id}">
           <div class="message-user"/>
             <div class="message-user-details">
-              <p>${name}</p>
+              <p>You</p>
             </div>
           </div>
           <div class="message-user-text">
