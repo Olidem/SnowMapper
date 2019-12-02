@@ -3,11 +3,29 @@
   <div class="group-info-container d-flex justify-content-between flex-grow-1">
     <div class="group-info d-flex flex-column align-items-start justify-content-between">
       <h2><%= group.name %></h2>
-      <div class="group-users-avatars">
-        <% group.users.each do |user| %>
-          <span class="group-users-avatar">
-            <img src=<%= cl_image_path user.photo.key %>>
-          </span>
+      <div class="d-flex">
+        <div class="group-users-avatars ml-3">
+          <% group.users[0...2].each do |user| %>
+            <span class="group-users-avatar">
+              <img src=<%= cl_image_path user.photo.key %>>
+            </span>
+          <% end %>
+        </div>
+        <% if group.users.count > 2 %>
+          <div class="btn-group dropup">
+            <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              + <%= group.users.count - 2 %>
+            </div>
+            <div class="dropdown-menu text-center py-0 pt-3">
+              <div class="group-users-avatars">
+                <% group.users[2...(group.users.count)].each do |user| %>
+                  <span class="group-users-avatar">
+                    <img src=<%= cl_image_path user.photo.key %>>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
       <p><%= group.description %></p>

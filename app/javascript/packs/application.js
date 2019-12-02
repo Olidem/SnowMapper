@@ -1,6 +1,8 @@
-import "bootstrap";
 
 import $ from 'jquery'
+
+import "bootstrap";
+
 import 'slick-carousel'
 // import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
@@ -18,10 +20,6 @@ import 'slick-carousel'
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
-
-
-
-
 
 
 import { initSweetalert } from '../plugins/init_sweetalert';
