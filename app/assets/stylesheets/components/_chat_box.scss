@@ -3,17 +3,67 @@
     overflow-y: auto;
 }
 
-.message-card {
-  margin: 10px;
-  padding: 5px 15px;
-  overflow: hidden;
-  height: auto;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.avatar-message {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
 }
+
+.talk-bubble{
+  margin: 40px;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: #F4F4F4;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.tri-right.right-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -13px;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #F4F4F4 transparent transparent transparent;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+.tri-right.left-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -13px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #F4F4F4 transparent transparent transparent;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+// .message-card {
+//   margin: 10px;
+//   padding: 5px 15px;
+//   overflow: hidden;
+//   height: auto;
+//   background: white;
+//   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
 .message-user {
   display: flex;
@@ -21,7 +71,7 @@
 .message-user-details {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 5px;
   p {
     font-size: 0.7em;
     margin: 0;
@@ -58,12 +108,9 @@
 }
 
 .message-deleted {
-  margin: 10px;
   padding: 5px 15px;
   overflow: hidden;
   height: auto;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   p {
     text-align: right;
     font-size: 0.7em;
