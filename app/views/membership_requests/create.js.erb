@@ -1,6 +1,6 @@
 function refreshGroups(innerHTML) {
-  const groupCardHolder = document.getElementById('group-card-holder');
-  groupCardHolder.innerHTML = innerHTML;
+  const groupCardsContainer = document.getElementById('group-cards-container');
+  groupCardsContainer.innerHTML = innerHTML;
 }
 
 function sweetAlertClassSelector(selector, options = {}) {
@@ -15,9 +15,11 @@ function sweetAlertClassSelector(selector, options = {}) {
 };
 
 refreshGroups('<%= j render partial: "shared/group_cards_container", locals: {groups: @groups} %>');
+
 sweetAlertClassSelector('.membership-request-sent', {
   title: "Membership request sent!",
   icon: "success",
   timer: 2000,
   button: false
 });
+

@@ -4,5 +4,6 @@
     <div class="d-flex justify-content-center">
       <%= f.submit "Submit", class: "btn btn-primary membership-request-sent" %>
     </div>
+    <%= f.hidden_field :groups, value: groups.map { |group| group.id } %>
   <% end %>
 </div>

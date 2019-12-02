@@ -3,4 +3,22 @@ function refreshGroups(innerHTML) {
   groupCardsContainer.innerHTML = innerHTML;
 }
 
+function sweetAlertClassSelector(selector, options = {}) {
+  const swalButtons = document.querySelectorAll(selector);
+  if (swalButtons.length > 0) { // protect other pages
+    swalButtons.forEach(function(swalButton) {
+      swalButton.addEventListener('click', () => {
+        swal(options);
+      });
+    });
+  }
+};
+
 refreshGroups('<%= j render partial: "shared/group_cards_container", locals: {groups: @groups} %>');
+
+sweetAlertClassSelector('.membership-request-sent', {
+  title: "Membership request sent!",
+  icon: "success",
+  timer: 2000,
+  button: false
+});

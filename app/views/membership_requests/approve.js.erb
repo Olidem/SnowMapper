@@ -23,7 +23,7 @@ refreshMembershipRequests('<%= j render partial: "shared/membership_request_card
 refreshMembershipNotifications('<%= user_approvals_no if user_approvals_no > 0 %>');
 
 sweetAlertClassSelector('.membership-request-reject', {
-  title: 'Membership accepted',
+  title: 'Membership rejected',
   icon: "error",
   timer: 2000,
   button: false
