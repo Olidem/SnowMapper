@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[show edit update destroy count_messages]
+  after_action :count_messages, only: [:show]
 
   # For Dev and testing purposes
   # def index
@@ -56,6 +57,17 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def count_messages
+    if (@read_message = ReadMessage.find_by(user: current_user, group: @group))
+      @read_message.update(no_of_read_messages: @group.messages.count)
+    else
+      @read_message = ReadMessage.new(no_of_read_messages: @group.messages.count)
+      @read_message.user = current_user
+      @read_message.group = @group
+      @read_message.save!
+    end
+  end
 
   def group_params
     params.require(:group).permit(:name, :description, :photo, :locked)

@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   get '/resorts/:id/sort_user_count', to: 'resorts#sort_user_count', as: :resorts_sort_user_count
   get '/resorts/:id/sort_group_created', to: 'resorts#sort_group_created', as: :resorts_sort_group_created
   get '/resorts/:id/sort_latest_message', to: 'resorts#sort_latest_message', as: :resorts_sort_latest_message
-  get '/memberships/user_memberships', to: 'memberships#user_memberships'
-  get 'membership_requests/my_approvals', to: 'membership_requests#my_approvals', as: :membership_requests_my_approvals
+  get 'membership_requests/notifications_center', to: 'membership_requests#notifications_center', as: :membership_requests_notifications_center
   get 'membership_requests/:id/approve', to: 'membership_requests#approve', as: :membership_requests_approve
   get 'membership_requests/:id/reject', to: 'membership_requests#reject', as: :membership_requests_reject
 

@@ -34,7 +34,7 @@
 .group-users-avatars {
   display: inline-flex;
   flex-direction: row-reverse;
-  padding-left: 50px;
+  // padding-left: 50px;
   margin-bottom: 16px;
 }
 
@@ -56,6 +56,18 @@
   }
 }
 
+.group-users-avatar-overflow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #DFE6E9;
+  outline:none;
+  text-decoration:none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .group-action-button {
   margin-top: 8px;
   background-color: #545A72;
@@ -65,7 +77,7 @@
   border-radius: 3px;
   text-decoration: none;
   transition: 0.3s ease;
-}
+  }
 
 .group-action-button:hover {
   background-color: white;
