@@ -27,7 +27,7 @@
   width: 0;
   height: 0;
   left: auto;
-  right: -13px;
+  right: -10px;
   top: 0px;
   bottom: auto;
   border: 20px solid;
@@ -42,7 +42,7 @@
   position: absolute;
   width: 0;
   height: 0;
-  left: -13px;
+  left: -10px;
   right: auto;
   top: 0px;
   bottom: auto;
@@ -102,6 +102,45 @@
   }
 
 }
+
+.message-other-users {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.message-other-users-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  p {
+    font-size: 0.7em;
+    margin: 0;
+  }
+  i {
+    font-size: 0.8em;
+  }
+}
+
+.message-other-users-text {
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+  text-align: left;
+}
+
+.message-other-users-time {
+  font-size: 0.7em;
+  text-align: left;
+  a {
+    color: red;
+    font-size: 0.7em;
+    margin-left: 5px;
+  }
+
+}
+
 
 .grey-txt {
   color: grey;
