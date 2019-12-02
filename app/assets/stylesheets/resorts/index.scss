@@ -1,1 +1,117 @@
-@import "resorts_show";
+.resort-banner-image {
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1513801469483-6c115f89c689?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80);
+  background-position: right 0 bottom -200px;
+  height: 75vh;
+  color: white;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 96px;
+  h1 {
+    font-weight: 900;
+  }
+  h4 {
+    font-weight: 400;
+  }
+}
+
+
+.resort-index-container {
+  margin: 0 10% 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.resort-bg-card {
+  color: white;
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px;
+  h4 {
+    font-weight: 800;
+  }
+  justify-content: top;
+  position: relative;
+  border-radius: 5px;
+}
+
+.resort-users-info {
+  display: flex;
+  vertical-align: top;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  font-weight: 100;
+}
+
+.resort-title-info {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.resort-bg-card:hover {
+  .hide {
+    visibility: hidden;
+  }
+}
+
+
+.resort-bg-card-hidden {
+  color: white;
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  h4 {
+    font-weight: 800;
+  }
+  opacity: 0;
+  display: inline;
+  position: absolute;
+  transition: 0.2s;
+}
+
+.resort-bg-card-hidden:hover {
+  opacity: 1;
+  transition: 0.2s;
+
+}
+
+.resort-index-icon {
+  margin-bottom: 8px;
+  height: 20px;
+  font-weight: 900;
+}
+
+.resort-icon-container {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 10px;
+  p {
+    margin-left: 20px;
+  }
+}
+
+.btn-filter {
+  background-color: #E2493C;
+  color: white;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+}
+
