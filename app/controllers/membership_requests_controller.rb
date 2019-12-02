@@ -20,14 +20,22 @@ class MembershipRequestsController < ApplicationController
     @membership.group = @membership_request.group
     @membership.save!
     @membership_request.delete
-    redirect_to membership_requests_notifications_center_path
+    memberships_approvals_set
+    respond_to do |format|
+      format.html { redirect_to membership_requests_notifications_center_path }
+      format.js
+    end
   end
 
   def reject
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.delete
-    redirect_to membership_requests_notifications_center_path
+    memberships_approvals_set
+    respond_to do |format|
+      format.html { redirect_to membership_requests_notifications_center_path }
+      format.js
+    end
   end
 
   # Notification center methods

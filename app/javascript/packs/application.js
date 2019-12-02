@@ -17,26 +17,39 @@ import 'slick-carousel'
 //   });
 // });
 
-import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
-import { initMapbox } from '../plugins/init_mapbox';
-initMapbox();
+import swal from 'sweetalert';
 
-import { initSweetalert } from '../plugins/init_sweetalert';
-initSweetalert('#membership-request-accept', {
+function sweetAlertClassSelector(selector, options = {}) {
+  const swalButtons = document.querySelectorAll(selector);
+  if (swalButtons.length > 0) { // protect other pages
+    swalButtons.forEach(function(swalButton) {
+      swalButton.addEventListener('click', () => {
+        swal(options);
+      });
+    });
+  }
+};
+
+sweetAlertClassSelector('.membership-request-reject', {
+  title: 'Membership accepted',
+  icon: "error",
+  timer: 2000,
+  button: false
+});
+
+sweetAlertClassSelector('.membership-request-accept', {
   title: 'Membership accepted',
   icon: "success",
   timer: 2000,
   button: false
 });
-initSweetalert('#membership-request-reject', {
-  title: "Membership rejected",
-  icon: "error",
-  timer: 2000,
-  button: false
-});
-initSweetalert('#membership-request-sent', {
+
+
+sweetAlertClassSelector('.membership-request-sent', {
   title: "Membership request sent!",
   icon: "success",
   timer: 2000,
   button: false
 });
+
+
