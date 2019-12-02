@@ -5,7 +5,11 @@ class MembershipRequestsController < ApplicationController
     @membership_request.group = @group
     @membership_request.user = current_user
     @membership_request.save!
-    redirect_to resort_path(@group.resort)
+    @groups = @group.resort.groups
+    respond_to do |format|
+      format.html { redirect_to resort_path(@group.resort) }
+      format.js
+    end
   end
 
   def approve

@@ -52,11 +52,11 @@
           <% else %>
             <p class="mt-auto">No messages yet</p>
           <% end %>
-        <button class="mt_auto dropdown-toggle group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="mt_auto group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Request to join!
         </button>
         <div class="dropdown-menu">
-          <%= render partial: "shared/membership_request_form", locals: {group: group} %>
+          <%= render "shared/membership_request_form", group: group %>
         </div>
       </div>
     <% else %>
