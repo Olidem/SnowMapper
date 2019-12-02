@@ -1,11 +1,11 @@
 class MembershipRequestsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
+    @groups = @group.resort.groups
     @membership_request = MembershipRequest.new(set_params)
     @membership_request.group = @group
     @membership_request.user = current_user
     @membership_request.save!
-    @groups = @group.resort.groups
     respond_to do |format|
       format.html { redirect_to resort_path(@group.resort) }
       format.js
