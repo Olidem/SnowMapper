@@ -2,7 +2,7 @@ class ResortsController < ApplicationController
   before_action :set_resort, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_groups, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_empty_group, only: %i[show sort_user_count sort_group_created sort_latest_message]
-  before_action :set_empty_membership_request, only: %i[show sort_user_count sort_group_created sort_latest_message]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @resorts = Resort.all
@@ -48,7 +48,7 @@ class ResortsController < ApplicationController
   end
 
   def set_groups
-    @groups = @resort.groups
+    @groups = @resort.groups.reverse
   end
 
   def set_empty_group
