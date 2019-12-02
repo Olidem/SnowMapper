@@ -2,9 +2,10 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy count_messages]
   after_action :count_messages, only: [:show]
 
-  def index
-    @groups = Group.all #to be deleted after. For Dev and testing purposes.
-  end
+  # For Dev and testing purposes
+  # def index
+  #   @groups = Group.all
+  # end
 
   def show
     @resort = @group.resort
@@ -42,15 +43,17 @@ class GroupsController < ApplicationController
   def update
     @resort = @group.resort
     if @group.update(group_params)
-      redirect_to group_path(@group)
+      admins = @group.memberships.where(admin: true)
+      admins.count.zero? ? destroy : (redirect_to group_path(@group))
     else
       render :edit
     end
   end
 
   def destroy
+    @resort = @group.resort
     @group.destroy
-    redirect_to resort_path(@group.resort)
+    redirect_to resort_path(@resort)
   end
 
   private
