@@ -1,82 +1,89 @@
-
 <div class="accordion card-container" id="accordionExample">
-  <div>
-    <div class="card-header banner-image mb-5 mt-5" id="headingOne">
-      <h2 class="mb-0 relative">
-      <%= link_to "Europe", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseOne" },  aria: {expanded: "true", controls: "collapseOne"} %>
-        <!-- <button class="btn btn-link title title-overlay" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> -->
-          <!-- Europe -->
-        <!-- </button> -->
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
-          <% @countries.where(continent: "Europe").each do |country| %>
-          <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
-                </div>
-                <div class="image-container">
-                  <%= cl_image_tag country.photo.key, class: "grid-photo" %>
-                  <div class="image-opacity">
-                  </div>
-                </div>
-              </div>
-              <% end %>
-          <% end %>
+  <div class="row">
+    <div class="col-4">
+      <div class="card-wrapper">
+        <div class="card-header banner-image mb-5 mt-5" id="headingOne">
+          <h2 class="mb-0 relative">
+          <%= link_to "Europe", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseOne" },  aria: {expanded: "true", controls: "collapseOne"} %>
+          </h2>
         </div>
       </div>
-    </div>
-  </div>
-  <div>
-    <div class="card-header banner-image1 mb-5" id="headingTwo">
-      <h2 class="mb-0 relative">
-        <%= link_to "North America", "#", class: "btn btn-link title title-overlay na", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseTwo" },  aria: {expanded: "true", controls: "collapseTwo"} %>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
-          <% @countries.where(continent: "North America").each do |country| %>
-          <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
-                </div>
-                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
-              </div>
-              <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="card-header banner-image2" id="headingThree">
-      <h2 class="mb-0 relative">
-        <%= link_to "Rest of the World", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseThree" },  aria: {expanded: "true", controls: "collapseThree"} %>
-<!--         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Rest of the World
-        </button> -->
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
           <div class= "europe-dropdown">
-          <% @countries.where(continent: "Rest of the World").each do |country| %>
+            <% @countries.where(continent: "Europe").each do |country| %>
             <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
-                </div>
-                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+            <div class= "europe-grid">
+              <div class="overlay">
+                <h2><%= country.name %></h2>
               </div>
-              <% end %>
-          <% end %>
+              <div class="image-container">
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+                <div class="image-opacity">
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-wrapper">
+        <div class="card-header banner-image1 mb-5 mt-5" id="headingTwo">
+          <h2 class="mb-0 relative">
+          <%= link_to "North America", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseTwo" },  aria: {expanded: "true", controls: "collapseTwo"} %>
+          </h2>
+        </div>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class= "europe-dropdown">
+            <% @countries.where(continent: "North America").each do |country| %>
+            <%= link_to country_path(country) do %>
+            <div class= "europe-grid">
+              <div class="overlay">
+                <h2><%= country.name %></h2>
+              </div>
+              <div class="image-container">
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+                <div class="image-opacity">
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-wrapper">
+        <div class="card-header banner-image2 mb-5 mt-5" id="headingThree">
+          <h2 class="mb-0 relative">
+          <%= link_to "Rest of the World", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseThree" },  aria: {expanded: "true", controls: "collapseThree"} %>
+          </h2>
+        </div>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class= "europe-dropdown">
+            <% @countries.where(continent: "Rest of the World").each do |country| %>
+            <%= link_to country_path(country) do %>
+            <div class= "europe-grid">
+              <div class="overlay">
+                <h2><%= country.name %></h2>
+              </div>
+              <div class="image-container">
+                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
+                <div class="image-opacity">
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

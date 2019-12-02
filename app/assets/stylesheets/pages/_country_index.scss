@@ -82,54 +82,37 @@ body {
   height: 45vh;
   background-size: cover;
   background-position: center;
-  background-image: url(https://images.unsplash.com/photo-1517660895948-131a6d6c55d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1786&q=80);
-  //   -webkit-transition: background-position 0.8s ease-out;
-  // -moz-transition: background-position 0.8s ease-out;
-  // -o-transition: background-position 0.8s ease-out;
-  // transition: background-position 0.8s ease-out;
-  // &:hover {
-  //   background-position: top;
-
-  // }
-  cursor: pointer;
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1482867996988-29ec3a0f1aac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
 }
 
 .banner-image1 {
   height: 45vh;
   background-size: cover;
   background-position: center;
-  background-image: url(https://images.unsplash.com/photo-1482867996988-29ec3a0f1aac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1507534081376-b896cb889714?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
 }
 
 .banner-image2 {
   height: 45vh;
   background-size: cover;
   background-position: center top;
-  background-image: url(https://res.cloudinary.com/dy35n8sog/image/upload/v1574857258/flip_tgjvlr.jpg);
-}
-
-.title {
-  text-decoration: none;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80);
 }
 
 .title-overlay {
   position: absolute;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
   z-index: 2;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding-top: 150px;
   font-size: 36px;
-  color: #484848;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  text-decoration: none;
+  color: white !important;
 }
 .btn-link {
   &:hover {
@@ -157,11 +140,20 @@ body {
   color: #fff;
 }
 
-.card-header {
-  transition: transform 0.5s;
+.card-wrapper {
+  overflow: hidden;
   &:hover {
-    transform: scale(1.05);
+    .card-header {
+      transform: scale(1.05);
+    }
   }
+}
+
+.card-header {
+  transition: transform 0.8s;
+  // &:hover {
+    // transform: scale(1.05);
+  // }
 }
 
 .europe-grid:hover {
