@@ -24,8 +24,8 @@
   // margin-top: 5px;
   // margin-bottom: 5px;
   margin-left: auto;
-
-  background-color: #BDD4E7;
+  color: white;
+  background-color: #0199FF;
 }
 
 .talk-bubble-left{
@@ -42,7 +42,7 @@
   top: 0px;
   bottom: auto;
   border: 20px solid;
-  border-color: #BDD4E7 transparent transparent transparent;
+  border-color: #0199FF transparent transparent transparent;
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -143,9 +143,12 @@
   }
 }
 
-
 .grey-txt {
   color: grey;
+}
+
+.white-txt {
+  color: white;
 }
 
 .message-deleted {
@@ -155,12 +158,15 @@
   padding: 8px;
   overflow: hidden;
   height: auto;
-  background-color: #BDD4E7;
+  color: white;
+  background-color: #0199FF;
   p {
     font-size: 0.7em;
   }
 }
 
 
-
+#message_content {
+  border-radius: 25px;
+}
 

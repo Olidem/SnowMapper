@@ -17,8 +17,15 @@ import 'slick-carousel'
 //   });
 // });
 
+$('#message_content').keypress(function(e) {
+      if(e.which == 13){
+           $(this).closest('form').submit();
+       }
+    });
+
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
+
 initMapbox();
 
 
@@ -37,3 +44,5 @@ initSweetalert('#membership-request-reject', {
   timer: 2000,
   button: false
 });
+
+
