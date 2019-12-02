@@ -3,16 +3,16 @@
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
       <% if !message.show %>
-        <div class="message-deleted" id="comment-<%= message.id %>">
+        <div class="talk-bubble message-deleted" id="comment-<%= message.id %>">
           <p><i>Message deleted</i></p>
         </div>
       <% elsif message.user == current_user %>
-        <div class="talk-bubble tri-right round right-in" id="comment-<%= message.id %>">
+        <div class="talk-bubble tri-right round right-top" id="comment-<%= message.id %>">
           <div class="message-user"/>
-            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+                <%#= cl_image_tag message.user.photo.key, class: "avatar" %> -->
             <div class="message-user-details">
               <p><%= message.user.first_name %></p>
-              <p><span class="grey-txt"><%= message.group.name %></span></p>
+<!--               <p><span class="grey-txt"><%#= message.group.name %></span></p> -->
             </div>
           </div>
           <div class="message-text">
@@ -24,12 +24,12 @@
           </div>
         </div>
       <% else %>
-        <div class="talk-bubble tri-right round right-in" id="comment-<%= message.id %>">
+        <div class="talk-bubble tri-right round left-top" id="comment-<%= message.id %>">
           <div class="message-user"/>
-            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+<!--             <%#= cl_image_tag message.user.photo.key, class: "avatar" %> -->
             <div class="message-user-details">
               <p><%= message.user.first_name %></p>
-              <p><span class="grey-txt"><%= message.group.name %></span></p>
+<!--               <p><span class="grey-txt"><%#= message.group.name %></span></p> -->
             </div>
           </div>
           <div class="message-text">
@@ -57,7 +57,7 @@
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
-        <div class="talk-bubble tri-right round right-in" id="comment-${id}">
+        <div class="talk-bubble tri-right round right-top" id="comment-${id}">
           <div class="message-user"/>
             <img class="avatar" src="http://res.cloudinary.com/dr48k5zwm/image/upload/${photo}">
             <div class="message-user-details">
@@ -87,7 +87,7 @@
       div.firstChild.remove()
     }
     div.classList.add('message-deleted')
-    div.classList.remove("talk-bubble tri-right round right-in");
+    div.classList.remove("talk-bubble tri-right round right-top");
     div.innerHTML = '<i><p>Message deleted</p></i>'
   });
 
