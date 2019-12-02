@@ -8,10 +8,6 @@ class MembershipRequestsController < ApplicationController
     redirect_to resort_path(@group.resort)
   end
 
-  def my_approvals
-    memberships_approvals_set
-  end
-
   def approve
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
@@ -20,14 +16,27 @@ class MembershipRequestsController < ApplicationController
     @membership.group = @membership_request.group
     @membership.save!
     @membership_request.delete
-    redirect_to membership_requests_my_approvals_path
+    redirect_to membership_requests_notifications_center_path
   end
 
   def reject
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.delete
-    redirect_to membership_requests_my_approvals_path
+    redirect_to membership_requests_notifications_center_path
+  end
+
+  # Notification center methods
+  def notifications_center
+    memberships_approvals_set
+    @memberships = current_user.memberships
+    @groups_with_new_messages = current_user.groups.reject do |group|
+      if current_user.read_messages.where(group: group).first.nil?
+        true
+      else
+        group.messages.count == current_user.read_messages.where(group: group).first.no_of_read_messages
+      end
+    end
   end
 
   private

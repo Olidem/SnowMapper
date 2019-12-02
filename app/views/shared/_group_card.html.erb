@@ -3,17 +3,38 @@
   <div class="group-info-container d-flex justify-content-between flex-grow-1">
     <div class="group-info d-flex flex-column align-items-start justify-content-between">
       <h2><%= group.name %></h2>
-      <div class="group-users-avatars">
-        <% group.users.each do |user| %>
-          <span class="group-users-avatar">
-            <img src=<%= cl_image_path user.photo.key %>>
-          </span>
+      <div class="d-flex">
+        <div class="group-users-avatars ml-3">
+          <% group.users[0...2].each do |user| %>
+            <span class="group-users-avatar">
+              <img src=<%= cl_image_path user.photo.key %>>
+            </span>
+          <% end %>
+        </div>
+        <% if group.users.count > 2 %>
+          <div class="btn-group dropup">
+            <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              + <%= group.users.count - 2 %>
+            </div>
+            <div class="dropdown-menu text-center py-0 pt-3">
+              <div class="group-users-avatars">
+                <% group.users[2...(group.users.count)].each do |user| %>
+                  <span class="group-users-avatar">
+                    <img src=<%= cl_image_path user.photo.key %>>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
       <p><%= group.description %></p>
     </div>
     <% if current_user.groups.include?(group) %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+        <p><%= no_of_unread_messages(group) %> unread messages</p>
+      <% end %>
         <% if group.messages.any? %>
           <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
         <% else %>
@@ -23,6 +44,9 @@
       </div>
     <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <%#= image_tag "envelope.png", class: "lock-image mb-auto" %>
         <i class="fas fa-envelope" style="color: #545A72;"></i>
           <% if group.messages.any? %>
@@ -36,6 +60,9 @@
       </div>
     <% elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <%#= image_tag "locked.png", class: "lock-image mb-auto" %>
         <i class="fas fa-lock" style="color: #545A72;"></i>
           <% if group.messages.any? %>
@@ -52,6 +79,9 @@
       </div>
     <% else %>
       <div class="d-flex flex-column align-items-end">
+        <% unless no_of_unread_messages(group).nil? %>
+          <p><%= no_of_unread_messages(group) %> unread messages</p>
+        <% end %>
         <% if group.messages.any? %>
           <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
         <% else %>
