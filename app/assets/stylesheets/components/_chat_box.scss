@@ -21,6 +21,15 @@
   -moz-border-radius: 5px;
 }
 
+.talk-bubble-right{
+  margin-left: auto;
+  background-color: #F4F4F4;
+}
+
+.talk-bubble-left{
+  background-color: #F4F4F4;
+}
+
 .tri-right.right-top:after{
   content: ' ';
   position: absolute;
@@ -37,7 +46,7 @@
   -moz-border-radius: 3px;
 }
 
-.tri-right.left-top:after{
+.tri-right.left-top:before{
   content: ' ';
   position: absolute;
   width: 0;
@@ -96,12 +105,13 @@
 
 .message-other-users {
   display: flex;
-  flex-direction: row-reverse;
+  position: relative;
 }
 .message-other-users-details {
   display: flex;
   flex-direction: column;
-  margin-left: 5px;
+  margin-right: 8px;
+  padding-top: 4px;
   p {
     font-size: 0.7em;
     margin: 0;
@@ -114,22 +124,20 @@
 .message-other-users-text {
   display: flex;
   flex-direction: column;
+  margin-right: 8px;
   p {
     font-size: 0.8em;
     margin: 0;
   }
-  text-align: left;
 }
 
 .message-other-users-time {
   font-size: 0.7em;
-  text-align: left;
   a {
     color: red;
     font-size: 0.7em;
-    margin-left: 5px;
   }
-
+  text-align: right;
 }
 
 

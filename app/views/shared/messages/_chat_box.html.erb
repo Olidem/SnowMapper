@@ -7,7 +7,7 @@
           <p><i>Message deleted</i></p>
         </div>
       <% elsif message.user == current_user %>
-        <div class="talk-bubble tri-right round right-top" id="comment-<%= message.id %>">
+        <div class="talk-bubble talk-bubble-right tri-right round right-top" id="comment-<%= message.id %>">
           <div class="message-user">
 <!--            <%#= cl_image_tag message.user.photo.key, class: "avatar-message" %> -->
             <div class="message-user-details">
@@ -18,12 +18,12 @@
             <p><%= message.content %></p>
             <div class="message-user-time">
               <p><span class="grey-txt date"><%= time_since(message) %></span></p>
-<!--               <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %> -->
+<!--               <%#= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %> -->
             </div>
           </div>
         </div>
       <% else %>
-        <div class="talk-bubble tri-right round left-top" id="comment-<%= message.id %>">
+        <div class="talk-bubble talk-bubble-left tri-right round left-top" id="comment-<%= message.id %>">
           <div class="message-other-users">
 <!--             <%#= cl_image_tag message.user.photo.key, class: "avatar-message" %> -->
             <div class="message-other-users-details">
