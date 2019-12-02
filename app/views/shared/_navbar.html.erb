@@ -6,17 +6,16 @@
     <div class="nav-items">
         <%= link_to "Countries", countries_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
         <%= link_to "Resorts", resorts_path, class: "underline", style: "text-decoration:none; color:#0e0000"  %>
+        <div class="d-flex">
+          <%= link_to "Groups", membership_requests_notifications_center_path, class: "underline", style: "text-decoration: none; color:#0e0000" %>
+          <% if current_user %> <!-- Protect from breaking when not logged in -->
+            <span class="badge badge-danger mr-3" style="align-self: start; font-weight: 700"><%= notifications_no if notifications_no > 0 %></span>
+          <% end %>
+        </div>
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-profile-picture", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Groups", memberships_user_memberships_path, class: "dropdown-item" %>
-            <div class="dropdown-item d-flex">
-              <%= link_to "Notifications", membership_requests_my_approvals_path, style: "text-decoration: none; color: black" %>
-              <% if user_approvals_no > 0 %>
-                <span class="badge badge-danger ml-2" style="align-self: center; font-weight: 700"><%= user_approvals_no %></span>
-              <% end %>
-            </div>
             <%= link_to "Edit", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
