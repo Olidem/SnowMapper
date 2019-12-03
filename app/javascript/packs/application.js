@@ -1,6 +1,26 @@
 
 import $ from 'jquery'
 
+if(document){
+    const toggleTag = document.querySelector(".message-button")
+    const mainTag = document.querySelector(".my-chat")
+    const closeTag =document.querySelector(".cross")
+    console.log(toggleTag)
+
+    toggleTag.addEventListener("click", function () {
+    mainTag.classList.toggle("open")
+    $('html, body').animate({
+                    scrollTop:0
+                }, 500);
+  })
+
+    closeTag.addEventListener("click", function () {
+      mainTag.classList.toggle("open")
+    })
+}
+
+
+
 import "bootstrap";
 
 import 'slick-carousel'
@@ -17,23 +37,57 @@ import 'slick-carousel'
 //   });
 // });
 
+$('#message_content').keypress(function(e) {
+      if(e.which == 13){
+           $(this).closest('form').submit();
+           e.preventDefault();
+       }
+    });
+
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
+
 initMapbox();
 
+import swal from 'sweetalert';
 
-import { initSweetalert } from '../plugins/init_sweetalert';
+function sweetAlertClassSelector(selector, options = {}) {
+  const swalButtons = document.querySelectorAll(selector);
+  if (swalButtons.length > 0) { // protect other pages
+    swalButtons.forEach(function(swalButton) {
+      swalButton.addEventListener('click', () => {
+        swal(options);
+      });
+    });
+  }
+};
 
-initSweetalert('#membership-request-accept', {
+sweetAlertClassSelector('.membership-request-reject', {
+  title: 'Membership accepted',
+  icon: "error",
+  timer: 2000,
+  button: false
+});
+
+sweetAlertClassSelector('.membership-request-accept', {
   title: 'Membership accepted',
   icon: "success",
   timer: 2000,
   button: false
 });
 
-initSweetalert('#membership-request-reject', {
-  title: "Membership rejected",
-  icon: "error",
+
+sweetAlertClassSelector('.membership-request-sent', {
+  title: "Membership request sent!",
+  icon: "success",
   timer: 2000,
   button: false
 });
+
+
+
+
+
+
+
+

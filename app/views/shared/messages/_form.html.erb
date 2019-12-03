@@ -1,6 +1,5 @@
 <div id="new_message">
-<%= simple_form_for [@group, @message], remote: true do |form| %>
-  <%= form.input :content, as: :text %>
-  <%= form.button :submit, class: "btn btn-primary"%>
+<%= simple_form_for [@group, @message], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Reach out to your pals here...", input_html: { rows: 1 } %>
 <% end %>
 </div>

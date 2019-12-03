@@ -9,17 +9,20 @@ header {
 
 .nav-items {
   display: flex;
+  align-items: center;
 }
 .collapsing {
   transition: height 0.7s ease !important;
 }
 
 .nav {
-  margin-top: 32px;
+
   margin-right: 96px;
   margin-left:96px;
-  padding-bottom: 16px;
+  // padding-bottom: 16px;
   justify-content: space-between;
+  padding: 32px 0;
+  align-items: center;
   // p {
   //   letter-spacing: -0.16em;
   //   font-weight: 400;
@@ -45,7 +48,7 @@ header {
   margin: 0 8px;
   border-bottom: 2px solid white;
   transition: .2s;
-  padding-bottom: 12px;
+  // padding-bottom: 12px;
 }
 
 .underline:hover {

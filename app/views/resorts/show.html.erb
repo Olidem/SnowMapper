@@ -77,9 +77,9 @@
               Sort groups by
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to "Biggest", resorts_sort_user_count_path(@resort), class: "dropdown-item" %>
-              <%= link_to "Newest", resorts_sort_group_created_path(@resort), class: "dropdown-item" %>
-              <%= link_to "Most active", resorts_sort_latest_message_path(@resort), class: "dropdown-item" %>
+              <%= link_to "Biggest", resorts_sort_user_count_path(@resort), remote: true, class: "dropdown-item" %>
+              <%= link_to "Newest", resorts_sort_group_created_path(@resort), remote: true, class: "dropdown-item" %>
+              <%= link_to "Most active", resorts_sort_latest_message_path(@resort), remote: true, class: "dropdown-item" %>
             </div>
           </div>
         </div>
@@ -102,10 +102,10 @@
       </div>
     </div>
     <div class="col-9">
-      <div class="group-cards">
-        <% @groups.each do |group| %>
-          <%= render partial: "shared/group_card", locals: {group: group} %>
-        <% end %>
+      <div class="group-cards" id="group-cards-container">
+        <div id="group-card-holder">
+          <%= render "shared/group_cards_container",  groups: @groups %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,37 @@
+function refreshMembershipRequests(innerHTML) {
+  const membershipRequestCardsContainer = document.getElementById('membership-request-cards-container');
+  membershipRequestCardsContainer.innerHTML = innerHTML;
+}
+
+function refreshMembershipNotifications(innerText) {
+  const membershipNotifications = document.getElementById('user_approvals_notification');
+  membershipNotifications.innerText = innerText;
+}
+
+function sweetAlertClassSelector(selector, options = {}) {
+  const swalButtons = document.querySelectorAll(selector);
+  if (swalButtons.length > 0) { // protect other pages
+    swalButtons.forEach(function(swalButton) {
+      swalButton.addEventListener('click', () => {
+        swal(options);
+      });
+    });
+  }
+};
+
+refreshMembershipRequests('<%= j render partial: "shared/membership_request_card_container", locals: {membership_requests: @membership_requests} %>');
+refreshMembershipNotifications('<%= user_approvals_no if user_approvals_no > 0 %>');
+
+sweetAlertClassSelector('.membership-request-reject', {
+  title: 'Membership rejected',
+  icon: "error",
+  timer: 2000,
+  button: false
+});
+
+sweetAlertClassSelector('.membership-request-accept', {
+  title: 'Membership accepted',
+  icon: "success",
+  timer: 2000,
+  button: false
+});

@@ -14,8 +14,7 @@
     <h4>Join a community of skiiers and snowboarders ⛷ 🏂 </h4>
   </div>
 </div>
-
-<div class="resort-index-container">
+<div class="resort-index-container d-flex justify-content-center">
   <% @resorts.each do |resort| %>
     <%= link_to resort_path(resort) do  %>
       <div class="resort-bg-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(http://res.cloudinary.com/dr48k5zwm/image/upload/<%= resort.photo.key %>)">
