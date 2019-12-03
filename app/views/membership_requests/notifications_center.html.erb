@@ -8,11 +8,7 @@
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-your-groups" role="tabpanel" aria-labelledby="nav-your-groups-tab">
     <div class="container mt-3">
-      <div class="d-flex">
-        <i class="fas fa-users m-2" style="font-size: 3em"></i>
-        <h1 class="m-2">My groups</h1>
-      </div>
-      <%= render partial: "shared/user_memberships_card", membership: @membership %>
+      <%= render "shared/group_cards_container", groups: @groups %>
     </div>
   </div>
   <div class="tab-pane fade" id="nav-new-messages" role="tabpanel" aria-labelledby="nav-new-messages-tab">
@@ -22,7 +18,7 @@
           <%= render partial: "shared/group_card", locals: {group: group_with_new_messages} %>
         <% end %>
       <% else %>
-      <h2>No new messages</h2>
+      <h2 class= "mt-3" style="text-align: center;">No new messages</h2>
       <% end %>
     </div>
   </div>
