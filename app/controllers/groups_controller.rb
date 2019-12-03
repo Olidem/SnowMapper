@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     @message = Message.new
 
     @meetings = @group.meetings.geocoded #returns flats with coordinates
+    # @meetings = @group.meetings #returns flats with coordinates
 
     @markers = @meetings.map do |meeting|
       {
