@@ -1,11 +1,15 @@
 class MembershipRequestsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
+    @groups = params[:membership_request][:groups].split(" ").map { |id| Group.find(id.to_i) }
     @membership_request = MembershipRequest.new(set_params)
     @membership_request.group = @group
     @membership_request.user = current_user
     @membership_request.save!
-    redirect_to resort_path(@group.resort)
+    respond_to do |format|
+      format.html { redirect_to resort_path(@group.resort) }
+      format.js
+    end
   end
 
   def approve
@@ -16,14 +20,22 @@ class MembershipRequestsController < ApplicationController
     @membership.group = @membership_request.group
     @membership.save!
     @membership_request.delete
-    redirect_to membership_requests_notifications_center_path
+    memberships_approvals_set
+    respond_to do |format|
+      format.html { redirect_to membership_requests_notifications_center_path }
+      format.js
+    end
   end
 
   def reject
     memberships_approvals_set
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.delete
-    redirect_to membership_requests_notifications_center_path
+    memberships_approvals_set
+    respond_to do |format|
+      format.html { redirect_to membership_requests_notifications_center_path }
+      format.js
+    end
   end
 
   # Notification center methods

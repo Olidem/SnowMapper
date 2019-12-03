@@ -2,13 +2,13 @@ class ResortsController < ApplicationController
   before_action :set_resort, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_groups, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_empty_group, only: %i[show sort_user_count sort_group_created sort_latest_message]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @resorts = Resort.all
   end
 
   def show
-    @membership_request = MembershipRequest.new
   end
 
   def add_user
@@ -19,17 +19,26 @@ class ResortsController < ApplicationController
   # Ordering methods
   def sort_user_count
     @groups = (@groups.sort_by { |group| group.users.count }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   def sort_group_created
     @groups = (@groups.sort_by { |group| group.created_at }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   def sort_latest_message
     @groups = (@groups.sort_by { |group| group.messages.any? ? group.messages.last.created_at : Time.new(1) }).reverse
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   private
@@ -39,10 +48,14 @@ class ResortsController < ApplicationController
   end
 
   def set_groups
-    @groups = @resort.groups
+    @groups = @resort.groups.reverse
   end
 
   def set_empty_group
     @group = Group.new
+  end
+
+  def set_empty_membership_request
+    @membership_request = MembershipRequest.new
   end
 end

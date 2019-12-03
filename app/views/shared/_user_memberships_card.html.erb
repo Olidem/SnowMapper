@@ -3,7 +3,7 @@
       <div class="group-image w-25" style="background-image: url(<%= cl_image_path membership.group.photo.key %>)"></div>
       <div class="group-info-container d-flex justify-content-between flex-grow-1">
         <div class="group-info d-flex flex-column align-items-start justify-content-between">
-          <h2><%= membership.group.name %></h2>
+          <h3><%= link_to membership.group.name, resort_path(membership.group.resort) %></h3>
           <div class="d-flex">
             <i class="fas fa-map-marker-alt m-2"></i>
             <p class="m-2"><%= membership.group.resort.name %>, <%= membership.group.resort.country.name %></p>

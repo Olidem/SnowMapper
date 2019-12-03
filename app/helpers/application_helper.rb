@@ -16,11 +16,11 @@ module ApplicationHelper
   def time_since(record)
     time_diff_mins = (Time.new - record.created_at).fdiv(1.minute).round
     if time_diff_mins < 60
-      "#{time_diff_mins} minutes ago"
+      "#{pluralize(time_diff_mins, 'minute')} ago"
     elsif time_diff_mins.fdiv(60) < 24
-      "#{time_diff_mins.fdiv(60).round} hours ago"
+      "#{pluralize(time_diff_mins.fdiv(60).round, 'hour')} ago"
     else
-      "#{time_diff_mins.fdiv(60).fdiv(24).round} days ago"
+      "#{pluralize(time_diff_mins.fdiv(60).fdiv(24).round, 'day')} ago"
     end
   end
 

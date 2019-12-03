@@ -6,6 +6,7 @@
       <ul>
         <li class="meetup-details">Address: <%= meeting.address %></li>
         <li class="meetup-details">Date: <%= meeting.meeting_date %></li>
+        <li class="meetup-details">Description: <%= meeting.description %></li>
         <%= link_to "Edit", edit_meeting_path(meeting), class: "meetup-details"%>
         <%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details" %>
       </ul>

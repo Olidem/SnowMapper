@@ -8,8 +8,8 @@
       <%= membership_request.content %>
     </div>
     <div>
-      <%= link_to "Accept", membership_requests_approve_path(membership_request), class: 'btn btn-primary mx-3', id: "membership-request-accept" %>
-      <%= link_to "Reject", membership_requests_reject_path(membership_request), class: 'btn btn-primary mx-3', id: "membership-request-reject" %>
+      <%= link_to "Accept", membership_requests_approve_path(membership_request), class: 'btn btn-primary mx-3 membership-request-accept', remote: true %>
+      <%= link_to "Reject", membership_requests_reject_path(membership_request), class: 'btn btn-primary mx-3 membership-request-reject', remote: true %>
     </div>
   </div>
 </div>

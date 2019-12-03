@@ -5,7 +5,7 @@
       <% @resorts.each do |resort| %>
       <div class="resort-card-show">
         <%= cl_image_tag resort.photo.key %>
-        <div class="resort-info-show">
+        <div class="resort-info-show" style="width: 100%;">
           <div class="resort-title-show">
             <h6><%= resort.name %></h6>
             <div class="resort-users">
@@ -13,7 +13,7 @@
               <i class="fas fa-users"></i>
             </div>
           </div>
-          <p><%= resort.description.split(".").slice(0,1).join(".") %></p>
+          <p><%= resort.description.split(".").slice(0,2).join(".") %></p>
           <div class="resort-bottom">
             <div class="resort-icons">
               <div class="icon-info">

@@ -9,43 +9,44 @@
       <% if @group.memberships.find_by_user_id(current_user.id).admin %>
         <div class="d-flex flex-row justify-content-start">
           <h2>
-            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to '<i class="far fa-trash-alt group-icons"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
           </h2>
           <h2>
-            <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_group_path(@group) %>
+            <%= link_to '<i class="far fa-edit group-icons"></i>'.html_safe, edit_group_path(@group) %>
           </h2>
         </div>
       <% end %>
     </div>
   </div>
   <div class="message-btn-align">
-    <div class="btn btn-danger message-button">
+    <div class="message-button">
       <a href= "#" class="toggle-chats">
-        Messages
+        <i class="fas fa-comments message-icon"></i>
       </a>
     </div>
   </div>
 </section>
 
-<section>
+<section class="map-members" style="width: 100%">
+  <div class="members-meetup">
+    <div class="group-members">
+      <p class="member-title">
+        Group members
+      </p>
+      <div class="group-show-avatars">
+        <% @group.users.each do |user| %>
+          <span class="group-show-avatar">
+            <img src=<%= cl_image_path user.photo.key %>>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="group-map">
     <%= render partial: "shared/map_show"%>
   </div>
 </section>
 
-<section class="members-meetup">
-  <div class="group-members">
-    <p class="member-title">
-      Group members
-    </p>
-    <div class="group-show-avatars">
-      <% @group.users.each do |user| %>
-        <span class="group-show-avatar">
-          <img src=<%= cl_image_path user.photo.key %>>
-        </span>
-      <% end %>
-    </div>
-  </div>
   <div class="member-info-meetup">
     <div class="meetup-cards">
       <div>
@@ -60,18 +61,12 @@
       <% end %>
     </div>
   </div>
-</section>
+
 
 
 
 <div class="my-chat" style="border:1px solid black">
-
-
   <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
-
-
-
-
 </div>
 
 
