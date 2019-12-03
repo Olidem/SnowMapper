@@ -45,7 +45,9 @@
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div id="min-height-set">
+      <%= yield %>
+    </div>
     <% unless @disable_footer %>
       <%= render 'shared/footer'  %>
     <% end %>

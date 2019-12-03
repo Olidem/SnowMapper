@@ -25,3 +25,7 @@
       color: black;
     }
 }
+
+#min-height-set {
+  min-height: calc(100vh - 130px - 104px);
+}
