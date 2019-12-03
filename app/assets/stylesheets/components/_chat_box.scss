@@ -26,6 +26,20 @@
   margin-left: auto;
   color: white;
   background-color: #0199FF;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #88cdfb;
+
+    &::after {
+      border-color: #88cdfb transparent transparent transparent !important;
+    }
+
+    .delete-button-link {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
 .talk-bubble-left{
@@ -46,6 +60,7 @@
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
+  transition: 0.3s;
 }
 
 .tri-right.left-top:before{
@@ -172,3 +187,18 @@
   margin-top: 10px;
 }
 
+.delete-button-link {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+
+}
+
+.far.fa-trash-alt {
+  font-size: 12px;
+  color: white;
+}
