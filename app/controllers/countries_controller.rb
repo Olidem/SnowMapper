@@ -2,7 +2,9 @@ class CountriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @countries = Country.all
+    @european_countries = Country.where(continent: "Europe")
+    @north_american_countries = Country.where(continent: "North America")
+    @row_countries = Country.where(continent: "Rest of the World")
   end
 
   def show

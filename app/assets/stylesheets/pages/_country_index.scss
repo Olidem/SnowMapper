@@ -1,170 +1,93 @@
-body {
-  background-color: #fff;
-  font-family: 'Rubik', sans-serif;
-}
-
-
-.banners {
+.country-index-container {
+  margin: 24px 96px;
   display: flex;
   flex-direction: column;
-  margin-left: 96px;
-  margin-right: 96px;
 }
 
-.country-banner {
-  height: 300px;
-  width: 100%;
-  background-color: #E2493C;
-  position: relative;
+.title-container {
+  margin-bottom: 20px;
 }
-
-.banners h1 {
-  position: absolute;
-  bottom: 32px;
-  left: 32px;
-
-}
-
-.europe-image {
-  height:300px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.europe-dropdown {
-  display:flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.grid-photo {
-  // margin: 12px;
-  height: 200px;
-  width: 300px;
-  object-fit: cover;
-
-}
-
-.europe-grid {
-  position: relative;
-  margin: 12px;
-  cursor: pointer;
-}
-
-.overlay {
-  position: absolute;
+.continent-card {
+  margin-top: 20px;
+  background-color: #eeeeee;
+  height: 60vmin;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  color: white;
-  z-index: 2;
-}
-
-.image-container {
-  position: relative;
-}
-
-.image-opacity {
-  color: #000;
-  opacity: 90%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.banner-image {
-  height: 45vh;
-  background-size: cover;
-  background-position: center;
-  background-image: url(https://images.unsplash.com/photo-1517660895948-131a6d6c55d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1786&q=80);
-  //   -webkit-transition: background-position 0.8s ease-out;
-  // -moz-transition: background-position 0.8s ease-out;
-  // -o-transition: background-position 0.8s ease-out;
-  // transition: background-position 0.8s ease-out;
-  // &:hover {
-  //   background-position: top;
-
-  // }
-  cursor: pointer;
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.banner-image1 {
-  height: 45vh;
-  background-size: cover;
-  background-position: center;
-  background-image: url(https://images.unsplash.com/photo-1482867996988-29ec3a0f1aac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
-}
-
-.banner-image2 {
-  height: 45vh;
-  background-size: cover;
-  background-position: center top;
-  background-image: url(https://res.cloudinary.com/dy35n8sog/image/upload/v1574857258/flip_tgjvlr.jpg);
-}
-
-.title {
-  text-decoration: none;
-}
-
-.title-overlay {
-  position: absolute;
-  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  z-index: 2;
+  border-radius: 10px;
+}
+
+.continent-img {
   width: 100%;
-  height: 100%;
-  padding-top: 150px;
-  font-size: 36px;
-  color: #484848;
-  letter-spacing: 0.08em;
-}
-.btn-link {
-  &:hover {
-    color: #484848;
+  height: 70%;
+  object-fit: cover;
+  background-position: 50% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    color: white;
+    font-weight: 500;
   }
-  color: #484848;
-}
-
-.relative {
-  position: relative;
-
-}
-
-.card-container {
-  margin-right: 96px;
-  margin-left: 96px;
-}
-
-.na {
-  justify-content: flex-end;
-  color: #fff;
-}
-
-.na:hover {
-  color: #fff;
-}
-
-.card-header {
-  transition: transform 0.5s;
-  &:hover {
-    transform: scale(1.05);
+  a:hover {
+  text-decoration: none;
   }
 }
 
-.europe-grid:hover {
-  transform: scale(1.05);
-  transition: transform 0.5s;
+
+
+.flags-container {
+  display: flex;
+  flex: flex-wrap;
+  justify-content: space-around;
+  padding: 5px;
+  width: 100%;
+  .flag-img {
+    width: 50px;
+    border-radius: 5px;
+    cursor:pointer;
+  }
+  .flag-img:hover {
+    transform: scale(1.1)
+  }
+  .flag-icon-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6em;
+    font-weight: 100;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
+.country-display-card {
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+  color: white;
+  justify-content: space-around;
+  align-items: space-around;
+  .icon {
+    color: white;
+    margin-right: 24px;
+    font-weight: 600;
+  }
+  h4 {
+    text-align: center;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+
+}
+
+.flag-title {
+  margin-top: 12px;
+  text-align: center;
+}
+
+

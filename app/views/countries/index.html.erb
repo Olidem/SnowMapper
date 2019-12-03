@@ -1,97 +1,158 @@
+<%= content_tag :div, class: "temp_information", data: {temp: @countries} do %>
+<% end %>
 
-<div class="accordion card-container" id="accordionExample">
-  <div>
-    <div class="card-header banner-image mb-5 mt-5" id="headingOne">
-      <h2 class="mb-0 relative">
-      <%= link_to "Europe", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseOne" },  aria: {expanded: "true", controls: "collapseOne"} %>
-        <!-- <button class="btn btn-link title title-overlay" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> -->
-          <!-- Europe -->
-        <!-- </button> -->
-      </h2>
-    </div>
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
-          <% @countries.where(continent: "Europe").each do |country| %>
+<div class="country-index-container">
+  <div class="title-container">
+    <h1>Discover where you can go</h1>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="continent-card" id="europe-card">
+        <div class="continent-img active" id="europe-img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1500259643709-e9f12f14a43c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+        <h4>Europe</h4>
+        </div>
+        <% @european_countries.each_with_index do |country, index| %>
+            <div class="continent-img hidden" id="europe-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>); background-size: cover;">
           <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
+              <div class="country-display-card" >
+                <h4><%= country.name %></h4>
+                <div class="d-flex mt-4">
+                  <i class="fas fa-city icon"></i>
+                  <p><%= country.resorts.count %> resorts</p>
                 </div>
-                <div class="image-container">
-                  <%= cl_image_tag country.photo.key, class: "grid-photo" %>
-                  <div class="image-opacity">
-                  </div>
+                <div class="d-flex mt-4">
+                  <i class="fas fa-flag-checkered icon"></i>
+                  <p><%= country.slope_length %> slope length</p>
+                </div>
+                <div class="d-flex mt-4">
+                  <i class="fas fa-piggy-bank icon" style="color:white;"></i>
+                  <p><%= country.cost %></p>
                 </div>
               </div>
-              <% end %>
           <% end %>
+            </div>
+        <% end %>
+        <div id="europe-flags">
+          <div class="flag-title">
+            <h6>Select a country</h6>
+          </div>
+          <div class="flags-container">
+            <% @european_countries.each do |country| %>
+              <div class="flag-icon-container">
+                 <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+                 <p><%= country.name %></p>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div>
-    <div class="card-header banner-image1 mb-5" id="headingTwo">
-      <h2 class="mb-0 relative">
-        <%= link_to "North America", "#", class: "btn btn-link title title-overlay na", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseTwo" },  aria: {expanded: "true", controls: "collapseTwo"} %>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
-          <% @countries.where(continent: "North America").each do |country| %>
+    <div class="col-4">
+      <div class="continent-card" id="north-america-card">
+        <div class="continent-img active" id="north-america-img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1506104489822-562ca25152fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80); background-size: cover;">
+        <h4>North America</h4>
+        </div>
+        <% @north_american_countries.each_with_index do |country, index| %>
+        <div class="continent-img hidden" id="north-america-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>);background-size: cover;">
           <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
-                </div>
-                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
-              </div>
-              <% end %>
+          <div class="country-display-card" >
+            <h4><%= country.name %></h4>
+            <div class="d-flex mt-4">
+              <i class="fas fa-city icon"></i>
+              <p><%= country.resorts.count %> resorts</p>
+            </div>
+            <div class="d-flex mt-4">
+              <i class="fas fa-flag-checkered icon"></i>
+              <p><%= country.slope_length %> slope length</p>
+            </div>
+            <div class="d-flex mt-4">
+              <i class="fas fa-piggy-bank icon" style="color:white;"></i>
+              <p><%= country.cost %></p>
+            </div>
+          </div>
           <% end %>
+        </div>
+        <% end %>
+        <div id="north-american-flags">
+          <div class="flag-title">
+            <h6>Select a country</h6>
+          </div>
+          <div class="flags-container" id="north-america-flags">
+          <% @north_american_countries.each do |country| %>
+            <div class="flag-icon-container">
+             <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+             <p><%= country.name %></p>
+            </div>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div>
-    <div class="card-header banner-image2" id="headingThree">
-      <h2 class="mb-0 relative">
-        <%= link_to "Rest of the World", "#", class: "btn btn-link title title-overlay", style: "text-decoration:none", data: { toggle: "collapse", target: "#collapseThree" },  aria: {expanded: "true", controls: "collapseThree"} %>
-<!--         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Rest of the World
-        </button> -->
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class= "europe-dropdown">
-          <div class= "europe-dropdown">
-          <% @countries.where(continent: "Rest of the World").each do |country| %>
-            <%= link_to country_path(country) do %>
-              <div class= "europe-grid">
-                <div class="overlay">
-                  <h2><%= country.name %></h2>
-                </div>
-                <%= cl_image_tag country.photo.key, class: "grid-photo" %>
-              </div>
-              <% end %>
+    <div class="col-4">
+      <div class="continent-card" id="row-card">
+        <div class="continent-img active" id="row-img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1464053776319-512ea7c51202?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80);background-size: cover;">
+        <h4>Rest of the World</h4>
+        </div>
+        <% @row_countries.each_with_index do |country, index| %>
+        <div class="continent-img hidden" id="row-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>);background-size: cover;">
+           <%= link_to country_path(country) do %>
+          <div class="country-display-card" >
+            <h4><%= country.name %></h4>
+            <div class="d-flex mt-4">
+              <i class="fas fa-city icon"></i>
+              <p><%= country.resorts.count %> resorts</p>
+            </div>
+            <div class="d-flex mt-4">
+              <i class="fas fa-flag-checkered icon"></i>
+              <p><%= country.slope_length %> slope length</p>
+            </div>
+            <div class="d-flex mt-4">
+              <i class="fas fa-piggy-bank icon" style="color:white;"></i>
+              <p><%= country.cost %></p>
+            </div>
+          </div>
           <% end %>
+        </div>
+        <% end %>
+        <div id="row-flags">
+          <div class="flag-title">
+            <h6>Select a country</h6>
+          </div>
+          <div class="flags-container" id="row-flags">
+            <% @row_countries.each do |country| %>
+            <div class="flag-icon-container">
+              <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+            <p><%= country.name %></p>
+            </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+<script>
+  const countries = document.querySelector(".temp_information").dataset
+  const addButtonsToContinent = (continent) => {
+    const buttons = document.querySelectorAll(`#${continent}-flags .flag-img`)
+    buttons.forEach( (flag, index) => {
+      flag.addEventListener('click', (event) => {
+        event.preventDefault()
+        const elementToRemove = document.querySelector(`#${continent}-card .active`)
+        elementToRemove.classList.remove("active");
+        elementToRemove.classList.add("hidden");
+        console.log("remove",elementToRemove)
+        const elementToAdd = document.querySelector(`#${continent}-img-${index}`)
+        elementToAdd.classList.remove("hidden");
+        elementToAdd.classList.add("active");
+        console.log("add",elementToAdd)
+      })
+    })
+  }
+  addButtonsToContinent("europe")
+  addButtonsToContinent("north-america")
+  addButtonsToContinent("row")
+</script>
 

@@ -17,3 +17,19 @@
 @import "user_memberships/index";
 @import "notifications/notifications_centre";
 
+body {
+  background-color: white;
+}
+
+.snowsquad_link {
+  color: black;
+  text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: black;
+    }
+}
+
+#min-height-set {
+  min-height: calc(100vh - 130px - 104px);
+}
