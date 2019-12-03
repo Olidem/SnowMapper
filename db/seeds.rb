@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
+OpenURI::Buffer.const_set 'StringMax', 0
 
 puts "Clearing records"
 Message.destroy_all
@@ -22,8 +24,10 @@ france = Country.new(
   cost: "€€€",
   continent: "Europe"
   )
-img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
-france.photo.attach(io: img, filename: "france.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756912/limitless_choice_runs_chamonix_france_2_96985_gp3cnb.jpg')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_France_92087_bnsatl.png')
+france.photos.attach(io: img1, filename: "france.jpg", content_type: 'image/jpg')
+france.photos.attach(io: img2, filename: "france2.png", content_type: 'image/png')
 france.save!
 
 austria = Country.new(
@@ -32,8 +36,10 @@ austria = Country.new(
   cost: "€€",
   continent: "Europe"
   )
-img = URI.open('https://images.unsplash.com/photo-1489664502447-9dac37a6ad5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
-austria.photo.attach(io: img, filename: "austria.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1489664502447-9dac37a6ad5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_Austria_91963_nfll3d.png')
+austria.photos.attach(io: img1, filename: "austria.jpg", content_type: 'image/jpg')
+austria.photos.attach(io: img2, filename: "austria2.png", content_type: 'image/png')
 austria.save!
 
 switzerland = Country.new(
@@ -42,8 +48,10 @@ switzerland = Country.new(
   cost: "€€",
   continent: "Europe"
   )
-img = URI.open('https://images.unsplash.com/photo-1552355170-c8337700279c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
-switzerland.photo.attach(io: img, filename: "switzerland.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1552355170-c8337700279c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_Switzerland_92369_bqspr1.png')
+switzerland.photos.attach(io: img1, filename: "switzerland.jpg", content_type: 'image/jpg')
+switzerland.photos.attach(io: img2, filename: "switzerland2.png", content_type: 'image/png')
 switzerland.save!
 
 italy = Country.new(
@@ -52,8 +60,10 @@ italy = Country.new(
   cost: "€€€",
   continent: "Europe"
   )
-img = URI.open('https://images.unsplash.com/photo-1491403865995-cda9c458c314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1818&q=80')
-italy.photo.attach(io: img, filename: "italy.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1491403865995-cda9c458c314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1818&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_Italy_92145_llmtov.png')
+italy.photos.attach(io: img1, filename: "italy.jpg", content_type: 'image/jpg')
+italy.photos.attach(io: img2, filename: "italy2.png", content_type: 'image/png')
 italy.save!
 
 united_states = Country.new(
@@ -62,8 +72,10 @@ united_states = Country.new(
   cost: "€€",
   continent: "North America"
   )
-img = URI.open('https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80')
-united_states.photo.attach(io: img, filename: "usa.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_United-States_92407_ly21ln.png')
+united_states.photos.attach(io: img1, filename: "usa.jpg", content_type: 'image/jpg')
+united_states.photos.attach(io: img2, filename: "usa2.png", content_type: 'image/png')
 united_states.save!
 
 canada = Country.new(
@@ -72,18 +84,22 @@ canada = Country.new(
   cost: "€€",
   continent: "North America"
   )
-img = URI.open('https://images.unsplash.com/photo-1453694595360-51e193e121fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1332&q=80')
-canada.photo.attach(io: img, filename: "canada.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1453694595360-51e193e121fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1332&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389605/iconfinder_Canada_92011_j5gzca.png')
+canada.photos.attach(io: img1, filename: "canada.jpg", content_type: 'image/jpg')
+canada.photos.attach(io: img2, filename: "canada.png", content_type: 'image/png')
 canada.save!
 
 greenland = Country.new(
-  name: "Canada",
+  name: "Greenland",
   slope_length: 1231,
   cost: "€€",
   continent: "North America"
   )
-img = URI.open('https://images.unsplash.com/photo-1470520518831-10005602ab67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2500&q=80')
-greenland.photo.attach(io: img, filename: "greenland.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1470520518831-10005602ab67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2500&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389606/iconfinder_Greenland_92105_waxbku.png')
+greenland.photos.attach(io: img1, filename: "greenland.jpg", content_type: 'image/jpg')
+greenland.photos.attach(io: img2, filename: "greenland.png", content_type: 'image/png')
 greenland.save!
 
 new_zealand = Country.new(
@@ -92,8 +108,10 @@ new_zealand = Country.new(
   cost: "€€",
   continent: "Rest of the World"
   )
-img = URI.open('https://images.unsplash.com/photo-1452460108763-293ffa5e4ede?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2612&q=80')
-new_zealand.photo.attach(io: img, filename: "nz.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1452460108763-293ffa5e4ede?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2612&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389606/iconfinder_New-Zealand_92247_izl7pa.png')
+new_zealand.photos.attach(io: img1, filename: "nz.jpg", content_type: 'image/jpg')
+new_zealand.photos.attach(io: img2, filename: "nz.png", content_type: 'image/png')
 new_zealand.save!
 
 japan = Country.new(
@@ -102,8 +120,10 @@ japan = Country.new(
   cost: "€€",
   continent: "Rest of the World"
   )
-img = URI.open('https://images.unsplash.com/photo-1512926121941-82b4da1b0abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80')
-japan.photo.attach(io: img, filename: "japan.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1512926121941-82b4da1b0abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389606/iconfinder_Japan_92149_upkveb.png')
+japan.photos.attach(io: img1, filename: "japan.jpg", content_type: 'image/jpg')
+japan.photos.attach(io: img2, filename: "japan.png", content_type: 'image/png')
 japan.save!
 
 australia = Country.new(
@@ -112,8 +132,10 @@ australia = Country.new(
   cost: "€€",
   continent: "Rest of the World"
   )
-img = URI.open('https://images.unsplash.com/photo-1507726420169-08dc80118357?ixlib=rb-1.2.1&auto=format&fit=crop&w=1787&q=80')
-australia.photo.attach(io: img, filename: "austrlia.jpg", content_type: 'image/jpg')
+img1 = URI.open('https://images.unsplash.com/photo-1507726420169-08dc80118357?ixlib=rb-1.2.1&auto=format&fit=crop&w=1787&q=80')
+img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575389814/iconfinder_Australia_91961_crjbrn.png')
+australia.photos.attach(io: img1, filename: "austrlia.jpg", content_type: 'image/jpg')
+australia.photos.attach(io: img2, filename: "austrlia.png", content_type: 'image/png')
 australia.save!
 
 
