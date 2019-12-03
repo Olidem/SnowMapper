@@ -71,6 +71,17 @@
   color: #484848;
   text-decoration: none;
   list-style-type: none;
+  // position: relative;
+
+  &.date {
+    // position: absolute;
+    // top: 15px;
+    // right: 20px
+  }
+}
+
+.meetup-info {
+  color: red;
 }
 
 .group-show-page-image {
@@ -103,10 +114,16 @@
 
 .message-icon {
   font-size: 32px !important;
-  top: 12px;
-  right: 12px;
+  top: 32px;
+  right: 16px;
   position: relative;
   color: #F2F2F2 !important;
+  transition: 0.2s;
+}
+
+.message-icon:hover {
+  color: #484848 !important;
+  transition: 0.2s;
 }
 
 .group-info {
@@ -146,7 +163,7 @@
 
 .member-title {
   padding: 12px;
-  color: #484848;
+  color: #F2F2F2;
   font-size: 24px;
 }
 
@@ -157,15 +174,66 @@
   min-height: 200px;
   // margin-top: 64px;
   height: 100%;
+  position: relative;
+}
+
+.members-snowflake {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 250px !important;
+  color: #fff !important;
+  opacity: 20%;
 }
 
 .meetup-card {
+  position: relative;
   background-color: #F8F8F8;
   width: 100%;
-  min-height: 200px;
+  min-height: 120px;
   padding: 12px;
   margin-bottom: 12px;
+  display: flex;
+  // align-items: center;
+  line-height: 32px;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.meetup-card--action-buttons {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+
+  i {
+    font-size: 13px;
+  }
+}
+
+.meetup-info-description {
+  max-width: 400px;
+      margin-left: 10px;
+}
+
+.meetup-info-address {
+  // position: absolute;
+  // top: 20px;
+  // left: 50px
+      margin-left: 10px;
+}
+
+.meetup-info-date {
+  // position: absolute;
+  // top: 20px;
+  // right: 50px
+      margin-left: 10px;
+}
+
+.meetup-info-description {
+  // position: absolute;
+  // bottom: 20px;
+  // left: 50px
+      margin-left: 10px;
 }
 
 .add-new-meetup {
@@ -219,14 +287,25 @@
   right: -40vw;
   z-index: 999;
   height: 84.5vh;
+  transition: 0.5s;
 }
 
 .open {
   right: 0;
   position: fixed;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .map-members {
   display: flex;
+}
+
+.address {
+}
+
+.position-address {
+  // position: absolute;
+  // top: 20px;
+  // left: 50px;
 }

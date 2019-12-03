@@ -2,14 +2,27 @@
   <h1 class="meeting-title">Meet-ups</h1>
 
   <% @meetings.each do |meeting| %>
+
     <div class="meetup-card">
-      <ul>
-        <li class="meetup-details">Address: <%= meeting.address %></li>
-        <li class="meetup-details">Date: <%= meeting.meeting_date %></li>
-        <li class="meetup-details">Description: <%= meeting.description %></li>
-        <%= link_to "Edit", edit_meeting_path(meeting), class: "meetup-details"%>
-        <%= link_to "Delete", meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details" %>
-      </ul>
+     <div class="meetup-card--action-buttons">
+      <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_meeting_path(meeting), class: "meetup-details"%>
+      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details" %>
     </div>
+
+    <div class="meetup-details-address">
+      <i class="fas fa-map-marker-alt"></i>
+      <span class="meetup-info-address"> <%= meeting.address %></span>
+    </div>
+
+   <li class="meetup-details date"><i class="far fa-calendar-alt"></i>
+      <span class="meetup-info-date"> <%= meeting.meeting_date %> </span>
+   </li>
+
+   <li class="meetup-details description"><i class="far fa-sticky-note"></i>
+      <span class="meetup-info-description"> <%= meeting.description %> </span>
+   </li>
+
+    </div>
+
   <% end %>
 

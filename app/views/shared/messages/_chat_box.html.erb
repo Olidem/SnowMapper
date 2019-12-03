@@ -1,4 +1,5 @@
 <div class="container show-chat-box" style="background-color: white;">
+  <i class="fas fa-times cross"></i>
   <h1 style="text-align: center"></h1>
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
