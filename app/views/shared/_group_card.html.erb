@@ -1,92 +1,120 @@
-<div class="group-card d-flex">
-  <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
+<!-- <div class="group-card d-flex">
+  <div class="group-image" style="background-image: url(<%#= cl_image_path group.photo.key %>)"></div>
   <div class="group-info-container d-flex justify-content-between flex-grow-1">
     <div class="group-info d-flex flex-column align-items-start justify-content-between">
-      <h2><%= group.name %></h2>
+      <h2><%#= group.name %></h2>
       <div class="d-flex">
         <div class="group-users-avatars ml-3">
-          <% group.users[0...2].each do |user| %>
+          <%# group.users[0...2].each do |user| %>
             <span class="group-users-avatar">
-              <img src=<%= cl_image_path user.photo.key %>>
+              <img src=<%#= cl_image_path user.photo.key %>>
             </span>
-          <% end %>
+          <%# end %>
         </div>
-        <% if group.users.count > 2 %>
+        <%# if group.users.count > 2 %>
           <div class="btn-group dropup">
             <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              + <%= group.users.count - 2 %>
+              + <%#= group.users.count - 2 %>
             </div>
             <div class="dropdown-menu text-center py-0 pt-3">
               <div class="group-users-avatars">
-                <% group.users[2...(group.users.count)].each do |user| %>
+                <%# group.users[2...(group.users.count)].each do |user| %>
                   <span class="group-users-avatar">
-                    <img src=<%= cl_image_path user.photo.key %>>
+                    <img src=<%#= cl_image_path user.photo.key %>>
                   </span>
-                <% end %>
+                <%# end %>
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
       </div>
-      <p><%= group.description %></p>
+      <p><%#= group.description %></p>
     </div>
-    <% if current_user.groups.include?(group) %>
+    <%# if current_user.groups.include?(group) %>
       <div class="d-flex flex-column align-items-end">
-        <% unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-        <p><%= no_of_unread_messages(group) %> unread messages</p>
-      <% end %>
-        <% if group.messages.any? %>
-          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
-        <% else %>
+        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
+        <p><%#= no_of_unread_messages(group) %> unread messages</p>
+      <%# end %>
+        <%# if group.messages.any? %>
+          <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
+        <%# else %>
           <p class="mt-auto">No messages yet</p>
-        <% end %>
-        <%= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
+        <%# end %>
+        <%#= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
       </div>
-    <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
+    <%# elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
       <div class="d-flex flex-column align-items-end">
-        <% unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%= no_of_unread_messages(group) %> unread messages</p>
-        <% end %>
+        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
+          <p><%#= no_of_unread_messages(group) %> unread messages</p>
+        <%# end %>
         <i class="fas fa-envelope" style="color: #545A72;"></i>
-          <% if group.messages.any? %>
-            <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
-          <% else %>
+          <%# if group.messages.any? %>
+            <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
+          <%# else %>
             <p class="mt-auto">No messages yet</p>
-          <% end %>
+          <%# end %>
         <div class="mt_auto group-action-button">
             Request sent
         </div>
       </div>
-    <% elsif group.locked %>
+    <%# elsif group.locked %>
       <div class="d-flex flex-column align-items-end">
-        <% unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%= no_of_unread_messages(group) %> unread messages</p>
-        <% end %>
+        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
+          <p><%#= no_of_unread_messages(group) %> unread messages</p>
+        <%# end %>
         <i class="fas fa-lock" style="color: #545A72;"></i>
-          <% if group.messages.any? %>
-            <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
-          <% else %>
+          <%# if group.messages.any? %>
+            <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
+          <%# else %>
             <p class="mt-auto">No messages yet</p>
-          <% end %>
+          <%# end %>
         <button class="mt_auto group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Request to join!
         </button>
         <div class="dropdown-menu">
-          <%= render "shared/membership_request_form", group: group, groups: @groups %>
+          <%#= render "shared/membership_request_form", group: group, groups: @groups %>
         </div>
       </div>
-    <% else %>
+    <%# else %>
       <div class="d-flex flex-column align-items-end">
-        <% unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%= no_of_unread_messages(group) %> unread messages</p>
-        <% end %>
-        <% if group.messages.any? %>
-          <p class="mt-auto text-right">Last message posted<br/><%= time_since(group.messages.last) %></p>
-        <% else %>
+        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
+          <p><%#= no_of_unread_messages(group) %> unread messages</p>
+        <%# end %>
+        <%# if group.messages.any? %>
+          <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
+        <%# else %>
           <p class="mt-auto">No messages yet</p>
-        <% end %>
-        <%= link_to "Join group", group_memberships_path(group), method: :post, class: "mt_auto group-action-button" %>
+        <%# end %>
+        <%#= link_to "Join group", group_memberships_path(group), method: :post, class: "mt_auto group-action-button" %>
       </div>
-    <% end %>
+    <%# end %>
   </div>
 </div>
+ -->
+
+<div class="group-card d-flex">
+  <div class="group-image-container">
+    <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

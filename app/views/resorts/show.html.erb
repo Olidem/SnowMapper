@@ -16,7 +16,7 @@
     <div>
       <div class="resort-title-container">
         <div class="d-flex">
-          <h1 class="pb-3" style="font-weight: bold;"><%= @resort.name %></h1>
+          <h1 class="pb-3"><%= @resort.name %></h1>
           <% if data[:status].downcase == "closed" %>
             <%= image_tag 'closed-icon.png', class: "resort-icon ml-3" %>
           <% end %>
