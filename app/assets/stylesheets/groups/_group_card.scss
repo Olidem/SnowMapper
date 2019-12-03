@@ -5,6 +5,7 @@
 
 .group-card {
   background-color: #C1DAFF;
+  color: white;
   border-radius: 3px;
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
   margin: 32px 0px;
@@ -13,8 +14,7 @@
 
 .group-image-container {
   height: 100%;
-  width: 30%;
-  padding: 1%;
+  width: 25%;
 }
 
 .group-image {
@@ -28,15 +28,15 @@
 }
 
 .group-info-container {
-  width: 70%;
+  width: 75%;
 }
 
 .group-titles-container {
-  width: 60%;
+  width: 75%;
 }
 
 .group-actions-container {
-  width: 40%;
+  width: 25%;
   text-align: right;
 }
 
@@ -74,17 +74,17 @@
 
 .group-action-button {
   margin-top: 8px;
-  background-color: #545A72;
+  background-color: white;
   font-weight: light;
   padding: 4px 8px;
-  color: white;
+  color: #002A47;
   border: none;
   border-radius: 3px;
   text-decoration: none;
   transition: 0.3s ease;
   &:hover {
-    background-color: white;
-    color: #545A72;
+    background-color: #002A47;
+    color: white;
     text-decoration: none;
   }
   &:focus {
@@ -97,23 +97,41 @@
   background-color: white;
   font-weight: light;
   padding: 4px 8px;
-  color: #545A72;
+  color: #002A47;
   border: none;
   border-radius: 3px;
   text-decoration: none;
 }
 
 .group-card-resort-link {
-  font-size: 12px;
   color: white;
+  font-size: 10px;
+  font-weight: lighter;
   text-decoration: none;
   transition: 0.3s ease;
   &:hover {
     text-decoration: none;
-    color: #484848;
+    color: #002A47;
   }
 }
 
+.group-card-recent-messages {
+  color: white;
+  font-size: 10px;
+  font-weight: lighter;
+}
 
+.group-title {
+  font-size: 18px;
+}
 
+.group-title-description {
+  font-size: 18px;
+  font-weight: lighter;
+  line-height: 110%;
+}
+
+.group-card-gradient {
+  background: linear-gradient(40deg, #907373, 35%, #002A47);
+}
 

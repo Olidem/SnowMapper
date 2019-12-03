@@ -1,12 +1,14 @@
-<div class="group-card d-flex">
+<div class="group-card d-flex group-card-gradient">
   <div class="group-image-container">
     <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
   </div>
-  <div class="group-info-container d-flex justify-content-between">
-    <div class="group-titles-container d-flex flex-column justify-content-around align-items-start">
-      <%= link_to group.resort.name, resort_path(group.resort), class: "group-card-resort-link my-2" %>
-      <h4 class=""><%= group.name %></h4>
-      <p><%= group.description %></p>
+  <div class="group-info-container d-flex justify-content-between px-3">
+    <div class="group-titles-container d-flex flex-column justify-content-around align-items-start mt-3">
+      <div class="d-flex">
+        <p class="group-title"><%= group.name %></p>&nbsp&nbsp<span class="group-card-resort-link" style="align-self: center">-</span>&nbsp&nbsp
+        <%= link_to group.resort.name, resort_path(group.resort), class: "group-card-resort-link", style: "align-self: center" %>
+      </div>
+      <p class="group-title-description"><%= group.description %></p>
       <div class="d-flex">
         <div class="group-users-avatars ml-3">
           <% group.users[0...2].each do |user| %>
@@ -33,18 +35,18 @@
         <% end %>
       </div>
     </div>
-    <div class="group-actions-container d-flex flex-column justify-content-between">
-      <div class="p-3">
+    <div class="group-actions-container d-flex flex-column justify-content-between py-3">
+      <div class="">
         <% if group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
-          <i class="fas fa-envelope"></i>
+          <i class="fas fa-envelope" style="color: white;"></i>
         <% elsif current_user.groups.include?(group) %>
             <span class="badge badge-danger" style="align-self: start; font-weight: 700"><%= no_of_unread_messages(group) unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %></span>
         <% elsif group.locked %>
-          <i class="fas fa-lock"></i>
+          <i class="fas fa-lock" style="color: white;"></i>
         <% end %>
       </div>
-      <div class="p-3 d-flex flex-column align-items-end">
-        <%= group.messages.any? ? ("<p class='mt-auto text-right'>Last message<br/>#{time_since(group.messages.last)}</p>").html_safe : ("<p class='mt-auto'>No messages yet</p>").html_safe %>
+      <div class="d-flex flex-column align-items-end">
+        <%= group.messages.any? ? ("<p class='group-card-recent-messages'>Last message<br/>#{time_since(group.messages.last)}</p>").html_safe : ("<p class='group-card-recent-messages'>No messages yet</p>").html_safe %>
         <% if current_user.groups.include?(group) %>
           <%= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
         <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
