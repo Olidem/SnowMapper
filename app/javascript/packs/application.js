@@ -1,5 +1,10 @@
 
 import $ from 'jquery'
+import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { initMapbox } from '../plugins/init_mapbox';
+import swal from 'sweetalert';
+initMapbox();
 
 if(document){
     const toggleTag = document.querySelector(".message-button")
@@ -7,35 +12,20 @@ if(document){
     const closeTag =document.querySelector(".cross")
     console.log(toggleTag)
 
+    if (toggleTag) { // protecting this function from trying to run on other pages
     toggleTag.addEventListener("click", function () {
     mainTag.classList.toggle("open")
     $('html, body').animate({
                     scrollTop:0
                 }, 500);
-  })
+    })}
 
+    if (closeTag) { // protecting this function from trying to run on other pages
     closeTag.addEventListener("click", function () {
       mainTag.classList.toggle("open")
-    })
+    })}
 }
 
-
-
-import "bootstrap";
-
-import 'slick-carousel'
-// import 'slick-carousel/slick/slick.css'
-// import 'slick-carousel/slick/slick-theme.css'
-// $(document).ready(function(){
-//   // $('.country-carousel').slick({
-//   // });
-//   // $('.country-carousel').slick();
-//   $('.country-carousel').slick({
-//     infinite: true,
-//     slidesToShow: 3,
-//     slidesToScroll: 3
-//   });
-// });
 
 $('#message_content').keypress(function(e) {
       if(e.which == 13){
@@ -43,13 +33,6 @@ $('#message_content').keypress(function(e) {
            e.preventDefault();
        }
     });
-
-import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
-import { initMapbox } from '../plugins/init_mapbox';
-
-initMapbox();
-
-import swal from 'sweetalert';
 
 function sweetAlertClassSelector(selector, options = {}) {
   const swalButtons = document.querySelectorAll(selector);
@@ -83,11 +66,3 @@ sweetAlertClassSelector('.membership-request-sent', {
   timer: 2000,
   button: false
 });
-
-
-
-
-
-
-
-
