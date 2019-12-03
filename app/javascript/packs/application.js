@@ -25,8 +25,6 @@ if(document){
     })
 }
 
-
-
 import "bootstrap";
 
 import 'slick-carousel'
