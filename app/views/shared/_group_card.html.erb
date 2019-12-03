@@ -1,73 +1,11 @@
-<!--
-    <%# if  %>
-      <div class="d-flex flex-column align-items-end">
-        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-        <p><%#= no_of_unread_messages(group) %> unread messages</p>
-      <%# end %>
-        <%# if group.messages.any? %>
-          <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
-        <%# else %>
-          <p class="mt-auto">No messages yet</p>
-        <%# end %>
-        <%#= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
-      </div>
-    <%# elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
-      <div class="d-flex flex-column align-items-end">
-        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%#= no_of_unread_messages(group) %> unread messages</p>
-        <%# end %>
-        <i class="fas fa-envelope" style="color: #545A72;"></i>
-          <%# if group.messages.any? %>
-            <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
-          <%# else %>
-            <p class="mt-auto">No messages yet</p>
-          <%# end %>
-        <div class="mt_auto group-action-button">
-            Request sent
-        </div>
-      </div>
-    <%# elsif group.locked %>
-      <div class="d-flex flex-column align-items-end">
-        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%#= no_of_unread_messages(group) %> unread messages</p>
-        <%# end %>
-        <i class="fas fa-lock" style="color: #545A72;"></i>
-          <%# if group.messages.any? %>
-            <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
-          <%# else %>
-            <p class="mt-auto">No messages yet</p>
-          <%# end %>
-        <button class="mt_auto group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Request to join!
-        </button>
-        <div class="dropdown-menu">
-          <%#= render "shared/membership_request_form", group: group, groups: @groups %>
-        </div>
-      </div>
-    <%# else %>
-      <div class="d-flex flex-column align-items-end">
-        <%# unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %>
-          <p><%#= no_of_unread_messages(group) %> unread messages</p>
-        <%# end %>
-        <%# if group.messages.any? %>
-          <p class="mt-auto text-right">Last message posted<br/><%#= time_since(group.messages.last) %></p>
-        <%# else %>
-          <p class="mt-auto">No messages yet</p>
-        <%# end %>
-        <%#= link_to "Join group", group_memberships_path(group), method: :post, class: "mt_auto group-action-button" %>
-      </div>
-    <%# end %>
-  </div>
-</div>
- -->
-
 <div class="group-card d-flex">
   <div class="group-image-container">
     <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
   </div>
   <div class="group-info-container d-flex justify-content-between">
-    <div class="group-titles-container d-flex flex-column justify-content-around">
-      <h4 class="mt-3"><%= group.name %></h4>
+    <div class="group-titles-container d-flex flex-column justify-content-around align-items-start">
+      <%= link_to group.resort.name, resort_path(group.resort), class: "group-card-resort-link my-2" %>
+      <h4 class=""><%= group.name %></h4>
       <p><%= group.description %></p>
       <div class="d-flex">
         <div class="group-users-avatars ml-3">
@@ -96,7 +34,7 @@
       </div>
     </div>
     <div class="group-actions-container d-flex flex-column justify-content-between">
-      <div class="top">
+      <div class="p-3">
         <% if group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
           <i class="fas fa-envelope"></i>
         <% elsif current_user.groups.include?(group) %>
@@ -105,13 +43,14 @@
           <i class="fas fa-lock"></i>
         <% end %>
       </div>
-      <div class="bottom">
-        <%= group.messages.any? ? ("<p class='mt-auto text-right'>Last message posted<br/>#{time_since(group.messages.last)}</p>").html_safe : ("<p class='mt-auto'>No messages yet</p>").html_safe %>
+      <div class="p-3 d-flex flex-column align-items-end">
+        <%= group.messages.any? ? ("<p class='mt-auto text-right'>Last message<br/>#{time_since(group.messages.last)}</p>").html_safe : ("<p class='mt-auto'>No messages yet</p>").html_safe %>
         <% if current_user.groups.include?(group) %>
           <%= link_to "Go to group", group_path(group), class: "mt_auto group-action-button" %>
         <% elsif group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
           <div class="mt_auto group-action-button-deactivated">Request sent</div>
         <% elsif group.locked %>
+          <button class="mt_auto group-action-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Request to join!</button>
           <div class="dropdown-menu"><%= render "shared/membership_request_form", group: group, groups: @groups %></div>
         <% else %>
           <%= link_to "Join group", group_memberships_path(group), method: :post, class: "mt_auto group-action-button" %>

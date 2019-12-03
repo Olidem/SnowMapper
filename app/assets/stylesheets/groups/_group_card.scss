@@ -32,11 +32,11 @@
 }
 
 .group-titles-container {
-  width: 70%;
+  width: 60%;
 }
 
 .group-actions-container {
-  width: 30%;
+  width: 40%;
   text-align: right;
 }
 
@@ -78,6 +78,7 @@
   font-weight: light;
   padding: 4px 8px;
   color: white;
+  border: none;
   border-radius: 3px;
   text-decoration: none;
   transition: 0.3s ease;
@@ -97,10 +98,21 @@
   font-weight: light;
   padding: 4px 8px;
   color: #545A72;
+  border: none;
   border-radius: 3px;
   text-decoration: none;
 }
 
+.group-card-resort-link {
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+  &:hover {
+    text-decoration: none;
+    color: #484848;
+  }
+}
 
 
 
