@@ -1,23 +1,28 @@
+$primary-color: #002A47;
+$background-color: #ffffff;
+$secondary-color: #52BFA1;
+
+.resort-show-group-filters-box {
+  // border: 1px solid $primary-color;
+  border-radius: 3px;
+  padding: 16px;
+  // box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  color: $primary-color;
+}
+
 .group-filters-container {
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 32px;
+  // border: 1px solid $primary-color;
   border-radius: 4px;
-  // background-color: #C0DAFF;
-  color: white;
+  color: $primary-color;
   padding: 0px 8px;
   text-align: center;
   position: sticky;
   top: 16px;
-  p {
-    // font-weight: lighter;
-    // color: #484848;
-    color: white;
-  }
-}
-
-.group-filters-box {
-  background-color: #545A72;
-  border-radius: 3px;
-  padding: 16px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    p {
+      color: $primary-color;
+    }
 }
 
 .resort-url-link {
@@ -64,4 +69,24 @@
 .resort-data-text {
   font-weight: lighter;
   font-size: 12px;
+}
+
+.group-action-button-inverted {
+  margin-top: 8px;
+  background-color: $secondary-color;
+  font-weight: light;
+  padding: 4px 8px;
+  color: $background-color;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: 0.3s ease;
+    &:hover {
+      background-color: $primary-color;
+      color: $background-color;
+      text-decoration: none;
+    }
+    &:focus {
+      outline:0;
+    }
 }

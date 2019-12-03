@@ -60,20 +60,20 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <div class="d-flex align-items-center mb-3">
-        <% if current_user.resort == @resort %>
-          <%= image_tag "checked-in.png", class: "check-in-image" %>
-          <p>You're checked in at <%= @resort.name %></h2>
-        <% else %>
-          <%= link_to image_tag("checked-out.png", class: "check-in-image"), :resorts_add_user %>
-          <p>Check in at <%= @resort.name %>?</h2>
-        <% end %>
-      </div>
       <div class="group-filters-container">
-        <div class="my-3 group-filters-box">
+        <div class="d-flex align-items-center resort-show-group-filters-box">
+          <% if current_user.resort == @resort %>
+            <%= image_tag "checked-in.png", class: "check-in-image" %>
+            <p>You're checked in at <%= @resort.name %></h2>
+          <% else %>
+            <%= link_to image_tag("checked-out.png", class: "check-in-image"), :resorts_add_user %>
+            <p>Check in at <%= @resort.name %>?</h2>
+          <% end %>
+        </div>
+        <div class="resort-show-group-filters-box">
           <p><%= @groups.count %> active squads in <%= @resort.name %> right now!</p>
           <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="group-action-button-inverted dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort groups by
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -83,7 +83,13 @@
             </div>
           </div>
         </div>
-        <div class="my-3 group-filters-box">
+        <div class="resort-show-group-filters-box">
+          <p>No groups that match your interests?</p>
+          <button type="button" class="group-action-button-inverted mt-3" data-toggle="modal" data-target="#createGroupModel">
+            Create a new group
+          </button>
+        </div>
+        <div class="resort-show-group-filters-box">
           <p><%= @resort.users.count %> squaddies checked in at <%= @resort.name %> right now!</p>
           <div class="group-users-avatars mt-3">
             <% @resort.users.each do |user| %>
@@ -92,12 +98,6 @@
               </span>
             <% end %>
           </div>
-        </div>
-        <div class="my-3 group-filters-box">
-          <p>No groups that match your interests?</p>
-          <button type="button" class="btn btn-light mt-3" data-toggle="modal" data-target="#createGroupModel">
-            Create a new group
-          </button>
         </div>
       </div>
     </div>

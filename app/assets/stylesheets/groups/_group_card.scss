@@ -1,15 +1,22 @@
+$primary-color: #002A47;
+$background-color: #ffffff;
+$secondary-color: #52BFA1;
+
 .group-show-page-card {
   height: 100%;
   width: 100%;
 }
 
 .group-card {
-  background-color: #C1DAFF;
-  color: white;
+  color: $primary-color;
   border-radius: 3px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
   margin: 32px 0px;
   width: 100%;
+}
+
+.group-card-gradient {
+  // background: linear-gradient(40deg, #907373, 35%, #002A47);
 }
 
 .group-image-container {
@@ -32,11 +39,11 @@
 }
 
 .group-titles-container {
-  width: 75%;
+  width: 70%;
 }
 
 .group-actions-container {
-  width: 25%;
+  width: 30%;
   text-align: right;
 }
 
@@ -44,6 +51,7 @@
   display: inline-flex;
   flex-direction: row-reverse;
   margin-bottom: 16px;
+  margin-right: 32px;
 }
 
 .group-users-avatar {
@@ -53,7 +61,6 @@
   overflow: hidden;
   width: 40px;
   height: 40px;
-
   img {
     width: 40px;
     height: 40px;
@@ -64,7 +71,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #DFE6E9;
+  background-color: $secondary-color;
   outline:none;
   text-decoration:none;
   &:hover {
@@ -74,17 +81,17 @@
 
 .group-action-button {
   margin-top: 8px;
-  background-color: white;
+  background-color: $primary-color;
   font-weight: light;
   padding: 4px 8px;
-  color: #002A47;
+  color: $background-color;
   border: none;
   border-radius: 3px;
   text-decoration: none;
   transition: 0.3s ease;
   &:hover {
-    background-color: #002A47;
-    color: white;
+    background-color: $secondary-color;
+    color: $background-color;
     text-decoration: none;
   }
   &:focus {
@@ -94,29 +101,29 @@
 
 .group-action-button-deactivated {
   margin-top: 8px;
-  background-color: white;
+  background-color: $primary-color;
   font-weight: light;
   padding: 4px 8px;
-  color: #002A47;
+  color: $background-color;
   border: none;
   border-radius: 3px;
   text-decoration: none;
 }
 
 .group-card-resort-link {
-  color: white;
+  color: $secondary-color;
   font-size: 10px;
   font-weight: lighter;
   text-decoration: none;
   transition: 0.3s ease;
   &:hover {
     text-decoration: none;
-    color: #002A47;
+    color: $primary-color;
   }
 }
 
 .group-card-recent-messages {
-  color: white;
+  color: $secondary-color;
   font-size: 10px;
   font-weight: lighter;
 }
@@ -129,9 +136,5 @@
   font-size: 18px;
   font-weight: lighter;
   line-height: 110%;
-}
-
-.group-card-gradient {
-  background: linear-gradient(40deg, #907373, 35%, #002A47);
 }
 
