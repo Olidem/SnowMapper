@@ -1,6 +1,26 @@
 
 import $ from 'jquery'
 
+if(document){
+    const toggleTag = document.querySelector(".message-button")
+    const mainTag = document.querySelector(".my-chat")
+    const closeTag =document.querySelector(".cross")
+    console.log(toggleTag)
+
+    toggleTag.addEventListener("click", function () {
+    mainTag.classList.toggle("open")
+    $('html, body').animate({
+                    scrollTop:0
+                }, 500);
+  })
+
+    closeTag.addEventListener("click", function () {
+      mainTag.classList.toggle("open")
+    })
+}
+
+
+
 import "bootstrap";
 
 import 'slick-carousel'
@@ -63,5 +83,11 @@ sweetAlertClassSelector('.membership-request-sent', {
   timer: 2000,
   button: false
 });
+
+
+
+
+
+
 
 
