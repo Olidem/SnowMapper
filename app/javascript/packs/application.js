@@ -37,8 +37,16 @@ import 'slick-carousel'
 //   });
 // });
 
+$('#message_content').keypress(function(e) {
+      if(e.which == 13){
+           $(this).closest('form').submit();
+           e.preventDefault();
+       }
+    });
+
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
+
 initMapbox();
 
 import swal from 'sweetalert';

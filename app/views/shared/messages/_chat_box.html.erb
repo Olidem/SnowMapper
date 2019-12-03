@@ -1,41 +1,41 @@
 <div class="container show-chat-box" style="background-color: white;">
+
   <i class="fas fa-times cross"></i>
   <h1 style="text-align: center"></h1>
+
   <div class="bottom scroll-style" id="comment_section">
     <% @group.messages.order(created_at: :asc).each do |message| %>
       <% if !message.show %>
-        <div class="message-deleted" id="comment-<%= message.id %>">
-          <p><i>Message deleted</i></p>
+        <div class="talk-bubble message-deleted" id="comment-<%= message.id %>">
+          <p><i class="fas fa-ban" style="font-size: 12px; color: white;"></i><i>  Message deleted</i></p>
         </div>
       <% elsif message.user == current_user %>
-        <div class="message-card" id="comment-<%= message.id %>">
-          <div class="message-user"/>
-            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
+        <div class="talk-bubble talk-bubble-right tri-right round right-top" id="comment-<%= message.id %>">
+          <div class="message-user">
+<!--            <%#= cl_image_tag message.user.photo.key, class: "avatar-message" %> -->
             <div class="message-user-details">
-              <p><%= message.user.first_name %></p>
-              <p><span class="grey-txt"><%= message.group.name %></span></p>
+              <p><%= "You" %></p>
             </div>
           </div>
-          <div class="message-text">
+          <div class="message-user-text">
             <p><%= message.content %></p>
-            <div class="message-other">
-              <p><span class="grey-txt date"><%= time_since(message) %></span></p>
-              <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %>
+            <div class="message-user-time">
+              <p><span class="white-txt date"><%= time_since(message) %></span></p>
+<!--               <%#= link_to '<i class="far fa-trash-alt"></i>'.html_safe, message_path(message), method: :delete, data: { confirm: "Are you sure?" } %> -->
             </div>
           </div>
         </div>
       <% else %>
-        <div class="message-card" id="comment-<%= message.id %>">
-          <div class="message-user"/>
-            <%= cl_image_tag message.user.photo.key, class: "avatar" %>
-            <div class="message-user-details">
+        <div class="talk-bubble talk-bubble-left tri-right round left-top" id="comment-<%= message.id %>">
+          <div class="message-other-users">
+<!--             <%#= cl_image_tag message.user.photo.key, class: "avatar-message" %> -->
+            <div class="message-other-users-details">
               <p><%= message.user.first_name %></p>
-              <p><span class="grey-txt"><%= message.group.name %></span></p>
             </div>
           </div>
-          <div class="message-text">
+          <div class="message-other-users-text">
             <p><%= message.content %></p>
-            <div class="message-other">
+            <div class="message-other-users-time">
               <p><span class="grey-txt date"><%= time_since(message) %></span></p>
             </div>
           </div>
@@ -58,19 +58,16 @@
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
-        <div class="message-card" id="comment-${id}">
+        <div class="talk-bubble talk-bubble-right tri-right round right-top" id="comment-${id}">
           <div class="message-user"/>
-            <img class="avatar" src="http://res.cloudinary.com/dr48k5zwm/image/upload/${photo}">
             <div class="message-user-details">
-              <p>${name}</p>
-              <p><span class="grey-txt">${group_name}</span></p>
+              <p>You</p>
             </div>
           </div>
-          <div class="message-text">
+          <div class="message-user-text">
             <p>${comment}</p>
-            <div class="message-other">
-              <p><span class="grey-txt date">0 minutes ago</span></p>
-              <a data-confirm="Are you sure?" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}"><i class="far fa-trash-alt"></i></a></div>
+            <div class="message-user-time">
+              <p><span class="white-txt date">0 minutes ago</span></p>
             </div>
           </div>
         </div>
@@ -88,7 +85,7 @@
       div.firstChild.remove()
     }
     div.classList.add('message-deleted')
-    div.classList.remove("message-card");
+    div.classList.remove("talk-bubble tri-right round right-top");
     div.innerHTML = '<i><p>Message deleted</p></i>'
   });
 
