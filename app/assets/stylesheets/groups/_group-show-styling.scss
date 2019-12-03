@@ -33,7 +33,8 @@
   justify-content: space-between;
   flex-direction: column;
   height: 100%;
-
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 #comment_section {
@@ -276,7 +277,6 @@
 .my-chat {
   width: 40vw;
   position: absolute;
-  border: 1px solid black;
   top: 104px;
   right: -40vw;
   z-index: 999;
