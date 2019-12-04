@@ -4,7 +4,6 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 import swal from 'sweetalert';
-initMapbox();
 
 if(document){
     const toggleTag = document.querySelector(".message-button")
@@ -65,3 +64,5 @@ sweetAlertClassSelector('.membership-request-sent', {
   timer: 2000,
   button: false
 });
+
+initMapbox();

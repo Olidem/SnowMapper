@@ -24,7 +24,6 @@
   }
 }
 
-
 .resort-index-container {
   margin: 0 10% 0 10%;
   display: flex;
@@ -47,6 +46,10 @@
   justify-content: top;
   position: relative;
   border-radius: 5px;
+  text-decoration: none !important;
+    &:hover {
+      text-decoration: none !important;
+    }
 }
 
 .resort-users-info {
@@ -104,7 +107,7 @@
   display: flex;
   margin-top: 20px;
   margin-left: 20px;
-  padding: 10px;
+  padding: 0 10px;
   p {
     margin-left: 20px;
   }
