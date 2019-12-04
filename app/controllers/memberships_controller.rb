@@ -23,13 +23,13 @@ class MembershipsController < ApplicationController
   # make admin or not.
   def update
     @membership.update(membership_params)
-    redirect_to edit_group_path(@group)
+    redirect_back(fallback_location: group_path(@group))
   end
 
   # remove the member from the group.
   def destroy
     @membership.destroy
-    redirect_back(fallback_location: edit_group_path(@group))
+    redirect_back(fallback_location: group_path(@group))
   end
 
   private

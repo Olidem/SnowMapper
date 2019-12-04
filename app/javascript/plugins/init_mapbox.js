@@ -21,7 +21,6 @@ const initMapbox = () => {
     var markers = JSON.parse(mapElement.dataset.markers);
     if(markers) {
       markers.forEach(function (marker) {
-        console.log(marker);
         marker.className = '';
         var popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
         var element = document.createElement('div');
