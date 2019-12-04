@@ -157,9 +157,9 @@
 .group-show-avatars {
    padding: 12px;
   img {
-    max-width: 40px;
-    max-height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   }
 }
 
@@ -303,4 +303,12 @@
   // position: absolute;
   // top: 20px;
   // left: 50px;
+}
+
+.group-show-avatars {
+  ul {
+    list-style-type: none;
+    color: white;
+    padding-inline-start: 0px;
+  }
 }
