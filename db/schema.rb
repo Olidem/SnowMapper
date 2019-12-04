@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_100533) do
+ActiveRecord::Schema.define(version: 2019_12_04_144926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,11 +103,11 @@ ActiveRecord::Schema.define(version: 2019_12_03_100533) do
 
   create_table "read_messages", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "group_id"
-    t.integer "no_of_read_messages"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_read_messages_on_group_id"
+    t.bigint "message_id"
+    t.boolean "read", default: false
+    t.index ["message_id"], name: "index_read_messages_on_message_id"
     t.index ["user_id"], name: "index_read_messages_on_user_id"
   end
 
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_100533) do
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
-  add_foreign_key "read_messages", "groups"
+  add_foreign_key "read_messages", "messages"
   add_foreign_key "read_messages", "users"
   add_foreign_key "resorts", "countries"
   add_foreign_key "users", "resorts"
