@@ -354,11 +354,25 @@
 
 .group-resorts {
   background-color: #C0DAFF;
-  min-width: 300px;
+  width: 300px;
   margin-right: 96px;
-  min-height: 200px;
+  height: 200px;
   // margin-top: 64px;
   height: 100%;
   position: relative;
+}
+
+.group-resort-title {
+  padding: 12px;
+  color: #F2F2F2;
+  font-size: 24px;
+}
+
+.group-resort-users {
+  color: white;
+  display: flex;
+  p {
+    padding-right: 5px;
+  }
 }
 

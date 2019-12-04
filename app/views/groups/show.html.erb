@@ -56,7 +56,7 @@
   </div>
 </section>
 
-<section class="group-meeting-resort-info">
+<section class="group-meeting-resort-info" style="width: 100%">
   <div class="group-meeting-info">
     <div class="member-info-meetup">
       <div class="meetup-cards">
@@ -76,10 +76,31 @@
   <div class="group-resort-info">
     <div class="group-resorts">
       <i class="fas fa-snowflake members-snowflake"></i>
-      <p class="member-title">
-        RESORTS INFO
+      <p class="group-resort-title">
+        <%= @group.resort.name %>
       </p>
-
+      <div class="group-resort-users">
+        <i class="fas fa-users"></i>
+        <p><%= @group.resort.groups.size %> active groups</p>
+      </div>
+      <div class="resort-icons">
+        <div class="icon-info">
+          <i class="fas fa-mountain"></i>
+          <p><%= (rand()*5000).round(0) %>  m</p>
+        </div>
+        <div class="icon-info">
+          <i class="fas fa-snowflake"></i>
+          <p><%= (rand()*50).round(0) %> cm</p>
+        </div>
+        <div class="icon-info">
+          <i class="fas fa-skiing"></i>
+          <p><%= (rand()*300).round(0) %>  m</p>
+        </div>
+        <div class="icon-info">
+          <i class="fas fa-temperature-low"></i>
+          <p><%= ["moderate", "overcast", "snowing", "dry", "mild"].sample %></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

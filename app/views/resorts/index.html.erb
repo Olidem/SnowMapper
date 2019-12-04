@@ -1,13 +1,3 @@
-<% data = {
-      status: "open",
-      snowfall_today: "15 cm",
-      snowfall_tomorrow: "1cm",
-      snow_condition: "excellent",
-      open_runs: "8 of 74",
-      open_piste: "16 of 150km",
-      open_lifts: "5 of 39"
-    }%>
-
 <div class="resort-banner-image  mb-3 p-3">
   <div class="banner-text">
     <h1>Adventure to the world's best resorts</h1>
@@ -16,7 +6,7 @@
 </div>
 <div class="resort-index-container d-flex justify-content-center">
   <% @resorts.each do |resort| %>
-    <%= render partial: "shared/resort_index_cards", locals: { resort: resort } %>
+     <%= render partial: "shared/resort_index_cards", locals: { resort: resort } %>
   <% end %>
 </div>
 
