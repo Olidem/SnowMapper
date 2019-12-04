@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center mt-3">
+  <div class=" justify-content-cente">
+    <div class="d-flex">
+      <h1><%= @group.name %></h1>
+    </div>
+      <%= simple_form_for [@group] do |f| %>
+        <%= f.input :name, label: false %>
+        <%= f.input :description, label: false %>
+        <div class="d-flex justify-content-between">
+          <%= f.input :photo, as: :file, label: false %>
+          <%= f.input :locked %>
+        </div>
+        <div>
+          <% @group.memberships.each do |membership| %>
+            <div class="d-flex align-items-center">
+              <%= cl_image_tag membership.user.photo.key, class: "avatar-edit-group"%>
+              <p class="group-edit-name"><%= membership.user.first_name %>  <%= membership.user.last_name %></p>
+              <% if @group.memberships.find_by_user_id(current_user.id).admin %>
+                <% if !membership.admin? %>
+                  <%= link_to "Remove member", membership_path(membership), method: :delete, data: { confirm: "Are you sure?" }, class: "member-edit-group" %>
+                  <%= link_to "Make admin", membership_path(membership, membership: { admin: true }), method: :patch, class: "member-edit-group" %>
+                <% else %>
+                  <%= link_to "Remove admin", membership_path(membership, membership: { admin: false }), method: :patch, class: "member-edit-group" %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-left mt-4">
+          <%= f.submit "Edit", class: "btn btn-primary"%>
+        </div>
+      <% end %>
+  </div>
+</div>

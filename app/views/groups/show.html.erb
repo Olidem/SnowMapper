@@ -12,7 +12,7 @@
             <%= link_to '<i class="far fa-trash-alt group-icons"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
           </h2>
           <h2>
-            <%= link_to '<i class="far fa-edit group-icons"></i>'.html_safe, edit_group_path(@group) %>
+            <i class="far fa-edit group-icons" data-toggle="modal" data-target="#editGroupModel" id="group-edit-button"><a></a></i>
           </h2>
         </div>
       <% end %>
@@ -63,32 +63,18 @@
     </div>
   </div>
 
-
-
-
 <div class="my-chat">
   <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
 </div>
 
-
-
-
-
-
-
-<!-- <div class="grid-container-groups">
-
-  <div class="group-show-page grid-container-groups2">
-      <div class="group-info-container d-flex justify-content-between flex-grow-1">
-        <%#= render partial: "shared/meetings_show"%>
+<!-- Edit group modal -->
+<div class="modal fade" id="editGroupModel" tabindex="-1" role="dialog" aria-labelledby="editGroupModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render partial: "shared/group_edit_for_modal", locals: { group: @group } %>
       </div>
     </div>
   </div>
-  <div class="chat-box grid-container-groups3">
-    <%#= render partial: "shared/messages/chat_box", group: @group, message: @message%>
-  </div>
-</div> -->
-
-
-
+</div>
 
