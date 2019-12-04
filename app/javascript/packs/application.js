@@ -4,13 +4,11 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 import swal from 'sweetalert';
-initMapbox();
 
 if(document){
     const toggleTag = document.querySelector(".message-button")
     const mainTag = document.querySelector(".my-chat")
     const closeTag =document.querySelector(".cross")
-    console.log(toggleTag)
 
     if (toggleTag) { // protecting this function from trying to run on other pages
     toggleTag.addEventListener("click", function () {
@@ -66,3 +64,5 @@ sweetAlertClassSelector('.membership-request-sent', {
   timer: 2000,
   button: false
 });
+
+initMapbox();

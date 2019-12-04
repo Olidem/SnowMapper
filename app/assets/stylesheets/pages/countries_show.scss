@@ -1,0 +1,10 @@
+#mapbox-container-countries-show {
+  position: sticky;
+  top: 16px;
+  width: 100%;
+  height: calc(100vh - 32px);
+}
+
+#map {
+  border-radius: 4px;
+}

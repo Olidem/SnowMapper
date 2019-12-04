@@ -12,12 +12,13 @@ class GroupsController < ApplicationController
 
     @meetings = @group.meetings.geocoded #returns flats with coordinates
     # @meetings = @group.meetings #returns flats with coordinates
-
-    @markers = @meetings.map do |meeting|
-      {
-        lat: meeting.latitude,
-        lng: meeting.longitude
-      }
+    if (@meetings.length > 0)
+      @markers = @meetings.map do |meeting|
+        {
+          lat: meeting.latitude,
+          lng: meeting.longitude
+        }
+      end
     end
     mark_as_read
   end
@@ -31,7 +32,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @resort = Resort.find(params[:resort_id])
     @group.resort = @resort
-    if @group.save!
+    if @group.save
       Membership.create(user: current_user, group: @group, admin: true)
       redirect_to group_path(@group)
     else
