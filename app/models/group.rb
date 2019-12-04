@@ -6,4 +6,5 @@ class Group < ApplicationRecord
   has_one_attached :photo
   has_many :users, through: :memberships
   has_many :meetings, dependent: :destroy
+  has_many :read_messages, dependent: :destroy
 end

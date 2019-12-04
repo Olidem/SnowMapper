@@ -41,12 +41,13 @@ class MembershipRequestsController < ApplicationController
   # Notification center methods
   def notifications_center
     memberships_approvals_set
-    @groups = current_user.groups
+    @groups = current_user.groups.reverse
     @memberships = current_user.memberships
     @groups_with_new_messages = []
     current_user.read_messages.where(read: false).each do |read_message|
       @groups_with_new_messages << read_message.group
     end
+    @groups_with_new_messages.uniq!
   end
 
   private

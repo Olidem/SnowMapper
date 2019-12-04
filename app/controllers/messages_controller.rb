@@ -63,7 +63,7 @@ class MessagesController < ApplicationController
   def create_unread_message
     @group = Group.find(params[:group_id])
     @group.users.each do |user|
-      @read_message = ReadMessage.new(user: user, group: @group)
+      @read_message = ReadMessage.create(user: user, group: @group, message: @message)
     end
   end
 

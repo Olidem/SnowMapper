@@ -62,7 +62,9 @@ class GroupsController < ApplicationController
   def mark_as_read
     @group.messages.each do |message|
       @read_message = ReadMessage.where(user: current_user, message: message)
-      @read_message.update(read: true)
+      if @read_message
+        @read_message.update(read: true)
+      end
     end
   end
 
