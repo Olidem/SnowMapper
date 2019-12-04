@@ -16,13 +16,14 @@ header {
 }
 
 .nav {
-
   margin-right: 96px;
   margin-left:96px;
   // padding-bottom: 16px;
   justify-content: space-between;
   padding: 32px 0;
   align-items: center;
+  transition: 0.2s;
+
   // p {
   //   letter-spacing: -0.16em;
   //   font-weight: 400;
@@ -30,6 +31,36 @@ header {
   //   align-items: center !important;
   // }
 }
+
+
+
+// .nav:hover {
+
+//     .nav-title {
+//     transition: 0.2s;
+//     cursor: pointer;
+//     }
+
+//     .nav-title {
+//     letter-spacing: 0.2em;
+//     transition: 0.2s;
+//     cursor: pointer;
+
+//   }
+// }
+
+
+.nav-title {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.nav-title:hover {
+  letter-spacing: 0.2em;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
 
 .sign-up {
   // align-items: center;

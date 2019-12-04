@@ -1,6 +1,6 @@
 <header id="home-override">
   <div class="nav">
-      <p>
+      <p class="nav-title">
         SNOWSQUAD
       </p>
     <div class="nav-items">
@@ -36,27 +36,29 @@
   <div class="grid-item action-pannel">
     <p class="question">Where are you heading?</p>
     <form action="#" class="form">
-      <select name="country" id="countries" onmouseout="resortDropdown()" data-countries="<%= @countries %>" data-resorts="<%= @resorts %>">
+      <select name="country" id="countries" onchange="resortDropdown()" data-countries="<%= @countries %>" data-resorts="<%= @resorts %>">
         <option value="no-country" disabled selected>Select a Country</option>
         <% @countries.each do |country| %>
           <option value="<%= country.id %>"><%= country.name %></option>
         <% end %>
       </select>
       <% @resorts_hash.each do |k, v| %>
-        <select name="<%= k %>resorts" id="<%= k %>resorts" class="resort-dropdown d-none" onmouseout="createLink('<%= k %>resorts')">
+        <select name="<%= k %>resorts" id="<%= k %>resorts" class="resort-dropdown" onmouseout="createLink('<%= k %>resorts')">
           <option value="no-resorts" disabled selected>Select a Resort</option>
           <% v.each do |resort| %>
             <option value="<%= Resort.find(resort).id %>"><%= Resort.find(resort).name %></option>
           <% end %>
         </select>
       <% end %>
-      </form>
-      <div id="linkHolder">
-        <a href="/countries">
-          <p class="action">Go<i class="fas fa-arrow-right"></i></p>
-        </a>
-      </div>
+    </form>
+    <div id="linkHolder" class="go-button">
+      <a href="/countries">
+        <p class="action">Go</p>
+      </a>
     </div>
+  </div>
+
+
   <div class="grid-item main-image">
 
   </div>
@@ -81,9 +83,9 @@
     <a href=""></a>
   </div>
   <div class="grid-item groups-card">
-    <p class="group-title">Groups looking for someone</p>
+    <span style="display: block" class="group-title mt-3">Groups looking for someone</span>
     <i class="fas fa-snowflake snow-group"></i>
-    <p class="groups-message">Freestylers</p>
+    <span style="display: block" class="groups-message my-3">Freestylers</span>
     <div class="group-users-avatars override">
       <% User.all.each do |user| %>
         <span  class="group-users-avatar">
@@ -91,9 +93,9 @@
         </span>
       <% end %>
     </div>
-    <p class="groups-slogan">Here for a good time not a long time</p>
+    <span style="display: block" class="groups-slogan my-3">Here for a good time not a long time</span>
     <a href="groups/1">
-      <p class="contact">Contact them <i class="fas fa-arrow-right"></i></p></p>
+      <span class="contact">Contact them <i class="fas fa-arrow-right"></i></span>
     </a>
   </div>
 </div>
@@ -105,17 +107,20 @@
     console.log(countryId)
     var selectedDropdown = document.getElementById(`${countryId}resorts`)
     if (selectedDropdown) {
-      document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
-        dropdown.classList.add('d-none')
-      })
-      selectedDropdown.classList.remove('d-none')
+      // document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
+        // dropdown.classList.add('d-none')
+      // })
+      // selectedDropdown.classList.remove('d-none')
+       selectedDropdown.classList.add('resort-dropdown--visible')
     }
-    document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}'>GO</a>`
+    document.getElementById('linkHolder').innerHTML = ''
+    document.getElementById('linkHolder').insertAdjacentHTML('afterbegin', `<a href='countries/${countryId}'><p class="action">Go</p></a>`)
+    // document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}' class="action">GO</a>`
   }
 
   const createLink = (id) => {
     var selectedResort = document.getElementById(id).value
-    document.getElementById('linkHolder').innerHTML = `<a href='resorts/${selectedResort}'>GO</a>`
+    document.getElementById('linkHolder').innerHTML = `<a href='resorts/${selectedResort}'><p class="action">Go</p></a>`
   }
 
 </script>

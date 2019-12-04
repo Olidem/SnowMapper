@@ -7,16 +7,19 @@ if(document){
     const closeTag =document.querySelector(".cross")
     console.log(toggleTag)
 
-    toggleTag.addEventListener("click", function () {
-    mainTag.classList.toggle("open")
-    $('html, body').animate({
-                    scrollTop:0
-                }, 500);
-  })
-
-    closeTag.addEventListener("click", function () {
+    if (toggleTag) {
+      toggleTag.addEventListener("click", function () {
       mainTag.classList.toggle("open")
-    })
+      $('html, body').animate({
+                      scrollTop:0
+                  }, 500);
+      })
+    }
+    if (closeTag) {
+      closeTag.addEventListener("click", function () {
+        mainTag.classList.toggle("open")
+      })
+    }
 }
 
 

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @disable_footer = true
     @disable_navbar = true
     @countries = Country.all
-    @resorts = Resort.all.sort
+    @resorts = Resort.all
     # raise
     @resorts_hash = {}
     resorts = Resort.all
