@@ -10,7 +10,7 @@ $secondary-color: #52BFA1;
 .group-card {
   color: $primary-color;
   border-radius: 3px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
   margin: 32px 0px;
   width: 100%;
 }
@@ -31,7 +31,7 @@ $secondary-color: #52BFA1;
   background-size: cover;
   border-radius: 3px;
   background-position: center;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  // box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .group-info-container {
@@ -45,6 +45,10 @@ $secondary-color: #52BFA1;
 .group-actions-container {
   width: 30%;
   text-align: right;
+}
+
+.group-title {
+  font-size: 18px;
 }
 
 .group-users-avatars {
@@ -126,10 +130,6 @@ $secondary-color: #52BFA1;
   color: $secondary-color;
   font-size: 12px;
   font-weight: lighter;
-}
-
-.group-title {
-  font-size: 18px;
 }
 
 .group-title-description {

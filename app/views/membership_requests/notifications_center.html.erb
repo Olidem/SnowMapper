@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav nav-tabs mx-0 py-0 d-flex justify-content-start" id="nav-tab" role="tablist">
+  <div class="nav nav-tabs mx-0 pb-0 d-flex justify-content-start" id="nav-tab" role="tablist">
     <a class="notification-first-tab mr-3 nav-item nav-link active" id="nav-your-groups-tab" data-toggle="tab" href="#nav-your-groups" role="tab" aria-controls="nav-your-groups" aria-selected="true">Your groups</a>
     <a class="mx-3 nav-item nav-link" id="nav-new-messages-tab" data-toggle="tab" href="#nav-new-messages" role="tab" aria-controls="nav-new-messages" aria-selected="false">New messages<span class="badge badge-danger ml-2" style="align-self: start; font-weight: 500"><%= total_no_of_groups_with_unread_messages if total_no_of_groups_with_unread_messages > 0 %></span></a>
     <a class="mx-3 nav-item nav-link" id="nav-membership-requests-tab" data-toggle="tab" href="#nav-membership-requests" role="tab" aria-controls="nav-membership-requests" aria-selected="false">Membership requests<span class="badge badge-danger ml-2" style="align-self: start; font-weight: 500" id="user_approvals_notification"><%= user_approvals_no if user_approvals_no > 0 %></span></a>

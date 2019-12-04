@@ -1,37 +1,37 @@
+$primary-color: #002A47;
+$background-color: #ffffff;
+$secondary-color: #52BFA1;
+
 .resort-card-show {
-  margin: 5px;
-  overflow: hidden;
-  height: auto;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  display: flex;
+  color: $primary-color;
+  border-radius: 3px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 32px 0px;
+  width: 100%;
   img {
-    width: 200px;
+    width: 40%;
     height: auto;
     object-fit: cover;
+    border-radius: 3px;
   }
 }
 
-.scroll-style {
-    max-height: 600px;
-    overflow-y: auto;
-}
+// .scroll-style {
+//     max-height: 600px;
+//     overflow-y: auto;
+// }
 
 .resort-info-show {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  p {
-    font-size: 0.7em;
+  h6 {
+    font-size: 18px;
   }
 }
 
 .resort-title-show {
   display: flex;
   justify-content: space-between;
-  p {
-    font-size: 0.6em;
-  }
   width: 100%;
   top: 5px;
 }
@@ -43,48 +43,79 @@
   }
 }
 
-.resort-icons {
-  display: flex;
-  width: 30%;
-  flex-direction: column;
-}
+// .resort-icons {
+//   display: flex;
+//   width: 30%;
+//   flex-direction: column;
+// }
 
 .icon-info {
   display: flex;
-  padding: 5px;
-  p {
-    padding-left: 10px;
-  }
   i {
     font-size: 1em;
   }
   justify-content: space-between;
+  p {
+    color: $secondary-color;
+    margin-top: 8px;
+    font-size: 12px;
+  }
 }
 
-.resort-cost {
-  display: flex;
-  height: 100%;
-  font-size: 2em;
-}
+// .resort-cost {
+//   display: flex;
+//   height: 100%;
+//   font-size: 2em;
+// }
 
-.resort-bottom {
-  display:flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 5px;
-}
+// .resort-bottom {
+//   display:flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   margin-bottom: 5px;
+// }
+
+// .resort-btn {
+//   background-color: #73A8B4;
+//   text-align: center;
+//   border-radius: 5px;
+//   a {
+//     color: white;
+//     margin: 5px;
+//   }
+//   a:hover {
+//     text-decoration: none;
+//     background-color: #73A8B4;
+//   }
+// }
+
 
 .resort-btn {
-  width: 100%;
-  background-color: #73A8B4;
-  text-align: center;
-  border-radius: 5px;
-  a {
-    color: white;
-    margin: 5px;
-  }
-  a:hover {
+  background-color: $primary-color;
+  font-weight: light;
+  padding: 4px 8px;
+  color: $background-color;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  align-self: center;
+  &:hover {
+    background-color: $secondary-color;
+    color: $background-color;
     text-decoration: none;
-    background-color: #73A8B4;
   }
+  &:focus {
+    outline:0;
+  }
+}
+
+.resort-card-active-groups {
+  color: $secondary-color;
+  font-size: 12px;
+}
+
+.resort-card-resort-description {
+  font-size: 16px;
+  font-weight: lighter;
 }
