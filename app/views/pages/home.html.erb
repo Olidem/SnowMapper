@@ -35,10 +35,28 @@
 <div class="grid-container">
   <div class="grid-item action-pannel">
     <p class="question">Where are you heading?</p>
-    <a href="/countries">
-      <p class="action">Go<i class="fas fa-arrow-right"></i></p>
-    </a>
-  </div>
+    <form action="#" class="form">
+      <select name="country" id="countries" onmouseout="resortDropdown()" data-countries="<%= @countries %>" data-resorts="<%= @resorts %>">
+        <option value="no-country" disabled selected>Select a Country</option>
+        <% @countries.each do |country| %>
+          <option value="<%= country.id %>"><%= country.name %></option>
+        <% end %>
+      </select>
+      <% @resorts_hash.each do |k, v| %>
+        <select name="<%= k %>resorts" id="<%= k %>resorts" class="resort-dropdown d-none" onmouseout="createLink('<%= k %>resorts')">
+          <option value="no-resorts" disabled selected>Select a Resort</option>
+          <% v.each do |resort| %>
+            <option value="<%= Resort.find(resort).id %>"><%= Resort.find(resort).name %></option>
+          <% end %>
+        </select>
+      <% end %>
+      </form>
+      <div id="linkHolder">
+        <a href="/countries">
+          <p class="action">Go<i class="fas fa-arrow-right"></i></p>
+        </a>
+      </div>
+    </div>
   <div class="grid-item main-image">
 
   </div>
@@ -60,6 +78,7 @@
         </p>
       </div>
     <!-- </div> -->
+    <a href=""></a>
   </div>
   <div class="grid-item groups-card">
     <p class="group-title">Groups looking for someone</p>
@@ -78,3 +97,25 @@
     </a>
   </div>
 </div>
+
+<script>
+
+  const resortDropdown = () => {
+    var countryId = document.getElementById('countries').value
+    console.log(countryId)
+    var selectedDropdown = document.getElementById(`${countryId}resorts`)
+    if (selectedDropdown) {
+      document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
+        dropdown.classList.add('d-none')
+      })
+      selectedDropdown.classList.remove('d-none')
+    }
+    document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}'>GO</a>`
+  }
+
+  const createLink = (id) => {
+    var selectedResort = document.getElementById(id).value
+    document.getElementById('linkHolder').innerHTML = `<a href='resorts/${selectedResort}'>GO</a>`
+  }
+
+</script>
