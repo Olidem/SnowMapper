@@ -70,25 +70,17 @@
   <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
 </div>
 
+<!-- <script>
+  function readMessages() {
+  <%# current_user.read_messages.where(group: @group, read: false) do |read_message| %>
+    <%# read_message.update(read: true) %>
+  <%# end %>
+};
 
-
-
-
-
-
-<!-- <div class="grid-container-groups">
-
-  <div class="group-show-page grid-container-groups2">
-      <div class="group-info-container d-flex justify-content-between flex-grow-1">
-        <%#= render partial: "shared/meetings_show"%>
-      </div>
-    </div>
-  </div>
-  <div class="chat-box grid-container-groups3">
-    <%#= render partial: "shared/messages/chat_box", group: @group, message: @message%>
-  </div>
-</div> -->
-
+window.setInterval(function(){
+  readMessages()
+}, 5000);
+</script> -->
 
 
 
