@@ -16,48 +16,7 @@
 </div>
 <div class="resort-index-container d-flex justify-content-center">
   <% @resorts.each do |resort| %>
-    <%= link_to resort_path(resort) do  %>
-      <div class="resort-bg-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(http://res.cloudinary.com/dr48k5zwm/image/upload/<%= resort.photo.key %>)">
-        <div class="resort-users-info hide">
-          <div>
-            <%= resort.groups.count %>
-            <i class="fas fa-users" style="color:white;"></i>
-            <p>groups</p>
-          </div>
-          <div>
-            <%= resort.users.count %>
-            <i class="far fa-user" style="color:white;"></i>
-            <p>users</p>
-          </div>
-        </div>
-        <div class="resort-title-info">
-          <h4 class="hide"><%= resort.name %></h4>
-          <p class="hide"><%= resort.country.name %></p>
-        </div>
-        <div class="resort-bg-card-hidden">
-          <div class="resort-icon-container">
-            <%= image_tag 'open-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:status] %></p>
-          </div>
-          <div class="resort-icon-container">
-            <%= image_tag 'snow-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:snowfall_tomorrow] %></p>
-          </div>
-          <div class="resort-icon-container">
-            <%= image_tag 'runs-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_runs] %></p>
-          </div>
-           <div class="resort-icon-container">
-            <%= image_tag 'piste-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_piste] %></p>
-          </div>
-           <div class="resort-icon-container">
-            <%= image_tag 'lift-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_runs] %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "shared/resort_index_cards", locals: { resort: resort } %>
   <% end %>
 </div>
 
