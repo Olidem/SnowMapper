@@ -13,12 +13,13 @@ class GroupsController < ApplicationController
 
     @meetings = @group.meetings.geocoded #returns flats with coordinates
     # @meetings = @group.meetings #returns flats with coordinates
-
-    @markers = @meetings.map do |meeting|
-      {
-        lat: meeting.latitude,
-        lng: meeting.longitude
-      }
+    if (@meetings.length > 0)
+      @markers = @meetings.map do |meeting|
+        {
+          lat: meeting.latitude,
+          lng: meeting.longitude
+        }
+      end
     end
   end
 
