@@ -59,7 +59,7 @@
 <section class="group-meeting-resort-info" style="width: 100%">
   <div class="group-meeting-info">
     <div class="member-info-meetup">
-      <div class="meetup-cards">
+      <div class="meetup-cards meetup-scroll-style">
         <div>
            <%= render partial: "shared/meetings_show"%>
         </div>
@@ -111,24 +111,6 @@
     </div>
   </div>
 </section>
-
-  <div class="member-info-meetup">
-<!--     <div class="meetup-cards">
-      <div>
-         <%#= render partial: "shared/meetings_show"%>
-      </div>
-      <%#= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
-        <div class="meetup-card add-new-meetup">
-          <h2 class="meeting-add">
-              <i class="fas fa-plus" id= "plus-icon"></i>
-          </h2>
-        </div>
-      <#% end %>
-    </div> -->
-  </div>
-
-
-
 
 <div class="my-chat">
   <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>

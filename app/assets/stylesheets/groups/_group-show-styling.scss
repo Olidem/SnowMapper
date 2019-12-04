@@ -59,7 +59,7 @@
 .meeting-title {
   color: #484848;
   font-weight: 300;
-  font-size: 32px;
+  font-size: 20px;
 }
 
 .meeting-add {
@@ -251,14 +251,15 @@
 .meetup-cards {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 110%;
 
 }
 
 .member-info-meetup {
-  margin-top: 32px;
+  margin-top: 10px;
   margin-left: 96px;
   margin-right: 96px;
+  margin-bottom: 30px;
 }
 
 #plus-icon {
@@ -413,3 +414,9 @@
   }
 
 }
+
+.meetup-scroll-style {
+  height: 330px;
+  overflow-y: scroll;
+}
+
