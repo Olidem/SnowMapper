@@ -41,8 +41,8 @@
               <li>
               <img src=<%= cl_image_path user.photo.key %>>
                 <div class="group-show-avatar-information">
-                  <div class= "group-show-avatar-name"><b><%= user.first_name %>  <%= user.last_name.chars.first %>.</b></div>
-                  <div class= "group-show-avatar-joined">Last active <%= time_since(user.memberships.where(group: @group).first) %></div>
+                  <div class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name.chars.first %>.</div>
+                  <div class= "group-show-avatar-joined">Active <%= time_since(user.memberships.where(group: @group).first) %></div>
                 </div>
               </li>
             </div>
@@ -56,19 +56,46 @@
   </div>
 </section>
 
-  <div class="member-info-meetup">
-    <div class="meetup-cards">
-      <div>
-         <%= render partial: "shared/meetings_show"%>
+<section class="group-meeting-resort-info">
+  <div class="group-meeting-info">
+    <div class="member-info-meetup">
+      <div class="meetup-cards">
+        <div>
+           <%= render partial: "shared/meetings_show"%>
+        </div>
+        <%= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
+          <div class="meetup-card add-new-meetup">
+            <h2 class="meeting-add">
+                <i class="fas fa-plus" id= "plus-icon"></i>
+            </h2>
+          </div>
+        <% end %>
       </div>
-      <%= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
+    </div>
+  </div>
+  <div class="group-resort-info">
+    <div class="group-resorts">
+      <i class="fas fa-snowflake members-snowflake"></i>
+      <p class="member-title">
+        RESORTS INFO
+      </p>
+    </div>
+  </div>
+</section>
+
+  <div class="member-info-meetup">
+<!--     <div class="meetup-cards">
+      <div>
+         <%#= render partial: "shared/meetings_show"%>
+      </div>
+      <%#= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
         <div class="meetup-card add-new-meetup">
           <h2 class="meeting-add">
               <i class="fas fa-plus" id= "plus-icon"></i>
           </h2>
         </div>
-      <% end %>
-    </div>
+      <#% end %>
+    </div> -->
   </div>
 
 
