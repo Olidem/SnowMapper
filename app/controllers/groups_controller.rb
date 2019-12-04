@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy count_messages]
+  before_action :set_group, only: %i[show edit update destroy mark_as_read]
 
   # For Dev and testing purposes
   # def index
@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
         lng: meeting.longitude
       }
     end
+    mark_as_read
   end
 
   def new
@@ -57,6 +58,13 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def mark_as_read
+    @group.messages.each do |message|
+      @read_message = ReadMessage.where(user: current_user, message: message)
+      @read_message.update(read: true)
+    end
+  end
 
   def group_params
     params.require(:group).permit(:name, :description, :photo, :locked)

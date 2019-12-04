@@ -63,14 +63,7 @@ class MessagesController < ApplicationController
   def create_unread_message
     @group = Group.find(params[:group_id])
     @group.users.each do |user|
-      if (@read_message = ReadMessage.find_by(user: user, group: @group))
-        @read_message.update(no_of_read_messages: @group.messages.count)
-      else
-        @read_message = ReadMessage.new(no_of_read_messages: @group.messages.count)
-        @read_message.user = current_user
-        @read_message.group = @group
-        @read_message.save!
-      end
+      @read_message = ReadMessage.new(user: user, group: @group)
     end
   end
 
