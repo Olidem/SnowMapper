@@ -25,6 +25,9 @@ class MessagesController < ApplicationController
           photo: @message.user.photo.key,
           id: @message.id
       }})
+
+
+      # create join
     else
       render :new
     end
