@@ -37,9 +37,15 @@
       <div class="group-show-avatars group-show-avatar-scroll-style">
         <% @group.users.each do |user| %>
           <ul>
-            <span class="group-show-avatar">
-              <li><img src=<%= cl_image_path user.photo.key %>><span class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name %></span><span class= "group-show-avatar-joined"> - joined <%= time_since(user.memberships.where(group: @group).first) %></span></li>
-            </span>
+            <div class="group-show-avatar">
+              <li>
+              <img src=<%= cl_image_path user.photo.key %>>
+                <div class="group-show-avatar-information">
+                  <div class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name %></div>
+                  <div class= "group-show-avatar-joined">Last active <%= time_since(user.memberships.where(group: @group).first) %></div>
+                </div>
+              </li>
+            </div>
           </ul>
         <% end %>
       </div>

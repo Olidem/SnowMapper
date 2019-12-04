@@ -306,10 +306,15 @@
 }
 
 .group-show-avatars {
+  // display:flex;
+  // flex-direction: row;
   ul {
     list-style-type: none;
     color: white;
     padding-inline-start: 0px;
+  }
+  li {
+    display: flex;
   }
 }
 
@@ -318,10 +323,15 @@
 }
 
 .group-show-avatar-scroll-style {
-    height: 220px;
-    overflow-y: scroll;
+  height: 220px;
+  overflow-y: scroll;
 }
 
 .group-show-avatar-joined {
   font-size: 11px;
+  margin-left: 10px;
+}
+
+.group-show-avatar-information {
+  flex-direction: column;
 }
