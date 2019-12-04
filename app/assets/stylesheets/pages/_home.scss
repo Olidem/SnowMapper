@@ -1,4 +1,10 @@
 // Specific CSS for your home-page
+
+// $primary-color: #002A47;
+// $background-color: #ffffff;
+// $secondary-color: #52BFA1;
+
+
 body {
   overflow-x: hidden;
 }
@@ -18,23 +24,39 @@ body {
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  height: 76vh;
+  height: calc(100vh - 165px);
+  overflow: hidden;
   // margin-right: 96px;
   // margin-left: 96px;
 }
 
 .action-pannel {
   grid-area: 1 / 1 / 4 / 1;
-  background-color: #E2493C;
+  background-color: #002A47;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
 
+}
+
+.action {
+  padding: 12px 24px;
+  background-color: #ebebeb;
+  color: #484848;
+  border-radius: 5px;
+  width: 15vw;
+  text-align: center;
+}
+
+.action:hover {
+  opacity: 70%;
 }
 
 .resort-card:hover,
 .groups-card:hover {
-  transform: scale(1.02);
+  transform: scaleX(1.02);
   cursor: pointer;
 }
 
@@ -47,20 +69,24 @@ body {
 .resort-card {
   grid-area: 1 / 4 / 2 / 5;
   margin: 0;
-  background-color: #EDA629;
+  background-color: #3C6E71;
+  // background-color: #4EA699;
   color: #ebebeb;
   font-family: "Raleway", sans-serif;
   flex-direction: column;
   transition: transform 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
 }
 
 .groups-card {
   grid-area: 2 / 4 / 3 / 5;
-  background-color: #C0DAFF;
+  background-color: #f9bd6c;
   font-family: "Raleway", sans-serif;
   color: #ebebeb;
   position: relative;
   transition: transform 0.5s ease-in-out;
+  padding-left: 32px;
 }
 
 .question,
@@ -68,7 +94,7 @@ body {
   // margin-left: 32px;
   // margin-right: 32px;
   // max-width: 200px;
-  color: #ebebeb;
+
   align-items: center;
 }
 
@@ -82,9 +108,12 @@ body {
 }
 
 .question {
-  font-size: 18px;
   font-weight: 700;
   font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: #ebebeb;
+  margin-bottom: 50px;
+
 }
 
 .resort-title {
@@ -100,14 +129,31 @@ body {
 
 .mountain-icon {
   margin-right: 5px;
+  color: #ebebeb !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 8px !important;
 }
 
 .tram-icon {
   margin-right: 9px;
+  color: #ebebeb !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 10px !important;
 }
+
 
 .snow-icon {
   margin-right: 7px;
+  color: #ebebeb !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 10px !important;
 }
 
 // .featured {
@@ -119,11 +165,14 @@ body {
 // }
 
 .snow-group {
-  opacity: 40%;
+  opacity: 20%;
   font-size: 200px;
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 200px !important;
+  color: #fff !important;
+  margin: 0;
 }
 
 .group-title {
@@ -136,12 +185,14 @@ body {
 }
 
 .groups-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   p {
-    margin-left: 32px;
-    color: #484848;
+    // margin-left: 32px;
+    color: #fff;
+  }
+  &:hover {
+    p {
+      margin-bottom: 1px;
+    }
   }
 }
 
@@ -159,4 +210,42 @@ body {
   font-weight: 700;
 }
 
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 136px;
+}
 
+
+#countries {
+  margin-bottom: 10px;
+  width: 15vw;
+  height: 8vh;
+}
+
+.go-button {
+}
+
+.resort-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-30px);
+  transition: 0.4s;
+  width: 15vw;
+  padding: 5px;
+  height: 8vh;
+
+  // &--visible {
+  //   opacity: 1;
+  //   transform: translateX(0);
+  //   visibility: visible;
+  // }
+}
+
+.resort-dropdown--visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}

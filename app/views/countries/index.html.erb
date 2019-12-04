@@ -13,7 +13,12 @@
         <h4>Europe</h4>
         </div>
         <% @european_countries.each_with_index do |country, index| %>
+        <% if country.photos[0] %>
             <div class="continent-img hidden" id="europe-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>); background-size: cover;">
+        <% else %>
+        <p>I should be a backup cl image</p>
+        <% end %>
+          <%= link_to country_path(country) do %>
               <div class="country-display-card" >
                 <h4><%= country.name %></h4>
                 <div class="d-flex mt-4">
