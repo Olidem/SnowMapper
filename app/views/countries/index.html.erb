@@ -34,7 +34,6 @@
                   <p><%= country.cost %></p>
                 </div>
               </div>
-          <% end %>
             </div>
         <% end %>
         <div id="europe-flags">
@@ -44,7 +43,9 @@
           <div class="flags-container">
             <% @european_countries.each do |country| %>
               <div class="flag-icon-container">
+                <%= link_to country_path(country) do  %>
                  <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+                <% end %>
                  <p><%= country.name %></p>
               </div>
             <% end %>
@@ -59,7 +60,6 @@
         </div>
         <% @north_american_countries.each_with_index do |country, index| %>
         <div class="continent-img hidden" id="north-america-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>);background-size: cover;">
-          <%= link_to country_path(country) do %>
           <div class="country-display-card" >
             <h4><%= country.name %></h4>
             <div class="d-flex mt-4">
@@ -75,7 +75,6 @@
               <p><%= country.cost %></p>
             </div>
           </div>
-          <% end %>
         </div>
         <% end %>
         <div id="north-american-flags">
@@ -85,7 +84,9 @@
           <div class="flags-container" id="north-america-flags">
           <% @north_american_countries.each do |country| %>
             <div class="flag-icon-container">
+            <%= link_to country_path(country) do  %>
              <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+            <% end %>
              <p><%= country.name %></p>
             </div>
           <% end %>
@@ -100,7 +101,6 @@
         </div>
         <% @row_countries.each_with_index do |country, index| %>
         <div class="continent-img hidden" id="row-img-<%= index %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path country.photos[0].key %>);background-size: cover;">
-           <%= link_to country_path(country) do %>
           <div class="country-display-card" >
             <h4><%= country.name %></h4>
             <div class="d-flex mt-4">
@@ -116,7 +116,6 @@
               <p><%= country.cost %></p>
             </div>
           </div>
-          <% end %>
         </div>
         <% end %>
         <div id="row-flags">
@@ -126,7 +125,9 @@
           <div class="flags-container" id="row-flags">
             <% @row_countries.each do |country| %>
             <div class="flag-icon-container">
+            <%= link_to country_path(country) do  %>
               <%= cl_image_tag country.photos[1].key, class: "flag-img" %>
+            <% end %>
             <p><%= country.name %></p>
             </div>
             <% end %>
@@ -142,7 +143,7 @@
   const addButtonsToContinent = (continent) => {
     const buttons = document.querySelectorAll(`#${continent}-flags .flag-img`)
     buttons.forEach( (flag, index) => {
-      flag.addEventListener('click', (event) => {
+      flag.addEventListener('mouseover', (event) => {
         event.preventDefault()
         const elementToRemove = document.querySelector(`#${continent}-card .active`)
         elementToRemove.classList.remove("active");

@@ -26,12 +26,14 @@ p {
 
 
 .icon {
+  color: #fff;
   font-size: 24px;
   padding-left: 12px;
   padding-right: 12px;
+  transition: 0.2s;
+    &:hover {
+      color: #484848;
+    }
 }
 
-.icon:hover {
-  color: #484848;
-  transition: .2s;
-}
+

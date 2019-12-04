@@ -12,7 +12,7 @@
             <%= link_to '<i class="far fa-trash-alt group-icons"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
           </h2>
           <h2>
-            <%= link_to '<i class="far fa-edit group-icons"></i>'.html_safe, edit_group_path(@group) %>
+            <i class="far fa-edit group-icons" data-toggle="modal" data-target="#editGroupModel" id="group-edit-button"><a></a></i>
           </h2>
         </div>
       <% end %>
@@ -34,11 +34,19 @@
       <p class="member-title">
         Group members
       </p>
-      <div class="group-show-avatars">
+      <div class="group-show-avatars group-show-avatar-scroll-style">
         <% @group.users.each do |user| %>
-          <span class="group-show-avatar">
-            <img src=<%= cl_image_path user.photo.key %>>
-          </span>
+          <ul>
+            <div class="group-show-avatar">
+              <li>
+              <img src=<%= cl_image_path user.photo.key %>>
+                <div class="group-show-avatar-information">
+                  <div class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name.chars.first %>.</div>
+                  <div class= "group-show-avatar-joined">Active <%= time_since(user.memberships.where(group: @group).first) %></div>
+                </div>
+              </li>
+            </div>
+          </ul>
         <% end %>
       </div>
     </div>
@@ -48,47 +56,70 @@
   </div>
 </section>
 
-  <div class="member-info-meetup">
-    <div class="meetup-cards">
-      <div>
-         <%= render partial: "shared/meetings_show"%>
-      </div>
-      <%= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
-        <div class="meetup-card add-new-meetup">
-          <h2 class="meeting-add">
-              <i class="fas fa-plus" id= "plus-icon"></i>
-          </h2>
+<section class="group-meeting-resort-info" style="width: 100%">
+  <div class="group-meeting-info">
+    <div class="member-info-meetup">
+      <div class="meetup-cards meetup-scroll-style">
+        <div>
+           <%= render partial: "shared/meetings_show"%>
         </div>
-      <% end %>
+        <%= link_to new_group_meeting_path(@group), class: "new-meet-link" do %>
+          <div class="meetup-card add-new-meetup">
+            <h2 class="meeting-add">
+                <i class="fas fa-plus" id= "plus-icon"></i><span class ="meeting-add-title">Meet-ups</span>
+            </h2>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-
-
-
-<div class="my-chat" style="border:1px solid black">
+  <div class="group-resort-info">
+    <div class="group-resorts">
+      <i class="fas fa-snowflake members-snowflake"></i>
+      <p class="group-resort-title">
+        <%= @group.resort.name %>
+      </p>
+      <ul>
+        <li>
+          <div class="group-resort-icons">
+            <div class="group-icon-info">
+              <div><i class="fas fa-users"></i></div>
+              <div><span><p><%= @group.resort.groups.size %> active groups</p></span></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-mountain"></i></div>
+              <div> <p><%= (rand()*5000).round(0) %>  m</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-snowflake"></i></div>
+              <div> <p><%= (rand()*50).round(0) %> cm</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-skiing"></i></div>
+              <div><p><%= (rand()*300).round(0) %>  m</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-temperature-low"></i></div>
+              <div> <p><%= ["moderate", "overcast", "snowing", "dry", "mild"].sample %></p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<div class="my-chat">
   <%= render partial: "shared/messages/chat_box", group: @group, message: @message%>
 </div>
 
-
-
-
-
-
-
-<!-- <div class="grid-container-groups">
-
-  <div class="group-show-page grid-container-groups2">
-      <div class="group-info-container d-flex justify-content-between flex-grow-1">
-        <%#= render partial: "shared/meetings_show"%>
+<!-- Edit group modal -->
+<div class="modal fade" id="editGroupModel" tabindex="-1" role="dialog" aria-labelledby="editGroupModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render partial: "shared/group_edit_for_modal", locals: { group: @group } %>
       </div>
     </div>
   </div>
-  <div class="chat-box grid-container-groups3">
-    <%#= render partial: "shared/messages/chat_box", group: @group, message: @message%>
-  </div>
-</div> -->
-
-
-
+</div>
 
