@@ -38,7 +38,7 @@
         <% @group.users.each do |user| %>
           <ul>
             <span class="group-show-avatar">
-              <li><img src=<%= cl_image_path user.photo.key %>><span class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name %></span><span class= "group-show-avatar-joined">, joined <%= time_since(user.memberships.where(group: @group).first) %></span></li>
+              <li><img src=<%= cl_image_path user.photo.key %>><span class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name %></span><span class= "group-show-avatar-joined"> - joined <%= time_since(user.memberships.where(group: @group).first) %></span></li>
             </span>
           </ul>
         <% end %>
