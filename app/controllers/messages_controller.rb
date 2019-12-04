@@ -25,8 +25,9 @@ class MessagesController < ApplicationController
           photo: @message.user.photo.key,
           id: @message.id
       }})
+      create_unread_messages
     else
-      render :new
+      render group_path(@group)
     end
   end
 
@@ -58,6 +59,13 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def create_unread_messages
+    @group = Group.find(params[:group_id])
+    @group.users.each do |user|
+      @read_message = ReadMessage.create(user: user, group: @group, message: @message) unless (user == current_user)
+    end
+  end
 
   def message_params
     params.require(:message).permit(:content)
