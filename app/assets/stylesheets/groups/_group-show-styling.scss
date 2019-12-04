@@ -360,6 +360,11 @@
   // margin-top: 64px;
   height: 100%;
   position: relative;
+  ul {
+    list-style-type: none;
+    color: white;
+    padding-inline-start: 5px;
+  }
 }
 
 .group-resort-title {
@@ -368,11 +373,43 @@
   font-size: 24px;
 }
 
-.group-resort-users {
-  color: white;
+
+.group-resort-icons {
   display: flex;
-  p {
-    padding-right: 5px;
-  }
+  width: 70%;
+  flex-direction: column;
 }
 
+.group-icon-info {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  p {
+    padding-left: 10px;
+    color: white;
+  }
+  i {
+    font-size: 1em;
+  }
+
+  .fas.fa-users{
+    color: white;
+  }
+
+  .fas.fa-mountain{
+    color: white;
+  }
+
+  .fas.fa-snowflake {
+    color: white;
+  }
+
+  .fas.fa-skiing {
+    color: white;
+  }
+
+  .fas.fa-temperature-low {
+    color: white;
+  }
+
+}

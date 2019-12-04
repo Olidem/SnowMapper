@@ -79,28 +79,35 @@
       <p class="group-resort-title">
         <%= @group.resort.name %>
       </p>
-      <div class="group-resort-users">
-        <i class="fas fa-users"></i>
-        <p><%= @group.resort.groups.size %> active groups</p>
-      </div>
-      <div class="resort-icons">
-        <div class="icon-info">
-          <i class="fas fa-mountain"></i>
-          <p><%= (rand()*5000).round(0) %>  m</p>
-        </div>
-        <div class="icon-info">
-          <i class="fas fa-snowflake"></i>
-          <p><%= (rand()*50).round(0) %> cm</p>
-        </div>
-        <div class="icon-info">
-          <i class="fas fa-skiing"></i>
-          <p><%= (rand()*300).round(0) %>  m</p>
-        </div>
-        <div class="icon-info">
-          <i class="fas fa-temperature-low"></i>
-          <p><%= ["moderate", "overcast", "snowing", "dry", "mild"].sample %></p>
-        </div>
-      </div>
+
+      <ul>
+        <li>
+          <div class="group-resort-icons">
+            <div class="group-icon-info">
+              <div><i class="fas fa-users"></i></div>
+              <div><span><p><%= @group.resort.groups.size %> active groups</p></span></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-mountain"></i></div>
+              <div> <p><%= (rand()*5000).round(0) %>  m</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-snowflake"></i></div>
+              <div> <p><%= (rand()*50).round(0) %> cm</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-skiing"></i></div>
+              <div><p><%= (rand()*300).round(0) %>  m</p></div>
+            </div>
+            <div class="group-icon-info">
+              <div> <i class="fas fa-temperature-low"></i></div>
+              <div> <p><%= ["moderate", "overcast", "snowing", "dry", "mild"].sample %></p></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
     </div>
   </div>
 </section>
