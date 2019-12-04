@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @resort = Resort.find(params[:resort_id])
     @group.resort = @resort
-    if @group.save!
+    if @group.save
       Membership.create(user: current_user, group: @group, admin: true)
       redirect_to group_path(@group)
     else
