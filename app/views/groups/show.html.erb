@@ -41,7 +41,7 @@
               <li>
               <img src=<%= cl_image_path user.photo.key %>>
                 <div class="group-show-avatar-information">
-                  <div class= "group-show-avatar-name"><%= user.first_name %>  <%= user.last_name %></div>
+                  <div class= "group-show-avatar-name"><b><%= user.first_name %>  <%= user.last_name.chars.first %>.</b></div>
                   <div class= "group-show-avatar-joined">Last active <%= time_since(user.memberships.where(group: @group).first) %></div>
                 </div>
               </li>
