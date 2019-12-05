@@ -68,7 +68,7 @@ sweetAlertClassSelector('.membership-request-sent', {
 sweetAlertClassSelector('.delete-button-link', {
   title: "Message deleted!",
   icon: "success",
-  timer: 4000,
+  timer: 3000,
   button: false
 });
 

@@ -56,6 +56,10 @@ class MessagesController < ApplicationController
     else
       render :new
     end
+    respond_to do |format|
+    format.html
+    format.js
+    end
   end
 
   private

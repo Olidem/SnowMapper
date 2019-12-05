@@ -1,0 +1,17 @@
+function sweetAlertClassSelector(selector, options = {}) {
+  const swalButtons = document.querySelectorAll(selector);
+  if (swalButtons.length > 0) { // protect other pages
+    swalButtons.forEach(function(swalButton) {
+      swalButton.addEventListener('click', () => {
+        swal(options);
+      });
+    });
+  }
+};
+
+sweetAlertClassSelector('.delete-button-link', {
+  title: "Message deleted!",
+  icon: "success",
+  timer: 3000,
+  button: false
+});
