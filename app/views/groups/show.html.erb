@@ -4,7 +4,7 @@
     </div>
     <div class="group-info">
       <h2 class="group-name-title"><%= @group.name.upcase %></h2>
-      <h5><%= @group.resort.name %>, <%= @group.resort.country.name %></h5>
+      <h5><%= link_to  @group.resort.name, resort_path(@group.resort), class: "group-show-page-kill-link" %>, <%= link_to @group.resort.country.name, country_path(@group.resort.country), class: "group-show-page-kill-link" %></h5>
       <h5><%= @group.description %></h5>
       <% if @group.memberships.find_by_user_id(current_user.id).admin %>
         <div class="d-flex flex-row justify-content-start">
@@ -77,7 +77,7 @@
     <div class="group-resorts">
       <i class="fas fa-snowflake members-snowflake"></i>
       <p class="group-resort-title">
-        <%= @group.resort.name %>
+        <%= link_to  @group.resort.name, resort_path(@group.resort), class: "group-show-page-kill-link" %>
       </p>
       <ul>
         <li>
