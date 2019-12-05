@@ -28,6 +28,7 @@ if(document){
 $('#message_content').keypress(function(e) {
       if(e.which == 13){
           $('.chat-submit-btn').click();
+          $('.chat-submit-btn').hide();
            // $(this).closest('form').submit();
            e.preventDefault();
        }
