@@ -101,10 +101,8 @@
 </div>
 
 <script>
-
   const resortDropdown = () => {
     var countryId = document.getElementById('countries').value
-    console.log(countryId)
     var selectedDropdown = document.getElementById(`${countryId}resorts`)
     if (selectedDropdown) {
       // document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
@@ -120,7 +118,10 @@
 
   const createLink = (id) => {
     var selectedResort = document.getElementById(id).value
-    document.getElementById('linkHolder').innerHTML = `<a href='resorts/${selectedResort}'><p class="action">Go</p></a>`
+    if (selectedResort == "no-resorts") {
+      document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}'><p class="action">Go</p></a>`
+    } else {
+      document.getElementById('linkHolder').innerHTML = `<a href='resorts/${selectedResort}'><p class="action">Go</p></a>`
+    }
   }
-
 </script>
