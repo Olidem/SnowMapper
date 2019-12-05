@@ -26,6 +26,10 @@ class MessagesController < ApplicationController
           id: @message.id
       }})
       create_unread_messages
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       render group_path(@group)
     end
@@ -55,10 +59,6 @@ class MessagesController < ApplicationController
       }})
     else
       render :new
-    end
-    respond_to do |format|
-    format.html
-    format.js
     end
   end
 
