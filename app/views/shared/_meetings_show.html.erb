@@ -3,8 +3,8 @@
 
     <div class="meetup-card">
      <div class="meetup-card--action-buttons">
-      <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_meeting_path(meeting), class: "meetup-details"%>
-      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details" %>
+      <%= link_to '<i class="far fa-edit meetup-icon"></i>'.html_safe, edit_meeting_path(meeting), class: "meetup-details"%>
+      <%= link_to '<i class="far fa-trash-alt meetup-icon meetup-icon-delete"></i>'.html_safe, meeting_path(meeting), method: :delete, data: { confirm: "Are you sure?" }, class: "meetup-details" %>
     </div>
 
     <div class="meetup-details-address">
