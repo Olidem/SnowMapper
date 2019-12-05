@@ -106,7 +106,7 @@ new_zealand.photos.attach(io: img2, filename: "nz.png", content_type: 'image/png
 new_zealand.save!
 
 chile= Country.new(
-  name: "Chili",
+  name: "Chile",
   slope_length: 12231,
   cost: "€",
   continent: "Rest of the World"
@@ -114,7 +114,7 @@ chile= Country.new(
 img1 = URI.open('https://images.unsplash.com/photo-1512926121941-82b4da1b0abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80')
 img2 = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575479736/iconfinder_Chile_92021_xti39y.png')
 chile.photos.attach(io: img1, filename: "chile.jpg", content_type: 'image/jpg')
-chile.photos.attach(io: img2, filename: "chili2.png", content_type: 'image/png')
+chile.photos.attach(io: img2, filename: "chile2.png", content_type: 'image/png')
 chile.save!
 
 australia = Country.new(
