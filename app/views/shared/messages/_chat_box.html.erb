@@ -57,14 +57,14 @@
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
         <div class="${userId === <%= current_user.id %> ? 'talk-bubble talk-bubble-right tri-right round right-top' : 'talk-bubble talk-bubble-left tri-right round left-top'}" id="comment-${id}">
-          <div class="message-user"/>
-            <div class="message-user-details">
+          <div class="${userId === <%= current_user.id %> ? 'message-user' : 'message-other-users'}"/>
+            <div class="${userId === <%= current_user.id %> ? 'message-user-details' : 'message-other-users-details'}">
               <p>${userId === <%= current_user.id %> ? 'You' : name}</p>
             </div>
           </div>
-          <div class="message-user-text">
+          <div class="${userId === <%= current_user.id %> ? 'message-user-text' : 'message-other-users-text'}">
             <p>${comment}</p>
-            <div class="message-user-time">
+            <div class="${userId === <%= current_user.id %> ? 'message-user-time' : 'message-other-users-time'}">
               <p><span class="white-txt date">0 minutes ago</span></p>
               <a data-confirm="Are you sure?" class="delete-button-link" data-remote="true" rel="nofollow" data-method="delete" href="/messages/${id}"><i class="far fa-trash-alt"></i></a>
             </div>
