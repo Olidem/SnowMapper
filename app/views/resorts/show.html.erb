@@ -21,7 +21,7 @@
             <%= image_tag 'closed-icon.png', class: "resort-icon ml-3" %>
           <% end %>
         </div>
-        <p class="resort-description"><%= (@resort.description).html_safe %></p>
+        <p class="resort-description"><%= @resort.description.length > 600 ? (@resort.description[0..600].html_safe + "...") : @resort.description.html_safe %></p>
       </div>
 
       <% if data[:status].downcase == "open" %>
