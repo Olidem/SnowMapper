@@ -1,13 +1,3 @@
-<% data = {
-      status: "open",
-      snowfall_today: "15 cm",
-      snowfall_tomorrow: "1cm",
-      snow_condition: "excellent",
-      open_runs: "8 of 74",
-      open_piste: "16 of 150km",
-      open_lifts: "5 of 39"
-    }%>
-
 <div class="resort-banner-image  mb-3 p-3">
   <div class="banner-text">
     <h1 style="font-weight: 500;">Meet new friends at the world's best resorts</h1>
@@ -16,6 +6,19 @@
 </div>
 <div class="resort-index-container d-flex justify-content-center">
   <% @resorts.each do |resort| %>
+  <% if resort.data.nil? %>
+    <% data = {
+      "status": "open",
+      "snowfall_today": "15 cm",
+      "snowfall_tomorrow": "1cm",
+      "snow_condition": "excellent",
+      "open_runs": "8 of 74",
+      "open_piste": "16 of 150km",
+      "open_lifts": "5 of 39"
+    } %>
+  <% else %>
+    <% data = resort.data.gsub(/[{}:]/,'').split(', ').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge) %>
+  <% end %>
     <%= link_to resort_path(resort) do  %>
       <div class="resort-bg-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(http://res.cloudinary.com/dr48k5zwm/image/upload/<%= resort.photo.key %>)">
         <div class="resort-users-info hide">
@@ -37,23 +40,23 @@
         <div class="resort-bg-card-hidden">
           <div class="resort-icon-container">
             <%= image_tag 'open-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:status] %></p>
+            <p><%= data["status"].tr('"', '') == "nil" ? "Not Available" : data["status"].tr('"', '') %></p>
           </div>
           <div class="resort-icon-container">
             <%= image_tag 'snow-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:snowfall_tomorrow] %></p>
+            <p><%= data["snowfall_tomorrow"].tr('"', '') == "Not Available" ? "" : data["snowfall_tomorrow"].tr('"', '') %></p>
           </div>
           <div class="resort-icon-container">
             <%= image_tag 'runs-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_runs] %></p>
+            <p><%= data["open_runs"].tr('"', '') == "nil" ? "Not Available" : data["open_runs"].tr('"', '') %></p>
           </div>
            <div class="resort-icon-container">
             <%= image_tag 'piste-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_piste] %></p>
+            <p><%= data["open_piste"].tr('"', '') == "nil" ? "Not Available" : data["open_piste"].tr('"', '')  %></p>
           </div>
            <div class="resort-icon-container">
             <%= image_tag 'lift-icon.png', class: "resort-index-icon" %>
-            <p><%= data[:open_runs] %></p>
+            <p><%= data["open_lifts"].tr('"', '') == "nil" ? "Not Available" : data["open_lifts"].tr('"', '') %></p>
           </div>
         </div>
       </div>

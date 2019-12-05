@@ -96,7 +96,7 @@
   justify-content: space-between;
   margin-left: 96px;
   margin-right: 96px;
-  background-color: #EDA629;
+  background-color: #3C6E71;
 }
 
 .group-image-info {
@@ -138,6 +138,8 @@
 
 .group-icons {
   color: #F2F2F2 !important;
+  font-size: 15px !important;
+  margin-right: 5px !important;
 }
 
 .message-btn-align {
@@ -170,7 +172,7 @@
 }
 
 .group-members {
-  background-color: #C0DAFF;
+  background-color: #0599D4;
   min-width: 300px;
   margin-left: 96px;
   min-height: 200px;
@@ -206,7 +208,7 @@
   position: absolute;
   right: 20px;
   top: 10px;
-
+  color: #484848 !important;
   i {
     font-size: 13px;
   }
@@ -231,6 +233,16 @@
       margin-left: 10px;
 }
 
+
+.meetup-icon {
+  color: #444444 !important;
+  transition: .2s;
+}
+
+.meetup-icon-delete:hover {
+  color: #E2493C !important;
+  transition: 0.2s;
+}
 
 .add-new-meetup {
   display: flex;
@@ -297,8 +309,6 @@
   display: flex;
 }
 
-.address {
-}
 
 .position-address {
   // position: absolute;
@@ -356,7 +366,7 @@
 }
 
 .group-resorts {
-  background-color: #C0DAFF;
+  background-color: #0599D4;
   width: 300px;
   margin-right: 96px;
   // margin-top: 64px;
@@ -385,7 +395,7 @@
 .group-icon-info {
   display: flex;
   padding: 10px;
-  justify-content: space-between;
+  justify-content: normal;
   p {
     padding-left: 10px;
     color: white;

@@ -43,7 +43,7 @@
         <% end %>
       </select>
       <% @resorts_hash.each do |k, v| %>
-        <select name="<%= k %>resorts" id="<%= k %>resorts" class="resort-dropdown" onmouseout="createLink('<%= k %>resorts')">
+        <select name="<%= k %>resorts" id="<%= k %>resorts" class="d-none custom-none resort-dropdown" onmouseout="createLink('<%= k %>resorts')">
           <option value="no-resorts" disabled selected>Select a Resort</option>
           <% v.each do |resort| %>
             <option value="<%= Resort.find(resort).id %>"><%= Resort.find(resort).name %></option>
@@ -105,15 +105,18 @@
     var countryId = document.getElementById('countries').value
     var selectedDropdown = document.getElementById(`${countryId}resorts`)
     if (selectedDropdown) {
-      // document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
-        // dropdown.classList.add('d-none')
-      // })
-      // selectedDropdown.classList.remove('d-none')
-       selectedDropdown.classList.add('resort-dropdown--visible')
+      document.querySelectorAll('.resort-dropdown').forEach((dropdown) => {
+        dropdown.classList.add('d-none')
+      })
+      selectedDropdown.classList.remove('d-none')
+      setTimeout(function() {
+        selectedDropdown.classList.remove('custom-none')
+       // selectedDropdown.classList.add('resort-dropdown--visible')
+      }, 200)
     }
-    document.getElementById('linkHolder').innerHTML = ''
-    document.getElementById('linkHolder').insertAdjacentHTML('afterbegin', `<a href='countries/${countryId}'><p class="action">Go</p></a>`)
-    // document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}' class="action">GO</a>`
+    // document.getElementById('linkHolder').innerHTML = ''
+    // document.getElementById('linkHolder').insertAdjacentHTML('afterbegin', `<a href='countries/${countryId}'><p class="action">Go</p></a>`)
+    document.getElementById('linkHolder').innerHTML = `<a href='countries/${countryId}' class="action">Go</a>`
   }
 
   const createLink = (id) => {

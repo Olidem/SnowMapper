@@ -9,6 +9,7 @@ OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined
 OpenURI::Buffer.const_set 'StringMax', 0
 
 require_relative '../app/services/ski_resorts_scrape'
+require_relative '../app/services/ski_report_scrape'
 
 puts "Clearing records"
 Message.destroy_all
@@ -203,8 +204,10 @@ def create_resort(url, country_object)
   resort = Resort.new(scraped_data)
   photo_url = "https://source.unsplash.com/featured/?snow+village"
   img = URI.open(photo_url)
-  random_number = rand(1000)
   resort.photo.attach(io: img, filename: "#{url.split("/")[4]}.jpg", content_type: 'image/jpg')
+  resort_scrape = SkiReportScrape.new(url, resort)
+  resort_scrape_data = resort_scrape.scrape_data
+  resort.data = resort_scrape_data
   resort.country = country_object
   resort.save!
   return resort
@@ -219,20 +222,13 @@ courchavel = Resort.new(
   website_url: "https://www.courchevel.com"
   )
 courchavel.country = france
+courchavel_url = "https://www.onthesnow.co.uk/northern-alps/courchevel/"
 img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574756989/courchevel-1850-cropped_lilh4q.png')
 courchavel.photo.attach(io: img, filename: "courchavel.jpg", content_type: 'image/jpg')
+courchavel_scrape = SkiReportScrape.new(courchavel_url, courchavel)
+courchavel_scrape_data = courchavel_scrape.scrape_data
+courchavel.data = courchavel_scrape_data
 courchavel.save!
-
-vdi = Resort.new(
-  name: "Val d'Isère",
-  description: "This world-class resort has earned its reputation as one of France’s top ski destinations. Val d’Isère has something for skiers and boarders of all levels: Olympic and World Cup runs, a wealth of fantastic off-piste opportunities and a varied selection of pistes including greens high up on the mountain.<br/><br/>The base of Val d'Isère sits at 1850 metres and from there, the pistes climb up to 3488 metres, at the Pointe du Montet and the Pissaillas glacier, just below at 3450 metres. Skiers have a choice of 150 kilometres of pistes for all levels, serviced by 90 lifts.<br/><br/>Val d'Isere is part of the Espace Killy ski area, shared with Tignes. Some of the world's best skiers leave their tracks here and the resort has hosted Olympic and World Cup downhill competitions, as well as the Alpine Ski World Championships.",
-  address: "Place du Rond Point des Pistes, 73150 Val-d'Isère, France",
-  website_url: "https://www.valdisere.com/en"
-  )
-vdi.country = france
-img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574757114/1500026649-0fe5988257cc2eebde3a9c9f321d8afa-787x564_okwo71.jpg')
-vdi.photo.attach(io: img, filename: "vdi.jpg", content_type: 'image/jpg')
-vdi.save!
 
 tignes = Resort.new(
   name: "Tignes",
@@ -241,9 +237,14 @@ tignes = Resort.new(
   website_url: "https://en.tignes.net"
   )
 tignes.country = france
+tignes_url = "https://www.onthesnow.co.uk/northern-alps/tignes/"
 img = URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574757054/540px-Tignes-winter_f4sk2f.jpg')
 tignes.photo.attach(io: img, filename: "tignes.jpg", content_type: 'image/jpg')
+tignes_scrape = SkiReportScrape.new(tignes_url, tignes)
+tignes_scrape_data = tignes_scrape.scrape_data
+tignes.data = tignes_scrape_data
 tignes.save!
+
 
 chamonix = Resort.new(
   name: "Chamonix",
@@ -252,9 +253,13 @@ The slopes surrounding Chamonix have many kilometres of ski and snowboard trails
   address: "74400 Chamonix, France",
   website_url: "www.chamonix.com"
   )
+chamonix_url = "https://www.onthesnow.co.uk/northern-alps/chamonix-mont-blanc/"
 chamonix.country = france
 img = URI.open('https://images.unsplash.com/photo-1469395269491-9fb763725eb0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80')
 chamonix.photo.attach(io: img, filename: "chamonix.jpg", content_type: 'image/jpg')
+chamonix_scrape = SkiReportScrape.new(chamonix_url, chamonix)
+chamonix_scrape_data = chamonix_scrape.scrape_data
+chamonix.data = chamonix_scrape_data
 chamonix.save!
 
 megeve = Resort.new(
@@ -263,9 +268,13 @@ megeve = Resort.new(
   address: "74120 Megève, France",
   website_url: "https://megeve.com"
   )
+megeve_url ="https://www.onthesnow.co.uk/northern-alps/megeve/"
 megeve.country = france
 img = URI.open('https://images.unsplash.com/photo-1543937879-18a2963bdb69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80')
 megeve.photo.attach(io: img, filename: "megeve.jpg", content_type: 'image/jpg')
+megeve_scrape = SkiReportScrape.new(megeve_url, megeve)
+megeve_scrape_data = megeve_scrape.scrape_data
+megeve.data = megeve_scrape_data
 megeve.save!
 
 huez = Resort.new(
@@ -274,9 +283,13 @@ huez = Resort.new(
   address: "38750 Huez, France",
   website_url: "https://www.alpedhuez.com/"
   )
+huez_url = "https://www.onthesnow.co.uk/northern-alps/alpe-dhuez/"
 huez.country = france
 img = URI.open('https://images.unsplash.com/photo-1459196305771-53130577277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')
 huez.photo.attach(io: img, filename: "huez.jpg", content_type: 'image/jpg')
+huez_scrape = SkiReportScrape.new(huez_url, huez)
+huez_scrape_data = huez_scrape.scrape_data
+huez.data = huez_scrape_data
 huez.save!
 
 avoriaz = Resort.new(
@@ -285,12 +298,16 @@ avoriaz = Resort.new(
   address: "74110 Morzine, France",
   website_url: "avoriaz.com/"
   )
+avoriaz_url = "https://www.onthesnow.co.uk/northern-alps/avoriaz/"
 avoriaz.country = france
 img = URI.open('https://images.unsplash.com/photo-1553715339-04018049600f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80')
 avoriaz.photo.attach(io: img, filename: "avoriaz.jpg", content_type: 'image/jpg')
+avoriaz_scrape = SkiReportScrape.new(avoriaz_url, avoriaz)
+avoriaz_scrape_data = avoriaz_scrape.scrape_data
+avoriaz.data = avoriaz_scrape_data
 avoriaz.save!
 
-french_resorts = [courchavel, vdi, tignes, chamonix, megeve, huez, avoriaz]
+french_resorts = [courchavel, tignes, chamonix, megeve, huez, avoriaz]
 
 resorts = []
 

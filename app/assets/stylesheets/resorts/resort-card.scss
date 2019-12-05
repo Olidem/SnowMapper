@@ -1,9 +1,10 @@
-$primary-color: #002A47;
+$primary-color: #0599D4;
 $background-color: #ffffff;
 $secondary-color: #52BFA1;
+$off-black-text: #444444;
 
 .resort-card-show {
-  color: $primary-color;
+  color: $off-black-text;
   border-radius: 3px;
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
   margin: 32px 0px;
@@ -56,7 +57,7 @@ $secondary-color: #52BFA1;
   }
   justify-content: space-between;
   p {
-    color: $secondary-color;
+    color: $primary-color;
     margin-top: 8px;
     font-size: 12px;
   }
@@ -91,7 +92,7 @@ $secondary-color: #52BFA1;
 
 
 .resort-btn {
-  background-color: $primary-color;
+  background-color: darken(#C0DAFF, 30%);
   font-weight: light;
   padding: 4px 8px;
   color: $background-color;
@@ -111,7 +112,7 @@ $secondary-color: #52BFA1;
 }
 
 .resort-card-active-groups {
-  color: $secondary-color;
+  color: $primary-color;
   font-size: 12px;
 }
 
