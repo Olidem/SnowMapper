@@ -1,9 +1,10 @@
-$primary-color: #002A47;
+$primary-color: #0599D4;
 $background-color: #ffffff;
 $secondary-color: #52BFA1;
+$off-black-text: #444444;
 
 .resort-card-show {
-  color: $primary-color;
+  color: $off-black-text;
   border-radius: 3px;
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
   margin: 32px 0px;
