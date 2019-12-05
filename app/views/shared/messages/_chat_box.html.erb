@@ -50,15 +50,16 @@
     let comment = data.message.content;
     let name = data.message.name
     let id = data.message.id
+    let userId = data.message.user_id
     let group_name =data.message.group_name
     let photo = data.message.photo
     let div = document.getElementById('comment_section');
     let deleteButton = `<div>Delete</div>`
     let messageHTML = `
-        <div class="talk-bubble talk-bubble-right tri-right round right-top" id="comment-${id}">
+        <div class="${userId === <%= current_user.id %> ? 'talk-bubble talk-bubble-right tri-right round right-top' : 'talk-bubble talk-bubble-left tri-right round left-top'}" id="comment-${id}">
           <div class="message-user"/>
             <div class="message-user-details">
-              <p>You</p>
+              <p>${userId === <%= current_user.id %> ? 'You' : name}</p>
             </div>
           </div>
           <div class="message-user-text">

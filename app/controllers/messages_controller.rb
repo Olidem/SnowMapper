@@ -23,7 +23,8 @@ class MessagesController < ApplicationController
           name: @message.user.first_name,
           group_name: @message.group.name,
           photo: @message.user.photo.key,
-          id: @message.id
+          id: @message.id,
+          user_id: @message.user.id
       }})
       create_unread_messages
       respond_to do |format|
