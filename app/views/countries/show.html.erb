@@ -1,7 +1,7 @@
 <div class="container">
+  <h1 style="" class="mt-3"><%= @country.name %></h1>
   <div class="row">
-    <div class="col-7 mt-3">
-    <h1 style="text-align: center; color: #002A47"><%= @country.name %></h1>
+    <div class="col-7">
       <% @resorts.each do |resort| %>
       <div class="resort-card-show d-flex">
         <%= cl_image_tag resort.photo.key %>
