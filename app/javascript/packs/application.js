@@ -65,4 +65,11 @@ sweetAlertClassSelector('.membership-request-sent', {
   button: false
 });
 
+sweetAlertClassSelector('.delete-button-link', {
+  title: "Message deleted!",
+  icon: "success",
+  timer: 4000,
+  button: false
+});
+
 initMapbox();
