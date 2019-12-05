@@ -1,14 +1,16 @@
-<!-- Setting live resort data -->
-<%# data = SkiReportScrape.new(@resort).scrape_data %>
-<% data = {
-      status: "open",
-      snowfall_today: "15 cm",
-      snowfall_tomorrow: "1cm",
-      snow_condition: "excellent",
-      open_runs: "8 of 74",
-      open_piste: "16 of 150km",
-      open_lifts: "5 of 39"
-    }%>
+<% if @resort.data.nil? %>
+    <% data = {
+      "status": "open",
+      "snowfall_today": "15 cm",
+      "snowfall_tomorrow": "1cm",
+      "snow_condition": "excellent",
+      "open_runs": "8 of 74",
+      "open_piste": "16 of 150km",
+      "open_lifts": "5 of 39"
+    } %>
+<% else %>
+  <% data = @resort.data.gsub(/[{}:]/,'').split(', ').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge) %>
+<% end %>
 
 <div class="mountain-banner-image mb-3 p-3">
   <div class="inner-mountain-container container">
@@ -17,38 +19,38 @@
       <div class="resort-title-container">
         <div class="d-flex">
           <h1 class="pb-3"><%= @resort.name %></h1>
-          <% if data[:status].downcase == "closed" %>
+          <% if data["status"].downcase == "closed" %>
             <%= image_tag 'closed-icon.png', class: "resort-icon ml-3" %>
           <% end %>
         </div>
         <p class="resort-description"><%= @resort.description.length > 600 ? (@resort.description[0..600].html_safe + "...") : @resort.description.html_safe %></p>
       </div>
 
-      <% if data[:status].downcase == "open" %>
+      <% unless data["status"].tr('"', '').downcase == "open" %>
         <div class='d-flex justify-content-between resort-icon-container'>
            <div class="text-center">
             <%= image_tag 'open-icon.png', class: "resort-icon" %>
           </div>
           <div class="text-center">
             <%= image_tag 'snow-icon.png', class: "resort-icon" %>
-            <p class="resort-data-text">Fall today: <%= data[:snowfall_today] %></p>
-            <p class="resort-data-text">Condition: <%= data[:snow_condition] %></p>
+            <p class="resort-data-text">Fall today: <%= data["snowfall_today"].tr('"', '') == "Not Available" ? "" : data["snowfall_today"].tr('"', '') %></p>
+            <p class="resort-data-text">Condition: <%= data["snow_condition"].tr('"', '') == "Not Available" ? "" : data["snow_condition"].tr('"', '') %></p>
           </div>
           <div class="text-center">
             <%= image_tag 'snow-icon.png', class: "resort-icon" %>
-            <p class="resort-data-text">Fall tomorrow: <%= data[:snowfall_tomorrow] %></p>
+            <p class="resort-data-text">Fall tomorrow: <%= data["snowfall_tomorrow"].tr('"', '') == "Not Available" ? "" : data["snowfall_tomorrow"].tr('"', '') %></p>
           </div>
           <div class="text-center">
             <%= image_tag 'runs-icon.png', class: "resort-icon" %>
-            <p class="resort-data-text"><%= data[:open_runs] %> runs open</p>
+            <p class="resort-data-text"><%= data["open_runs"].tr('"', '') == "Not Available" ? "" : data["open_runs"].tr('"', '') %> runs open</p>
           </div>
            <div class="text-center">
             <%= image_tag 'piste-icon.png', class: "resort-icon" %>
-            <p class="resort-data-text"><%= data[:open_piste] %> of piste open</p>
+            <p class="resort-data-text"><%= data["open_piste"].tr('"', '') == "Not Available" ? "" : data["open_piste"].tr('"', '') %> of piste open</p>
           </div>
            <div class="text-center">
             <%= image_tag 'lift-icon.png', class: "resort-icon" %>
-            <p class="resort-data-text"><%= data[:open_runs] %> lifts open</p>
+            <p class="resort-data-text"><%= data["open_lifts"].tr('"', '') == "Not Available" ? "" : data["open_lifts"].tr('"', '') %> lifts open</p>
           </div>
         </div>
       <% end %>
