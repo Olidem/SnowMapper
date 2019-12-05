@@ -27,7 +27,9 @@ if(document){
 
 $('#message_content').keypress(function(e) {
       if(e.which == 13){
-           $(this).closest('form').submit();
+          $('.chat-submit-btn').click();
+          $('.chat-submit-btn').hide();
+           // $(this).closest('form').submit();
            e.preventDefault();
        }
     });
@@ -62,6 +64,13 @@ sweetAlertClassSelector('.membership-request-sent', {
   title: "Membership request sent!",
   icon: "success",
   timer: 2000,
+  button: false
+});
+
+sweetAlertClassSelector('.delete-button-link', {
+  title: "Message deleted!",
+  icon: "success",
+  timer: 3000,
   button: false
 });
 
