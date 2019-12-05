@@ -65,6 +65,7 @@
             <p>${comment}</p>
             <div class="message-user-time">
               <p><span class="white-txt date">0 minutes ago</span></p>
+              <a data-confirm="Are you sure?" class="delete-button-link" rel="nofollow" data-method="delete" href="/messages/${id}"><i class="far fa-trash-alt"></i></a>
             </div>
           </div>
         </div>
@@ -81,8 +82,12 @@
     while (div.firstChild) {
       div.firstChild.remove()
     }
-    div.classList.add('talk-bubble message-deleted')
-    div.classList.remove("talk-bubble talk-bubble-right tri-right round right-top");
-    div.innerHTML = '<i><p>Message deleted</p></i>'
+    div.classList.add('talk-bubble')
+    div.classList.add('message-deleted')
+    div.classList.remove("talk-bubble-right");
+    div.classList.remove("tri-right");
+    div.classList.remove("round");
+    div.classList.remove("right-top");
+    div.innerHTML = '<p><i class="fas fa-ban" style="font-size: 12px; color: white;"></i><i>  Message deleted</i></p>'
   });
 </script>
