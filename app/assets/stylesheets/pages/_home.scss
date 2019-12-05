@@ -32,7 +32,7 @@ body {
 
 .action-pannel {
   grid-area: 1 / 1 / 4 / 1;
-  background-color: #002A47;
+  background-color: #E2493C;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,14 +44,17 @@ body {
 .action {
   padding: 12px 24px;
   background-color: #ebebeb;
-  color: #484848;
+  color: black;
   border-radius: 5px;
   width: 15vw;
   text-align: center;
+  transition: 0.2s;
+  display: block;
 }
 
 .action:hover {
   opacity: 70%;
+  transition: 0.2s;
 }
 
 .resort-card:hover,
@@ -81,7 +84,7 @@ body {
 
 .groups-card {
   grid-area: 2 / 4 / 3 / 5;
-  background-color: #f9bd6c;
+  background-color: #0599D4;
   font-family: "Raleway", sans-serif;
   color: #ebebeb;
   position: relative;
@@ -103,7 +106,7 @@ body {
   text-decoration: none;
   }
   a {
-    color:#ebebeb;
+    color: black;
   }
 }
 
@@ -198,7 +201,10 @@ body {
 
 .override {
   justify-content: center !important;
-  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+
   padding: 0 !important;
 }
 
@@ -208,34 +214,41 @@ body {
 
 .contact {
   font-weight: 700;
+  margin-bottom: 10px;
+  color: #ebebeb;
 }
 
 .form {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
-  height: 136px;
+  height: 150px;
 }
 
 
 #countries {
   margin-bottom: 10px;
-  width: 15vw;
-  height: 8vh;
-}
 
-.go-button {
+
+  width: 15vw;
+  padding-top: 10px;
+  height: 8vh;
+  padding-bottom: 10px;
+  // -webkit-appearance: none;
 }
 
 .resort-dropdown {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  // visibility: hidden;
   transform: translateY(-30px);
   transition: 0.4s;
   width: 15vw;
-  padding: 5px;
+  padding-top: 10px;
   height: 8vh;
+  padding-bottom: 10px;
+  // -webkit-appearance: none;
+
 
   // &--visible {
   //   opacity: 1;
@@ -244,8 +257,14 @@ body {
   // }
 }
 
-.resort-dropdown--visible {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
+// .resort-dropdown-visible {
+//   opacity: 1;
+//   transform: translateY(0);
+//   visibility: visible;
+// }
+
+.custom-none {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: 0.4s;
 }
