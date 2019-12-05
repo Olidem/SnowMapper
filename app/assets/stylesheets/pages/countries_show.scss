@@ -1,8 +1,9 @@
 #mapbox-container-countries-show {
   position: sticky;
-  top: 16px;
+  top: 32px;
   width: 100%;
-  height: calc(100vh - 32px);
+  height: calc(100vh - 64px);
+  margin-top: 32px;
 }
 
 #map {
