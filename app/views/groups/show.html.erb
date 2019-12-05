@@ -1,6 +1,6 @@
 <section class="group-heading-section">
   <div class="group-image-info">
-    <div class="group-show-page-image" style="background-image: url(<%= cl_image_path @group.photo.key %>); background-size: cover; background-position: center;">
+    <div class="group-show-page-image" style="background-image: url(<%= (@group.photo.attached?) ? (cl_image_path @group.photo.key) : ("https://images.unsplash.com/photo-1546702734-2e3772a4f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80") %>); background-size: cover; background-position: center;">
     </div>
     <div class="group-info">
       <h2 class="group-name-title"><%= @group.name.upcase %></h2>
