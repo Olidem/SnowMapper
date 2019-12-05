@@ -383,15 +383,18 @@ group_names = [["Freestylers", "Here for a good time not a long time!", true],
   ["Off-piste buddies", "Looking for some squaddies to come off-piste for a few days!", true],
   ["Girls skiing trip", "Join some friendly girls skiing for the week", true]]
 
-group_names.each_with_index do |group_name, i|
-  photos = [URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758427/photo-1563544769932-7a686e8c1f40_acgdlv.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758435/photo-1558301211-0d8c8ddee6ec_q8jhvq.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789951/132546-top-of-the-mountain-concert-c-tvb-paznaun---ischgl_n1ocpn.webp'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758421/photo-1523815119304-615b6b81e704_ojsuvh.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789983/Girls-Ski-6-1024x666_hchpws.jpg')]
-  group = Group.new(name: group_name[0], description: group_name[1], locked: group_name[2])
-  group.resort = courchavel
-  group.photo.attach(io: photos[i], filename: "group_picture_#{group_name[0]}.jpg", content_type: 'image/jpg')
-  group.save!
-  users.each do |user|
-    membership = Membership.new(user: user, group: group, admin: true)
-    membership.save!
+
+french_resorts.each do |resort|
+  group_names.each_with_index do |group_name, i|
+    photos = [URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758427/photo-1563544769932-7a686e8c1f40_acgdlv.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758435/photo-1558301211-0d8c8ddee6ec_q8jhvq.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789951/132546-top-of-the-mountain-concert-c-tvb-paznaun---ischgl_n1ocpn.webp'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758421/photo-1523815119304-615b6b81e704_ojsuvh.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789983/Girls-Ski-6-1024x666_hchpws.jpg')]
+    group = Group.new(name: group_name[0], description: group_name[1], locked: group_name[2])
+    group.resort = resort
+    group.photo.attach(io: photos[i], filename: "group_picture_#{group_name[0]}.jpg", content_type: 'image/jpg')
+    group.save!
+    users.each do |user|
+      membership = Membership.new(user: user, group: group, admin: true)
+      membership.save!
+    end
   end
 end
 
