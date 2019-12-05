@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :meetings
   has_many :groups, through: :memberships
   has_many :membership_requests
-  belongs_to :resort
+  belongs_to :resort, optional: true
   has_one_attached :photo
   has_many :read_messages, dependent: :destroy
 end
