@@ -1,5 +1,5 @@
 class ResortsController < ApplicationController
-  before_action :set_resort, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
+  before_action :set_resort, only: %i[show add_user remove_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_groups, only: %i[show add_user sort_user_count sort_group_created sort_latest_message]
   before_action :set_empty_group, only: %i[show sort_user_count sort_group_created sort_latest_message]
   skip_before_action :authenticate_user!, only: [:index]
@@ -13,6 +13,11 @@ class ResortsController < ApplicationController
 
   def add_user
     current_user.update(resort: @resort)
+    redirect_to resort_path(@resort)
+  end
+
+  def remove_user
+    current_user.update(resort: nil)
     redirect_to resort_path(@resort)
   end
 

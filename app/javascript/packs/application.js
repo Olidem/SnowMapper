@@ -46,7 +46,7 @@ function sweetAlertClassSelector(selector, options = {}) {
 };
 
 sweetAlertClassSelector('.membership-request-reject', {
-  title: 'Membership accepted',
+  title: 'Membership rejected',
   icon: "error",
   timer: 2000,
   button: false

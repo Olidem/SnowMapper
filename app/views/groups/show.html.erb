@@ -1,10 +1,10 @@
 <section class="group-heading-section">
   <div class="group-image-info">
-    <div class="group-show-page-image" style="background-image: url(<%= cl_image_path @group.photo.key %>); background-size: cover; background-position: center;">
+    <div class="group-show-page-image" style="background-image: url(<%= (@group.photo.attached?) ? (cl_image_path @group.photo.key) : ("https://images.unsplash.com/photo-1546702734-2e3772a4f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80") %>); background-size: cover; background-position: center;">
     </div>
     <div class="group-info">
       <h2 class="group-name-title"><%= @group.name.upcase %></h2>
-      <h5><%= @group.resort.name %>, <%= @group.resort.country.name %></h5>
+      <h5><%= link_to  @group.resort.name, resort_path(@group.resort), class: "group-show-page-kill-link" %>, <%= link_to @group.resort.country.name, country_path(@group.resort.country), class: "group-show-page-kill-link" %></h5>
       <h5><%= @group.description %></h5>
       <% if @group.memberships.find_by_user_id(current_user.id).admin %>
         <div class="d-flex flex-row justify-content-start">
@@ -12,7 +12,7 @@
             <%= link_to '<i class="far fa-trash-alt group-icons meetup-icon-delete"></i>'.html_safe, group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
           </h2>
           <h2>
-            <i class="far fa-edit group-icons "></i" data-toggle="modal" data-target="#editGroupModel" id="group-edit-button"><a></a></i>
+            <a data-toggle="modal" data-target="#editGroupModel" id="group-edit-button"><i class="far fa-edit group-icons "></i></i></a>
           </h2>
         </div>
       <% end %>
@@ -77,7 +77,7 @@
     <div class="group-resorts">
       <i class="fas fa-snowflake members-snowflake"></i>
       <p class="group-resort-title">
-        <%= @group.resort.name %>
+        <%= link_to  @group.resort.name, resort_path(@group.resort), class: "group-show-page-kill-link" %>
       </p>
       <ul>
         <li>
