@@ -365,7 +365,7 @@ users = []
 user_infos = [["Rob", "Pickard", "rob@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574331235/bdLSqWADjpU2a5cT7vbDGKqn.jpg')],
               ["Ben", "Mclaren", "ben@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574332988/47673163_nfnpke.jpg')],
               ["Ross", "Bickmore", "ross@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574332864/T02NE0241-UNR7LT7EW-067763db4da5-512_b1ex8x.jpg')],
-              ["Olivier", "Deman", "olivier@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575556495/batch_319-33_720_zdyibx.jpg')]]
+              ["Olivier", "Deman", "olivier@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575625949/IMG_7440_v0aqd1.jpg')]]
 
 user_infos.each do |user_info|
   user = User.new(first_name: user_info[0], last_name: user_info[1], email: user_info[2], password: user_info[3])
