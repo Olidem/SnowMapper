@@ -410,7 +410,7 @@ group_names = [["Freestylers", "Here for a good time not a long time!", true],
   ["Big birthday drinks", "Open to everyone! Come and join"],
   ["Snowfest 2019, free entry!", "Join us for the annual christmas celebration!"],
   ["Off-piste buddies", "Looking for some squaddies to come off-piste for a few days!", true],
-  ["Girls skiing trip", "Join some friendly girls skiing for the week", true]],
+  ["Girls skiing trip", "Join some friendly girls skiing for the week", true],
   ["Amateur skiers!", "Looking for some other beginners for some relaxed learning", true],
   ["Happy hour drinks", "Join us at the slope bar for half price drinks tonight from 9-10!"]]
 
