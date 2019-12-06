@@ -412,7 +412,7 @@ group_names = [["Freestylers", "Here for a good time not a long time!", true],
   ["Off-piste buddies", "Looking for some squaddies to come off-piste for a few days!", true],
   ["Girls skiing trip", "Join some friendly girls skiing for the week", true]],
   ["Amateur skiers!", "Looking for some other beginners for some relaxed learning", true],
-  ["Happy hour drinks", "Join us at the slope bar for half price drinks tonight from 9-10!"]
+  ["Happy hour drinks", "Join us at the slope bar for half price drinks tonight from 9-10!"]]
 
 french_resorts.each do |resort|
   group_names.each_with_index do |group_name, i|
