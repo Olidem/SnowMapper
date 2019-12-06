@@ -436,3 +436,14 @@
   margin-left: 30px;
 }
 
+.group-show-page-kill-link {
+  text-decoration: none;
+  transition: 0.3s;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 50%;
+  }
+}
+

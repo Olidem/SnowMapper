@@ -1,6 +1,6 @@
 <div class="group-card d-flex group-card-gradient">
   <div class="group-image-container">
-    <div class="group-image" style="background-image: url(<%= cl_image_path group.photo.key %>)"></div>
+    <div class="group-image" style="background-image: url(<%= (group.photo.attached?) ? (cl_image_path group.photo.key) : ("https://images.unsplash.com/photo-1546702734-2e3772a4f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80") %>)"></div>
   </div>
   <div class="group-info-container d-flex justify-content-between px-3">
     <div class="group-titles-container d-flex flex-column justify-content-around align-items-start mt-3">

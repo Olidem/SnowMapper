@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Custom routes
   get '/resorts/:id/add_user', to: 'resorts#add_user', as: :resorts_add_user
+  get '/resorts/:id/remove_user', to: 'resorts#remove_user', as: :resorts_remove_user
   get '/resorts/:id/sort_user_count', to: 'resorts#sort_user_count', as: :resorts_sort_user_count
   get '/resorts/:id/sort_group_created', to: 'resorts#sort_group_created', as: :resorts_sort_group_created
   get '/resorts/:id/sort_latest_message', to: 'resorts#sort_latest_message', as: :resorts_sort_latest_message
