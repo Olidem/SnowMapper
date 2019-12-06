@@ -365,7 +365,37 @@ users = []
 user_infos = [["Rob", "Pickard", "rob@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574331235/bdLSqWADjpU2a5cT7vbDGKqn.jpg')],
               ["Ben", "Mclaren", "ben@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574332988/47673163_nfnpke.jpg')],
               ["Ross", "Bickmore", "ross@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574332864/T02NE0241-UNR7LT7EW-067763db4da5-512_b1ex8x.jpg')],
-              ["Olivier", "Deman", "olivier@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575556495/batch_319-33_720_zdyibx.jpg')]]
+              ["Olivier", "Deman", "olivier@snowsquad.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575625949/IMG_7440_v0aqd1.jpg')],
+              ["John", "Hines", "john.hines@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20161086271647247.jpg')],
+              ["Katy", "Davies", "katy.davies@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male1084477709503.jpg')],
+              ["Jack", "Stoughton", "jack.stoughton@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20121085929326843.jpg')],
+              ["Adriana", "Brown", "adriana.brown@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female20161025374135163.jpg')],
+              ["Maria", "Shaw", "maria.shaw@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female1021886416229.jpg')],
+              ["Kimberly", "Mahoney", "kimberly.mahoney@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female1022133849060.jpg')],
+              ["Jen", "Gilbert", "jen.gilbert@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female20121023467437531.jpg')],
+              ["Dallas", "Barton", "dallas.barton@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male1085215807342.jpg')],
+              ["Amy", "Holt", "amy.holt@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female20171026049919220.jpg')],
+              ["Lottie", "Coffman", "lottie.coffman@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female20151024255514709.jpg')],
+              ["Dawn", "Watkins", "dawn.watkins@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female1021790591034.jpg')],
+              ["Robert", "Simcox", "test@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20161083743645477.jpg')],
+              ["Mary", "Alanis", "mary.alanis@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female2016102555814313.jpg')],
+              ["Ben", "Fanning", "ben.fanning@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.12.17_cugipl.png')],
+              ["Lenny", "Percival", "lenny.percival@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.11.02_skapqw.png')],
+              ["Arthur", "Littman", "arthut.littman@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.11.12_yamcyq.png')],
+              ["Lucien", "George", "lucy.george@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.12.00_qiq7zc.png')],
+              ["Ife", "Odugbesan", "ife.odugbesan@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.12.34_yz4pny.png')],
+              ["Demi", "Ogun", "demi.ogun@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.13.20_t5ltyy.png')],
+              ["Ben", "Wright", "ben.wright@test.com", "123456", URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575627635/Screenshot_2019-12-06_at_10.13.38_iltoef.png')],
+              ["Carol", "Gaughan", "carol.gaughan@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female2017102618045777.jpg')],
+              ["Patric", "Bateman", "patric.bateman@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20161086606828613.jpg')],
+              ["Dean", "Hawk", "dean.hawk@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20161086338875366.jpg')],
+              ["Ruth", "Brasfield", "ruth.brasfield@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female20161024842903350.jpg')],
+              ["Woodrow", "Montoya", "woodrow.montoya@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male20161083979252533.jpg')],
+              ["Ralph", "Jackson", "ralph.jackson@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male2016108627071289.jpg')],
+              ["Scott", "Clanton", "scott.clanton@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male1084346522766.jpg')],
+              ["Chi", "Lewis", "chi.lewis@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male1085177699859.jpg')],
+              ["Brenda", "Miller", "brenda.miller@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/female/female1022578689056.jpg')],
+              ["Leo", "Johnson", "leo.johnson@test.com", "123456", URI.open('https://fakepersongenerator.com/Face/male/male1084275450287.jpg')]]
 
 user_infos.each do |user_info|
   user = User.new(first_name: user_info[0], last_name: user_info[1], email: user_info[2], password: user_info[3])
@@ -375,18 +405,18 @@ user_infos.each do |user_info|
   users << user
 end
 
-
 puts "Filling resorts with squads and users"
 group_names = [["Freestylers", "Here for a good time not a long time!", true],
   ["Big birthday drinks", "Open to everyone! Come and join"],
-  ["Snow Patrol concert, free entry!", "I'm running out of ideas"],
+  ["Snowfest 2019, free entry!", "Join us for the annual christmas celebration!"],
   ["Off-piste buddies", "Looking for some squaddies to come off-piste for a few days!", true],
-  ["Girls skiing trip", "Join some friendly girls skiing for the week", true]]
-
+  ["Girls skiing trip", "Join some friendly girls skiing for the week", true],
+  ["Amateur skiers!", "Looking for some other beginners for some relaxed learning", true],
+  ["Happy hour drinks", "Join us at the slope bar for half price drinks tonight from 9-10!"]]
 
 french_resorts.each do |resort|
   group_names.each_with_index do |group_name, i|
-    photos = [URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758427/photo-1563544769932-7a686e8c1f40_acgdlv.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758435/photo-1558301211-0d8c8ddee6ec_q8jhvq.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789951/132546-top-of-the-mountain-concert-c-tvb-paznaun---ischgl_n1ocpn.webp'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758421/photo-1523815119304-615b6b81e704_ojsuvh.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789983/Girls-Ski-6-1024x666_hchpws.jpg')]
+    photos = [URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758427/photo-1563544769932-7a686e8c1f40_acgdlv.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758435/photo-1558301211-0d8c8ddee6ec_q8jhvq.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789951/132546-top-of-the-mountain-concert-c-tvb-paznaun---ischgl_n1ocpn.webp'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574758421/photo-1523815119304-615b6b81e704_ojsuvh.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1574789983/Girls-Ski-6-1024x666_hchpws.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575626353/New-gen-3_lfmnux.jpg'), URI.open('https://res.cloudinary.com/dr48k5zwm/image/upload/v1575626476/beers_anzlqs.jpg')]
     group = Group.new(name: group_name[0], description: group_name[1], locked: group_name[2])
     group.resort = resort
     group.photo.attach(io: photos[i], filename: "group_picture_#{group_name[0]}.jpg", content_type: 'image/jpg')

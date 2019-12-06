@@ -1,3 +1,7 @@
+$primary-color: #0599D4;
+$background-color: #ffffff;
+$secondary-color: #52BFA1;
+
 #group-edit-button {
   &:hover {
     cursor: pointer;
@@ -21,4 +25,28 @@
 .member-edit-group {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+// Group new
+.new-group-modal-button {
+  margin-top: 8px;
+  background-color: $secondary-color;
+  font-weight: light;
+  padding: 4px 8px;
+  color: $background-color;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: 0.3s ease;
+    &:hover {
+      background-color: $primary-color;
+      color: $background-color;
+      text-decoration: none;
+    }
+    &:focus {
+      outline:0;
+    }
+}
+
+.new-group-form {
 }
