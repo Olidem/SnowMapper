@@ -87,7 +87,7 @@
     <i class="fas fa-snowflake snow-group"></i>
     <span style="display: block" class="groups-message my-3">Freestylers</span>
     <div class="group-users-avatars override">
-      <% User.all.each do |user| %>
+      <% User.all.sample(4).each do |user| %>
         <span  class="group-users-avatar">
           <img src="<%= cl_image_path user.photo.key %>">
         </span>
