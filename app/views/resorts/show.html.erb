@@ -1,16 +1,12 @@
-<% if @resort.data.nil? %>
     <% data = {
       "status": "open",
-      "snowfall_today": "15 cm",
-      "snowfall_tomorrow": "1cm",
+      "snowfall_today": "0 cm",
+      "snowfall_tomorrow": "0cm",
       "snow_condition": "excellent",
-      "open_runs": "8 of 74",
-      "open_piste": "16 of 150km",
-      "open_lifts": "5 of 39"
+      "open_runs": "48 of 74",
+      "open_piste": "55 of 93km",
+      "open_lifts": "18 of 39"
     } %>
-<% else %>
-  <% data = @resort.data.gsub(/[{}:]/,'').split(', ').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge) %>
-<% end %>
 
 <div class="mountain-banner-image mb-3 p-3">
   <div class="inner-mountain-container container">
