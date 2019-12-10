@@ -55,7 +55,7 @@ $secondary-color: #52BFA1;
   display: inline-flex;
   flex-direction: row-reverse;
   margin-bottom: 16px;
-  margin-right: 32px;
+  margin-right: 16px;
   margin-left: 10px;
 }
 
@@ -79,9 +79,6 @@ $secondary-color: #52BFA1;
   background-color: $secondary-color;
   outline:none;
   text-decoration:none;
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .group-action-button {

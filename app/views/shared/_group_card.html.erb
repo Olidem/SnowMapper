@@ -18,18 +18,9 @@
             <% end %>
           </div>
           <% if group.users.count > 5 %>
-            <div class="btn-group dropup">
-              <div class="group-users-avatar-overflow ml-3 d-flex align-items-center justify-content-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="">
+              <div class="group-users-avatar-overflow d-flex align-items-center justify-content-center">
                 + <%= group.users.count - 5 %>
-              </div>
-              <div class="dropdown-menu text-center py-0 pt-3">
-                <div class="group-users-avatars">
-                  <% group.users[2...(group.users.count)].each do |user| %>
-                    <span class="group-users-avatar">
-                      <img src=<%= cl_image_path user.photo.key %>>
-                    </span>
-                  <% end %>
-                </div>
               </div>
             </div>
           <% end %>
@@ -40,7 +31,7 @@
         <% if group.locked && current_user.membership_requests.any? { |request| request.group == group } %>
           <i class="fas fa-envelope" style="color: #002A47;"></i>
         <% elsif current_user.groups.include?(group) %>
-            <span class="badge badge-danger" style="align-self: start; font-weight: 500"><%= no_of_unread_messages(group) unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %></span>
+          <span class="badge badge-danger" style="align-self: start; font-weight: 500"><%= no_of_unread_messages(group) unless no_of_unread_messages(group).nil? || no_of_unread_messages(group) == 0 %></span>
         <% elsif group.locked %>
           <i class="fas fa-lock" style="color: #002A47;"></i>
         <% end %>
