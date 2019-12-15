@@ -11,7 +11,7 @@ Install prerequisits:
 
 ```
  bundle
- yarn start
+ yarn 
 ```
 
 ### Open server
